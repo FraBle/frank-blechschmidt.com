@@ -5,9 +5,6 @@ on:
     branches:
       - main
 
-env:
-  PROJECT_ID: ${{ secrets.GCP_PROJECT }}
-
 jobs:
   gcp-deploy:
     name: GCP Deployment
