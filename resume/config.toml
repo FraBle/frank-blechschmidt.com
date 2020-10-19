@@ -1,0 +1,54 @@
+baseURL = "https://frank-blechschmidt.com"
+languageCode = "en-us"
+title = "Frank Blechschmidt"
+theme = "researcher"
+disableKinds = ["taxonomy", "term", "RSS", "sitemap", "robotsTXT"]
+enableEmoji = true
+buildDrafts = true
+googleAnalytics = "UA-180764549-1"
+
+[params]
+  author = "Frank Blechschmidt"
+  description = "Resume of Frank Blechschmidt."
+  favicon = "favicon.ico"
+  [params.footer]
+    text = "Hugo Theme by Olivier Roques"
+    url = "https://github.com/ojroques/hugo-researcher"
+
+[permalinks]
+  "/" = "/:filename"
+
+[menu]
+  [[menu.main]]
+    name = "About"
+    url = "/about"
+    weight = 1
+  [[menu.main]]
+    name = "Resume"
+    url = "/resume_frank_blechschmidt.pdf"
+    weight = 2
+  [[menu.main]]
+    name = "Contact"
+    url = "/contact"
+    weight = 3
+
+[markup.goldmark.renderer]
+  # allow raw HTML in markdown files
+  unsafe = true
+
+[privacy]
+  [privacy.disqus]
+    disable = true
+  [privacy.googleAnalytics]
+    anonymizeIP = false
+    disable = false
+    respectDoNotTrack = true
+    useSessionStorage = true
+  [privacy.instagram]
+    disable = true
+  [privacy.twitter]
+    disable = true
+  [privacy.vimeo]
+    disable = true
+  [privacy.youtube]
+    disable = true

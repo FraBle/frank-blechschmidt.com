@@ -1,0 +1,22 @@
+name: Deploy to Google App Engine
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT }}
+
+jobs:
+  gcp-deploy:
+    name: GCP Deployment
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to Google App Engine
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          credentials: ${{ secrets.GCP_SA_KEY }}
+          promote: true
