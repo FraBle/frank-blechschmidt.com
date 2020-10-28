@@ -1,5 +1,5 @@
 +++
-title = "About"
+title = "About: Frank Blechschmidt"
 +++
 
 ## About Me
