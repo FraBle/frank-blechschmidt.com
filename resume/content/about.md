@@ -19,7 +19,7 @@ _[+1 (650) 213-2619](tel:+1-6502132619) | [contact@frank-blechschmidt.com](conta
 
 * Architecting and implementing new components for Box’s Cloud Platform based on Kubernetes and Docker including scheduling, service authentication and authorization, service discovery, load balancing, and monitoring.
 
-> __Lead Software Engineer (SAP Conversational AISAP Conversational AI)__  
+> __Lead Software Engineer (SAP Conversational AI)__  
 > _July 2016 — May 2019 (Palo Alto, CA)_
 
 * Led a global engineering team and spearheaded SAP’s Conversational AI initiative as part of SAP’s strategy to become the industry leader in Intelligent Enterprise software.
