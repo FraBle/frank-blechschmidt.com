@@ -8,7 +8,7 @@ title = "About: Frank Blechschmidt"
 
 _Mountain View, CA_
 
-_[+1 (650) 213-2619](tel:+1-6502132619) | [contact@frank-blechschmidt.com](contact@frank-blechschmidt.com)_  
+_[+1 (650) 213-2619](tel:+1-6502132619) | [contact@frank-blechschmidt.com](mailto:contact@frank-blechschmidt.com)_  
 
 ---
 

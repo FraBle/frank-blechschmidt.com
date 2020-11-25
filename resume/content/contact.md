@@ -4,7 +4,7 @@ title = "Contact: About: Frank Blechschmidt"
 
 ## Contact
 
-* Email: [contact@frank-blechschmidt.com](contact@frank-blechschmidt.com)
+* Email: [contact@frank-blechschmidt.com](mailto:contact@frank-blechschmidt.com)
 * Phone: [+1 (650) 213-2619](tel:+1-6502132619)
 
 ---
