@@ -17,45 +17,36 @@ _[+1 (650) 213-2619](tel:+1-6502132619) | [contact@frank-blechschmidt.com](mailt
 > __Senior Software Engineer (Box)__  
 > _May 2019 — Present (Redwood City, CA)_
 
-* Architecting and implementing new components for Box’s Cloud Platform based on Kubernetes and Docker including scheduling, service authentication and authorization, service discovery, load balancing, and monitoring.
+* Architecting and implementing new components for Box's internal Platform-as-a-Services (PaaS) offering based on Kubernetes, including deployment configurations, application management, high-availability setups, migration tooling, and platform integrations.
+* Planned and coordinated the introduction of new Kubernetes clusters and availability zones, including the rebalance of existing services across multiple clusters and regions for improved availability guarantees in collaboration with services owners.
+* Implemented a promotion model for deployment pipelines to enable secure and safe rollouts of service changes across environments and increase the reliability of services deployed on Box's cloud platform.
+* Migrated platform to role-based access control (RBAC) with LDAP integration for granular authorization and reduced toil.
+* Developed and managed milestone plans and resource assignments across team projects and streamlined status updates by consolidating processes and reducing information redundancies.
+* Onboarded, supervised, and mentored 4 full-time team members and 2 interns to foster Box's engineering principles and values.
+* Worked as a member of a cross-functional recruiting team to hire and interview Box's interns for the summer of 2021.
+* Received nomination for 12-month Tech Lead Manager (TLM) program as Box's training for the transition to engineering management.
 
 > __Lead Software Engineer (SAP Conversational AI)__  
 > _July 2016 — May 2019 (Palo Alto, CA)_
 
-* Led a global engineering team and spearheaded SAP’s Conversational AI initiative as part of SAP’s strategy to become the industry leader in Intelligent Enterprise software.
-* Defined and executed the development of a Docker-based cloud-scale microservice architecture on top of SAP’s Cloud Foundry and Kubernetes offering through SAP Cloud Platform.
-* Managed post-acquisition activities for Recast.AI by migrating the existing services to SAP’s Kubernetes infrastructure and automating the testing and deployment using Jenkins.
+* Led a global engineering team and spearheaded SAP's Conversational AI initiative as part of SAP's strategy to become the industry leader in Intelligent Enterprise software.
+* Defined and executed the development of a Docker-based cloud-scale microservice architecture on top of SAP's Cloud Foundry and Kubernetes offering through SAP Cloud Platform.
+* Managed post-acquisition activities for Recast.AI by migrating the existing services to SAP's Kubernetes infrastructure and automating the testing and deployment using Jenkins.
 * Supervised the recruiting of new engineering talents and mentored a growing team of software developers and data scientists.
-* Collaborated with internal stakeholders and customers for Proof-of-Concept (PoC) development and platform onboarding.
-* Represented the team and product on a variety of developer conferences and architecture summits, such as O’Reilly AI Conference, SAP TechEd and Google I/O.
 
 > __Software Engineer (SAP Innovation Center Silicon Valley)__  
 > _October 2015 — June 2016 (Palo Alto, CA)_
 
-* Created a Twitter bot to accompany attendees of SAP’s biggest customer conference SAPPHIRE NOW through summarizing and recommending conference events based on the context and interest of the individual attendee.
-* Developed a software component for converting resumes from PDF to machine-readable format for data-driven recruiting PoC showcasing the power of Machine Learning (ML) and Natural Language Processing (NLP) for Human Resources (HR) domain.
+* Created a Twitter bot to accompany attendees of SAP's most significant customer conference SAPPHIRE NOW through summarizing and recommending conference events based on the context and interest of the individual attendee.
+* Developed a software component for converting resumes from PDF to machine-readable format for data-driven recruiting PoC showcasing the power of Machine Learning (ML) and Natural Language Processing (NLP) for the Human Resources (HR) domain.
 * Implemented a web app to visualize the performance tests of database queries using Google Charts and leveraging dynamic information retrieval through descriptive programming.
-
-> __Software Engineering Intern (SAP Innovation Center Silicon Valley)__  
-> _September 2014 — September 2015 (Palo Alto, CA)_
-
-* Implemented a demo web app for SAP’s co-founder Hasso Plattner’s SAPPHIRE NOW keynote displaying the simplification potential for decision-making in the consumer product industry through holistic, real-time views for short supply management.
-* Extended the web video player for openHPI/openSAP Massive Open Online Course (MOOC) platform by providing information based on semantic analysis of video and user content with SAP HANA Text Analysis.
-
-> __Student Assistant (Hasso Plattner Institute)__  
-> _March 2012 — August 2014 (Potsdam, Germany)_
-
-* Developed research proof of concepts for enterprise applications using cutting edge technologies such as in-memory databases and programming languages such as JavaScript and Java
-* Extended MOOC Platform openHPI with A/B testing capabilities using Ruby on Rails
-* Implemented a Web IDE prototype using JavaScript and Python showcasing the integration between developer environment and
- data access layer
 
 ---
 
 ## Patents
 
 > __Cognitive Enterprise System__
-> _<a href="https://assignment.uspto.gov/patent/index.html#/patent/search/resultAbstract?searchInput=20180144257&id=20180144257&type=publNum" target="_blank">US 20180144257A1</a>, <a href="https://assignment.uspto.gov/patent/index.html#/patent/search/resultAbstract?searchInput=20180144053&id=20180144053&type=publNum" target="_blank">US 20180144053A1</a>_
+> _<a href="https://assignment.uspto.gov/patent/index.html#/patent/search/resultAbstract?searchInput=20180144257&id=20190332956&type=publNum" target="_blank">US 20190332956</a>, <a href="https://assignment.uspto.gov/patent/index.html#/patent/search/resultAbstract?searchInput=20180144053&id=20180144053&type=publNum" target="_blank">US 20180144053</a>, <a href="https://assignment.uspto.gov/patent/index.html#/patent/search/resultAbstract?searchInput=20180144053&id=20180144257&type=publNum" target="_blank">US 20180144257</a>_
 
 __Filed:__ March 2017 | __Issued:__ May 2018
 
@@ -65,15 +56,20 @@ __Filed:__ March 2017 | __Issued:__ May 2018
 
 > <a href="https://github.com/FraBle/python-sutime" target="_blank">__python-sutime__</a>
 
-Python wrapper for Stanford’s NLP library SUTime; officially mentioned on Stanford NLP website.
+Python wrapper for Stanford's NLP library SUTime; officially mentioned on Stanford NLP website.
 
 > <a href="https://github.com/FraBle/python-duckling" target="_blank">__python-duckling__</a>
 
-Python wrapper for wit.ai’s NLP library Duckling; used by leading Open Source NLU library Rasa NLU.
+Python wrapper for wit.ai's NLP library Duckling; used by leading Open Source NLU library Rasa NLU.
 
 ---
 
 ## Education
+
+> __University of Illinois Urbana-Champaign__  
+> _Urbana, Illinois, USA_
+
+__Degree:__ Master | __Graduation:__ August 2021 | __Major:__ Computer Science
 
 > __Hasso Plattner Institute, University of Potsdam__  
 > _Potsdam, Germany_
