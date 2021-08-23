@@ -9,7 +9,6 @@ jobs:
   gcp-deploy:
     name: GCP Deployment
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -24,7 +23,7 @@ jobs:
       - name: Build
         run: hugo --minify --source resume
       - name: Deploy to Google App Engine
-        uses: GoogleCloudPlatform/github-actions/appengine-deploy@master
+        uses: google-github-actions/deploy-appengine@main
         with:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
           credentials: ${{ secrets.GCP_SA_KEY }}
