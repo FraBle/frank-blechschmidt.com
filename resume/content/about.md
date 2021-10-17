@@ -14,17 +14,36 @@ _[+1 (650) 213-2619](tel:+1-6502132619) | [contact@frank-blechschmidt.com](mailt
 
 ## Professional Experience
 
-> __Senior Software Engineer (Box)__  
-> _May 2019 — Present (Redwood City, CA)_
+> __Engineering Manager (Box)__  
+> _October 2021 — Present (Redwood City, CA)_
 
-* Architecting and implementing new components for Box's internal Platform-as-a-Services (PaaS) offering based on Kubernetes, including deployment configurations, application management, high-availability setups, migration tooling, and platform integrations.
-* Planned and coordinated the introduction of new Kubernetes clusters and availability zones, including the rebalance of existing services across multiple clusters and regions for improved availability guarantees in collaboration with services owners.
-* Implemented a promotion model for deployment pipelines to enable secure and safe rollouts of service changes across environments and increase the reliability of services deployed on Box's cloud platform.
+Leading Box’s cloud platform team of 12 engineers building and expanding its internal Kubernetes-based Platform-as-a-Service (PaaS) offering.
+
+* Developing vision & strategy and driving the execution for Box’s Kubernetes-based platform.
+* Working with product managers and architects on cross-team project initiatives, including data-driven prioritization, technical strategy, and OKR management.
+* Managing the migration of Box’s Kubernetes platform from on-prem, multi-region data centers to Google Kubernetes Engine (GKE).
+* Mentoring and supervising engineers to set them up for success through growth plans, customized training, and frequent feedback.
+* Sourcing, recruiting, and interviewing software engineers to grow the team on all levels, from junior to staff.
+
+> __Tech Lead Manager (Box)__  
+> _March 2021 — October 2021 (Redwood City, CA)_
+
+Tech Lead Manager (TLM) is Box's 6-12 months program to support ICs in the transition to engineering management.
+
+* Delivered key projects, such as the rollout of declarative observability tooling, Kubernetes cluster landscape rebalance and expansion, the onboarding of Box’s monolithic core app to Kubernetes, and the modernization of Box’s Kubernetes infrastructure.
+* Increased team productivity by streamlining status updates processes and OKR management using Atlassian tooling and reducing redundancies.
+* Completely redesigned the end-of-quarter team retrospective making it an objective and democratic ritual leading to increased contributions, enhanced accountability, and greater team satisfaction.
+* Worked as a member of a cross-functional recruiting team to hire and interview Box’s interns for the summer of 2021.
+
+> __Senior Software Engineer (Box)__  
+> _May 2019 — October 2021 (Redwood City, CA)_
+
+* Architected and implemented new components for Box’s Kubernetes-based cloud platform, including deployment configurations, application management, high-availability setups, migration tooling, and platform integrations.
+* Planned and coordinated the introduction of new Kubernetes clusters and availability zones, including rebalancing existing services across multiple clusters and regions for improved availability guarantees.
+* Implemented a promotion model for deployment pipelines to enable secure and safe rollouts of service changes across environments and increase the reliability of services deployed on Box’s cloud platform.
 * Migrated platform to role-based access control (RBAC) with LDAP integration for granular authorization and reduced toil.
-* Developed and managed milestone plans and resource assignments across team projects and streamlined status updates by consolidating processes and reducing information redundancies.
 * Onboarded, supervised, and mentored 4 full-time team members and 2 interns to foster Box's engineering principles and values.
-* Worked as a member of a cross-functional recruiting team to hire and interview Box's interns for the summer of 2021.
-* Received nomination for 12-month Tech Lead Manager (TLM) program as Box's training for the transition to engineering management.
+* Received nomination for Tech Lead Manager (TLM) program as Box's training for the transition to engineering management.
 
 > __Lead Software Engineer (SAP Conversational AI)__  
 > _July 2016 — May 2019 (Palo Alto, CA)_
