@@ -5,27 +5,36 @@ on:
     branches:
       - main
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   gcp-deploy:
     name: GCP Deployment
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: true # Fetch Hugo theme
           fetch-depth: 0
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: "0.76.5"
+          hugo-version: "latest"
           extended: true
       - name: Build
         run: hugo --minify --source resume
-      - name: Deploy to Google App Engine
-        uses: google-github-actions/deploy-appengine@main
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          create_credentials_file: true
+          workload_identity_provider: "projects/${{ secrets.GCP_PROJECT_NUMBER }}/locations/global/workloadIdentityPools/${{ secrets.GCP_POOL_ID }}/providers/${{ secrets.GCP_PROVIDER_ID }}"
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}
+      - name: Deploy to Google AppEngine
+        uses: google-github-actions/deploy-appengine@v1
         with:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
-          credentials: ${{ secrets.GCP_SA_KEY }}
           promote: true
           version: ${{ github.sha }}
