@@ -1,0 +1,5 @@
+items:
+  - title: Google Anaytics
+    description: We'd like to set Google Analytics cookies to help us to improve the website by collecting and reporting information on how you use it. For more information on how these cookies work please see the 'Privacy' page. The cookies collect information in an anonymous form.
+    is_functional: false
+    script: https://www.googletagmanager.com/gtag/js
