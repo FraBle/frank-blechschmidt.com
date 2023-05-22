@@ -15,12 +15,12 @@ title = "Contact: About: Frank Blechschmidt"
 1. [GitHub](https://github.com/FraBle)
 1. [Twitter](https://twitter.com/FraBle90)
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-180764549-1"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CDE67XQDXJ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'UA-180764549-1');
+  gtag('config', 'G-CDE67XQDXJ');
 </script>
