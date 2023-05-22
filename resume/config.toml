@@ -1,11 +1,11 @@
+title = "Frank Blechschmidt"
 baseURL = "https://frank-blechschmidt.com"
 languageCode = "en-us"
-title = "Frank Blechschmidt"
 theme = "researcher"
 disableKinds = ["taxonomy", "term", "RSS", "sitemap", "robotsTXT"]
 enableEmoji = true
 buildDrafts = true
-googleAnalytics = "UA-180764549-1"
+googleAnalytics = "G-CDE67XQDXJ"
 
 [params]
   author = "Frank Blechschmidt"

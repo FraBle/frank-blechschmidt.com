@@ -107,13 +107,3 @@ __Degree:__ Bachelor of Science | __Graduation:__ August 2014 | __Major:__ IT-Sy
 * __Message Queues__: RabbitMQ, Kafka, Celery
 * __Machine Learning / AI__: TensorFlow, Keras, scikit-learn
 * __NLP__: SpaCy, Rasa, CoreNLP, Duckling, SUTime
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CDE67XQDXJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-CDE67XQDXJ');
-</script>
