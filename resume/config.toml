@@ -43,7 +43,7 @@ googleAnalytics = "G-CDE67XQDXJ"
     anonymizeIP = false
     disable = false
     respectDoNotTrack = true
-    useSessionStorage = true
+    useSessionStorage = false
   [privacy.instagram]
     disable = true
   [privacy.twitter]
