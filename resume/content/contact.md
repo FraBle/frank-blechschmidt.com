@@ -1,5 +1,5 @@
 +++
-title = "Contact: About: Frank Blechschmidt"
+title = "Contact: Frank Blechschmidt"
 +++
 
 ## Contact

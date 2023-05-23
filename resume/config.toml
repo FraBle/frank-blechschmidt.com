@@ -12,8 +12,9 @@ googleAnalytics = "G-CDE67XQDXJ"
   description = "Resume of Frank Blechschmidt."
   favicon = "favicon.ico"
   [params.footer]
-    text = "Hugo Theme by Olivier Roques"
-    url = "https://github.com/ojroques/hugo-researcher"
+    text = "Privacy Policy"
+    url = "https://www.iubenda.com/privacy-policy/35628899"
+    blank = true
 
 [permalinks]
   "/" = "/:filename"
