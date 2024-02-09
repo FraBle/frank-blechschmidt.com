@@ -56,7 +56,7 @@ Tech Lead Manager (TLM) is Box's 6-12 months program to support ICs in the trans
 * Worked as a member of a cross-functional recruiting team to hire and interview Box’s interns for the summer of 2021.
 
 > __Senior Software Engineer ([Box](https://www.box.com/))__  
-> _May 2019 — October 2021 (Redwood City, CA)_
+> _May 2019 — March 2021 (Redwood City, CA)_
 
 * Architected and implemented new components for Box’s Kubernetes-based cloud platform, including deployment configurations, application management, high-availability setups, migration tooling, and platform integrations.
 * Planned and coordinated the introduction of new Kubernetes clusters and availability zones, including rebalancing existing services across multiple clusters and regions for improved availability guarantees.
