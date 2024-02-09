@@ -13,4 +13,4 @@ title = "Contact: Frank Blechschmidt"
 
 1. [LinkedIn](https://www.linkedin.com/in/fblechschmidt)
 1. [GitHub](https://github.com/FraBle)
-1. [Twitter](https://twitter.com/FraBle90)
+1. [Twitter/X](https://twitter.com/FraBle90)
