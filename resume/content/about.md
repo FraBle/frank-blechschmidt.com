@@ -14,17 +14,18 @@ _[+1 (650) 213-2619](tel:+1-6502132619) | [contact@frank-blechschmidt.com](mailt
 
 ## Professional Experience
 
-> __Engineering Manager ([Lattice](https://lattice.com/))__  
+> __Engineering Manager — Developer Experience & Cloud Engineering ([Lattice](https://lattice.com/))__  
 > _January 2022 — Present (San Francisco, CA)_
 
-Leading a team of 10 engineers (mix of SWEs and SREs with experience levels ranging from Junior to Staff) serving an engineering organization of 120 developers and enabling easy, fast, and reliable product development at Lattice on a tech stack composed of TypeScript, GraphQL, React, Relay, and NestJS.
+Leading two teams with a total of 15 engineers (a mix of SWEs and SREs on each team with experience levels ranging from Junior to Staff) serving an engineering organization of 150 developers and enabling easy, fast, and reliable product development at Lattice on a tech stack composed of TypeScript, GraphQL, React, Relay, and NestJS.
 
-The team’s scope and responsibilities encompass the entire development and release lifecycle, including local dev environments, CI (Github Actions), CD (ArgoCD), build systems and infrastructure, full-stack application frameworks, database migrations, container builds, linters, feature flags, preview environments and canary deployments, testing frameworks and tooling, code policies, observability integrations (Datadog & Sentry), build caching, and developer telemetry.
+The teams’ scope and responsibilities encompass the entire development, release, and operations lifecycle, including local dev environments, CI (Github Actions), CD (ArgoCD), cloud infrastructure (AWS, Cloudflare, Kubernetes, Terraform), build systems, database migrations, container builds, linters, feature flags (Statsig), preview environments and canary deployments, testing frameworks, code policies, observability integrations (Datadog & Sentry), build caching, developer telemetry, and incident management (Rootly, PagerDuty).
 
-* Launched and bootstrapped the team from the ground up, collectively set the mission, charter, and technical strategy, established metrics, KPIs, and SLOs, and introduced a continuous planning process for data-driven prioritization and resource allocation to meet the organization's needs.
+* Launched and bootstrapped the Developer Experience team (7 engineers) from the ground up, collectively set the mission, charter, and technical strategy, established metrics, KPIs, and SLOs, and introduced a continuous planning process for data-driven prioritization and resource allocation to meet the organization's needs.
+* Took on the Cloud Engineering team (8 engineers) with a current primary focus of establishing Lattice’s presence in EMEA.
 * Fostering a culture of high performance and collaboration through tailored individual development plans, continuous growth conversations, and performance management, reflected in engagement scores of 100% for Management and Team Climate.
 * Rolled out the DX survey across all functions of EPD with a consistent participation rate of 90%+ every six weeks, serving as a roadmap input for my team, a feedback mechanism for engineering teams, and a compass for organizational health for leadership.
-* Spearheaded the adoption of order-independent deploys to create a 4h guaranteed instant rollback window by shifting contract compatibility validations from deploy time to build time.
+* Spearheaded the adoption of order-independent deploys within Lattice’s monorepo to create a 4h guaranteed instant rollback window by shifting contract compatibility validations from deploy time to build time.
 * Championed a 30% reduction in CI spending while fortifying security posture, orchestrating a seamless migration from CircleCI to GitHub Actions with self-hosted runners on AWS EC2. Executed the infrastructure setup in Terraform, allowing the team to focus on shifting CI pipelines and automation.
 * Subsequently, invested in CI stability and velocity, resulting in an 80% reduction in build time and a surge in build success rates from 70% to 99% through the adoption of GitHub’s Merge Queue, smart build caching, and flaky test automation.
 * Collaborated with IT to migrate the entire Engineering org to M1-powered MacBooks, delivering an out-of-the-box local dev experience that doubled productivity.
@@ -34,7 +35,7 @@ The team’s scope and responsibilities encompass the entire development and rel
 * Guided and mentored an engineer on their journey to people management, resulting in a successful promotion to engineering manager within six months.
 * Supported Security Engineering while the team was still getting set up by rolling out and integrating FOSSA for SCA, GitHub Advanced Security for SAST, and StackHawk for DAST.
 
-> __Engineering Manager ([Box](https://www.box.com/))__  
+> __Engineering Manager — Kubernetes Engineering ([Box](https://www.box.com/))__  
 > _October 2021 — January 2022 (Redwood City, CA)_
 
 Led Box’s cloud platform of 12 engineers, building and expanding its internal Kubernetes-based Platform-as-a-Service (PaaS) offering.
@@ -45,7 +46,7 @@ Led Box’s cloud platform of 12 engineers, building and expanding its internal 
 * Mentored and supervised engineers with individual growth plans, custom-tailored training, and continuous feedback.
 * Sourced, recruited, and interviewed software engineers to grow the team on all levels, from junior to staff.
 
-> __Tech Lead Manager ([Box](https://www.box.com/))__  
+> __Tech Lead Manager — Kubernetes Engineering ([Box](https://www.box.com/))__  
 > _March 2021 — October 2021 (Redwood City, CA)_
 
 Tech Lead Manager (TLM) is Box's 6-12 months program to support ICs in the transition to engineering management.
@@ -55,7 +56,7 @@ Tech Lead Manager (TLM) is Box's 6-12 months program to support ICs in the trans
 * Completely redesigned the end-of-quarter team retrospective making it an objective and democratic ritual leading to increased contributions, enhanced accountability, and greater team satisfaction.
 * Worked as a member of a cross-functional recruiting team to hire and interview Box’s interns for the summer of 2021.
 
-> __Senior Software Engineer ([Box](https://www.box.com/))__  
+> __Senior Software Engineer — Kubernetes Engineering ([Box](https://www.box.com/))__  
 > _May 2019 — March 2021 (Redwood City, CA)_
 
 * Architected and implemented new components for Box’s Kubernetes-based cloud platform, including deployment configurations, application management, high-availability setups, migration tooling, and platform integrations.
