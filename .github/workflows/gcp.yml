@@ -25,7 +25,7 @@ jobs:
           hugo-version: "latest"
           extended: true
       - name: Build
-        run: hugo --minify --source resume
+        run: hugo --minify --source resume --verbose --debug --logLevel debug
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v1
         with:
