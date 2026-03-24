@@ -19,15 +19,15 @@ Personal resume website built with [Astro](https://astro.build/) and deployed to
 ## Development
 
 ```bash
-npm install
-npm run dev
+bun install
+bun run dev
 ```
 
 ## Build
 
 ```bash
-npm run build
-npm run preview  # Preview with Wrangler locally
+bun run build
+bun run preview  # Preview with Wrangler locally
 ```
 
 ## Deployment
