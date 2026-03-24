@@ -1,0 +1,209 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="About: Frank Blechschmidt">
+  <div class="container">
+    <Fragment set:html={`
+<h2>About Me</h2>
+
+<figure class="avatar"><img src="/avatar.jpg" /></figure>
+
+<p><em>Sunnyvale, CA</em></p>
+
+<p><em><a href="tel:+1-6502132619">+1 (650) 213-2619</a> | <a href="mailto:contact@frank-blechschmidt.com">contact@frank-blechschmidt.com</a></em></p>
+
+<hr />
+
+<h2>Professional Experience</h2>
+
+<blockquote>
+<strong>Engineering Manager — Developer Experience &amp; Cloud Engineering (<a href="https://lattice.com/">Lattice</a>)</strong><br />
+<em>January 2022 — Present (San Francisco, CA)</em>
+</blockquote>
+
+<p>Leading two teams with a total of 15 engineers (a mix of SWEs and SREs on each team with experience levels ranging from Junior to Staff) serving an engineering organization of 150 developers and enabling easy, fast, and reliable product development at Lattice on a tech stack composed of TypeScript, GraphQL, React, Relay, and NestJS.</p>
+
+<p>The teams' scope and responsibilities encompass the entire development, release, and operations lifecycle, including local dev environments, CI (Github Actions), CD (ArgoCD), cloud infrastructure (AWS, Cloudflare, Kubernetes, Terraform), build systems, database migrations, container builds, linters, feature flags (Statsig), preview environments and canary deployments, testing frameworks, code policies, observability integrations (Datadog &amp; Sentry), build caching, developer telemetry, and incident management (Rootly, PagerDuty).</p>
+
+<ul>
+<li>Launched and bootstrapped the Developer Experience team (7 engineers) from the ground up, collectively set the mission, charter, and technical strategy, established metrics, KPIs, and SLOs, and introduced a continuous planning process for data-driven prioritization and resource allocation to meet the organization's needs.</li>
+<li>Took on the Cloud Engineering team (8 engineers) with a current primary focus of establishing Lattice's presence in EMEA.</li>
+<li>Fostering a culture of high performance and collaboration through tailored individual development plans, continuous growth conversations, and performance management, reflected in engagement scores of 100% for Management and Team Climate.</li>
+<li>Rolled out the DX survey across all functions of EPD with a consistent participation rate of 90%+ every six weeks, serving as a roadmap input for my team, a feedback mechanism for engineering teams, and a compass for organizational health for leadership.</li>
+<li>Spearheaded the adoption of order-independent deploys within Lattice's monorepo to create a 4h guaranteed instant rollback window by shifting contract compatibility validations from deploy time to build time.</li>
+<li>Championed a 30% reduction in CI spending while fortifying security posture, orchestrating a seamless migration from CircleCI to GitHub Actions with self-hosted runners on AWS EC2. Executed the infrastructure setup in Terraform, allowing the team to focus on shifting CI pipelines and automation.</li>
+<li>Subsequently, invested in CI stability and velocity, resulting in an 80% reduction in build time and a surge in build success rates from 70% to 99% through the adoption of GitHub's Merge Queue, smart build caching, and flaky test automation.</li>
+<li>Collaborated with IT to migrate the entire Engineering org to M1-powered MacBooks, delivering an out-of-the-box local dev experience that doubled productivity.</li>
+<li>Facilitated the migration of Lattice's local dev environment to a Homebrew-based setup and the rollout of GitHub Copilot, leading to a 50% increase in developer satisfaction.</li>
+<li>Centralized the support model spanning three teams within Lattice's Developer Platform, simplifying how developers receive assistance by implementing a Jira-based triage process and consolidated office hours.</li>
+<li>Pioneered the rollout of a Backstage-based developer portal, serving as the central hub and source of truth for developer documentation and service ownership.</li>
+<li>Guided and mentored an engineer on their journey to people management, resulting in a successful promotion to engineering manager within six months.</li>
+<li>Supported Security Engineering while the team was still getting set up by rolling out and integrating FOSSA for SCA, GitHub Advanced Security for SAST, and StackHawk for DAST.</li>
+</ul>
+
+<blockquote>
+<strong>Engineering Manager — Kubernetes Engineering (<a href="https://www.box.com/">Box</a>)</strong><br />
+<em>October 2021 — January 2022 (Redwood City, CA)</em>
+</blockquote>
+
+<p>Led Box's cloud platform of 12 engineers, building and expanding its internal Kubernetes-based Platform-as-a-Service (PaaS) offering.</p>
+
+<ul>
+<li>Developed vision &amp; strategy and drove the execution for Box's Kubernetes-based platform.</li>
+<li>Worked with product managers and architects on cross-team project initiatives, including data-driven prioritization, technical strategy, and OKR management.</li>
+<li>Managed the migration of Box's Kubernetes platform from on-prem, multi-region data centers to Google Kubernetes Engine (GKE).</li>
+<li>Mentored and supervised engineers with individual growth plans, custom-tailored training, and continuous feedback.</li>
+<li>Sourced, recruited, and interviewed software engineers to grow the team on all levels, from junior to staff.</li>
+</ul>
+
+<blockquote>
+<strong>Tech Lead Manager — Kubernetes Engineering (<a href="https://www.box.com/">Box</a>)</strong><br />
+<em>March 2021 — October 2021 (Redwood City, CA)</em>
+</blockquote>
+
+<p>Tech Lead Manager (TLM) is Box's 6-12 months program to support ICs in the transition to engineering management.</p>
+
+<ul>
+<li>Delivered key projects, such as the rollout of declarative observability tooling, Kubernetes cluster landscape rebalance and expansion, the onboarding of Box's monolithic core app to Kubernetes, and the modernization of Box's Kubernetes infrastructure.</li>
+<li>Increased team productivity by streamlining status updates processes and OKR management using Atlassian tooling and reducing redundancies.</li>
+<li>Completely redesigned the end-of-quarter team retrospective making it an objective and democratic ritual leading to increased contributions, enhanced accountability, and greater team satisfaction.</li>
+<li>Worked as a member of a cross-functional recruiting team to hire and interview Box's interns for the summer of 2021.</li>
+</ul>
+
+<blockquote>
+<strong>Senior Software Engineer — Kubernetes Engineering (<a href="https://www.box.com/">Box</a>)</strong><br />
+<em>May 2019 — March 2021 (Redwood City, CA)</em>
+</blockquote>
+
+<ul>
+<li>Architected and implemented new components for Box's Kubernetes-based cloud platform, including deployment configurations, application management, high-availability setups, migration tooling, and platform integrations.</li>
+<li>Planned and coordinated the introduction of new Kubernetes clusters and availability zones, including rebalancing existing services across multiple clusters and regions for improved availability guarantees.</li>
+<li>Implemented a promotion model for deployment pipelines to enable secure and safe rollouts of service changes across environments and increase the reliability of services deployed on Box's cloud platform.</li>
+<li>Migrated platform to role-based access control (RBAC) with LDAP integration for granular authorization and reduced toil.</li>
+<li>Onboarded, supervised, and mentored 4 full-time team members and 2 interns to foster Box's engineering principles and values.</li>
+<li>Received nomination for 12-month Tech Lead Manager (TLM) program as Box's training for the transition to engineering management.</li>
+</ul>
+
+<blockquote>
+<strong>Lead Software Engineer (<a href="https://cai.tools.sap/">SAP Conversational AI</a>)</strong><br />
+<em>July 2016 — May 2019 (Palo Alto, CA)</em>
+</blockquote>
+
+<ul>
+<li>Led a global engineering team and spearheaded SAP's Conversational AI initiative as part of SAP's strategy to become the industry leader in Intelligent Enterprise software.</li>
+<li>Managed post-acquisition activities for Recast.AI by migrating services to SAP infrastructure and running engineering efforts to bring Recast.AI's existing technology to SAP's high level of product standards and compliance.</li>
+<li>Defined and executed the development of a microservice-based cloud-scale architecture on top of SAP's Cloud Foundry and Kubernetes offering through SAP Cloud Platform.</li>
+<li>Supervised recruiting new engineering talents and mentored a growing team of software developers and data scientists.</li>
+<li>Collaborated with internal stakeholders and customers for Proof-of-Concept (PoC) development and platform onboarding.</li>
+<li>Represented the team and product on an increasing list of developer conferences and architecture summits, such as O'Reilly AI Conference, SAP TechEd, and Google I/O.</li>
+<li>Won the Request-for-Proposal (RFP) of one of SAP's most strategic customers, Bayer, showcasing SAP's capabilities in the transformation of procurement through Conversational AI leading to the nomination for the Hasso Plattner Founders' Award.</li>
+<li>Led the development and launch of SAP's first end consumer-facing chatbot enabling all customers of SAP's co-working space, HanaHaus, to manage reservations through SMS.</li>
+</ul>
+
+<blockquote>
+<strong>Software Engineer (<a href="https://www.sap.com/about/company/innovation/icn.html">SAP Innovation Center</a>)</strong><br />
+<em>October 2015 — June 2016 (Palo Alto, CA)</em>
+</blockquote>
+
+<ul>
+<li>Created a Twitter bot to accompany attendees of SAP's most significant customer conference SAPPHIRE NOW through summarizing and recommending conference events based on the context and interest of the individual attendee.</li>
+<li>Developed a software component for converting resumes from PDF to machine-readable format for data-driven recruiting PoC showcasing the power of Machine Learning (ML) and Natural Language Processing (NLP) for the Human Resources (HR) domain.</li>
+<li>Implemented a web app to visualize the performance tests of database queries using Google Charts and leveraging dynamic information retrieval through descriptive programming.</li>
+</ul>
+
+<blockquote>
+<strong>Software Engineering Intern (<a href="https://www.sap.com/about/company/innovation/icn.html">SAP Innovation Center</a>)</strong><br />
+<em>September 2014 — September 2015 (Palo Alto, CA)</em>
+</blockquote>
+
+<ul>
+<li>Implemented a demo web app for SAP's co-founder Hasso Plattner's SAPPHIRE NOW keynote displaying the simplification potential for decision-making in the consumer product industry through holistic, real-time views for short supply management.</li>
+<li>Extended the web video player for openHPI/openSAP Massive Open Online Course (MOOC) platform by providing information based on semantic analysis of video and user content with SAP HANA Text Analysis.</li>
+<li>Developed a prototype for advanced explorative learning on unsorted education material through summarization of video and text content and a recommendation engine.</li>
+</ul>
+
+<hr />
+
+<h2>Patents</h2>
+
+<blockquote>
+<strong>Cognitive Enterprise System</strong><br />
+<em><a href="https://assignment.uspto.gov/patent/index.html#/patent/search/resultAbstract?searchInput=20180144257&id=20190332956&type=publNum" target="_blank">US 20190332956</a>, <a href="https://assignment.uspto.gov/patent/index.html#/patent/search/resultAbstract?searchInput=20180144053&id=20180144053&type=publNum" target="_blank">US 20180144053</a>, <a href="https://assignment.uspto.gov/patent/index.html#/patent/search/resultAbstract?searchInput=20180144053&id=20180144257&type=publNum" target="_blank">US 20180144257</a></em>
+</blockquote>
+
+<p><strong>Filed:</strong> March 2017 | <strong>Issued:</strong> May 2018</p>
+
+<hr />
+
+<h2>Open Source</h2>
+
+<blockquote>
+<a href="https://github.com/FraBle/python-sutime" target="_blank"><strong>python-sutime</strong></a>
+</blockquote>
+
+<p>Python wrapper for Stanford's NLP library SUTime; officially mentioned on Stanford NLP website; downloaded 4,500x/month.</p>
+
+<blockquote>
+<a href="https://github.com/FraBle/python-duckling" target="_blank"><strong>python-duckling</strong></a>
+</blockquote>
+
+<p>Python wrapper for wit.ai's NLP library Duckling; used by leading Open Source NLU library Rasa NLU; downloaded 1,000x/month.</p>
+
+<hr />
+
+<h2>Education</h2>
+
+<blockquote>
+<strong>University of Illinois Urbana-Champaign</strong><br />
+<em>Urbana, Illinois, USA</em>
+</blockquote>
+
+<p><strong>Degree:</strong> Master | <strong>Graduation:</strong> August 2021 | <strong>Major:</strong> Computer Science</p>
+
+<blockquote>
+<strong>Hasso Plattner Institute, University of Potsdam</strong><br />
+<em>Potsdam, Germany</em>
+</blockquote>
+
+<p><strong>Degree:</strong> Bachelor of Science | <strong>Graduation:</strong> August 2014 | <strong>Major:</strong> IT-Systems Engineering</p>
+
+<hr />
+
+<h2>Manager Toolbox</h2>
+
+<ul>
+<li><strong>Goal Setting</strong>: OKRs, SMART Goals</li>
+<li><strong>Recruiting</strong>: Greenhouse, Gem, LinkedIn, HackerRank</li>
+<li><strong>Engagement</strong>: Lattice, Culture Amp, DX, SurveyMonkey</li>
+<li><strong>Prioritization</strong>: RICE, Eisenhower Matrix, MoSCoW</li>
+<li><strong>Decision Making</strong>: SPADE, DACI, RACI, SWOT Analysis</li>
+<li><strong>Agile Frameworks</strong>: Kanban, Scrum, eXtreme Programming</li>
+<li><strong>Project Tracking</strong>: Jira, GitHub Projects, Trello</li>
+<li><strong>HR Tools</strong>: Lattice, BambooHR, Workday, ADP, WorkRamp</li>
+<li><strong>Communication</strong>: Slack, Google Workspace, Zoom</li>
+<li><strong>Mentorship</strong>: Plato, Torch</li>
+<li><strong>Metrics and KPIs</strong>: DORA, Datadog, SLAs &amp; SLOs, MTT*</li>
+<li><strong>Collaboration</strong>: Figma, Lucid, Notion, Confluence</li>
+</ul>
+
+<hr />
+
+<h2>Technical Skills</h2>
+
+<ul>
+<li><strong>Programming Languages</strong>: Python, TypeScript, JavaScript, Go, GraphQL</li>
+<li><strong>Databases</strong>: PostgreSQL, Redis, MySQL, Timescale</li>
+<li><strong>Frameworks</strong>: FastAPI, Node.js, Express, React, Tornado</li>
+<li><strong>DevOps</strong>: Terraform, Ansible, Docker, Git, pnpm</li>
+<li><strong>CI/CD</strong>: GitHub Actions, ArgoCD, CircleCI, Travis CI, GitLab</li>
+<li><strong>NLP</strong>: SpaCy, Rasa, CoreNLP, Duckling, SUTime</li>
+<li><strong>Cloud Platforms</strong>: Kubernetes, GCP, AWS</li>
+<li><strong>Message Queues / Streaming</strong>: RabbitMQ, Kafka, Celery</li>
+<li><strong>Machine Learning / AI</strong>: TensorFlow, Keras, scikit-learn</li>
+<li><strong>Observability</strong>: Datadog, Grafana, ELK Stack, Prometheus, PagerDuty, OpenTelemetry, Splunk, Sentry</li>
+<li><strong>DevSecOps</strong>: Snyk, FOSSA, GHAS, StackHawk</li>
+</ul>
+    `} />
+  </div>
+</BaseLayout>

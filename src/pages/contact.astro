@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Contact: Frank Blechschmidt">
+  <div class="container">
+    <Fragment set:html={`
+<h2>Contact</h2>
+
+<ul>
+<li>Email: <a href="mailto:contact@frank-blechschmidt.com">contact@frank-blechschmidt.com</a></li>
+<li>Phone: <a href="tel:+1-6502132619">+1 (650) 213-2619</a></li>
+</ul>
+
+<hr />
+
+<h2>Links</h2>
+
+<ol>
+<li><a href="https://www.linkedin.com/in/fblechschmidt">LinkedIn</a></li>
+<li><a href="https://github.com/FraBle">GitHub</a></li>
+<li><a href="https://twitter.com/FraBle90">Twitter/X</a></li>
+</ol>
+    `} />
+  </div>
+</BaseLayout>
