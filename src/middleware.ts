@@ -1,5 +1,5 @@
 import { defineMiddleware } from "astro:middleware";
-import { siteConfig } from "./site.config";
+import { redirects } from "./site.config";
 
 export const onRequest = defineMiddleware(async (context, next) => {
   const url = new URL(context.request.url);
@@ -16,8 +16,8 @@ export const onRequest = defineMiddleware(async (context, next) => {
     subdomain = host.replace(".localhost", "");
   }
 
-  if (subdomain && subdomain in siteConfig.redirects) {
-    return context.redirect(siteConfig.redirects[subdomain], 302);
+  if (subdomain && subdomain in redirects) {
+    return context.redirect(redirects[subdomain], 302);
   }
 
   if (subdomain && subdomain !== "www") {

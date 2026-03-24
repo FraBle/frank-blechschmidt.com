@@ -1,10 +1,11 @@
-export const siteConfig = {
+import type { ResearcherConfig } from "astro-researcher-theme";
+
+export const themeConfig: ResearcherConfig = {
   title: "Frank Blechschmidt",
   description: "Resume of Frank Blechschmidt.",
   author: "Frank Blechschmidt",
-  baseUrl: "https://frank-blechschmidt.com",
-  googleAnalyticsId: "G-CDE67XQDXJ",
   favicon: "/favicon.ico",
+  googleAnalyticsId: "G-CDE67XQDXJ",
   nav: [
     { name: "About", url: "/about" },
     { name: "Resume", url: "/resume_frank_blechschmidt.pdf" },
@@ -26,13 +27,14 @@ export const siteConfig = {
       },
     ],
   },
-  redirects: {
-    linkedin: "https://www.linkedin.com/in/fblechschmidt",
-    github: "https://github.com/FraBle",
-    twitter: "https://twitter.com/FraBle90",
-    facebook: "https://www.facebook.com/FraBle90",
-    youtube: "https://www.youtube.com/c/FrankBlechschmidt",
-    soundcloud: "https://soundcloud.com/frable90",
-    www: "https://frank-blechschmidt.com",
-  } as Record<string, string>,
+};
+
+export const redirects: Record<string, string> = {
+  linkedin: "https://www.linkedin.com/in/fblechschmidt",
+  github: "https://github.com/FraBle",
+  twitter: "https://twitter.com/FraBle90",
+  facebook: "https://www.facebook.com/FraBle90",
+  youtube: "https://www.youtube.com/c/FrankBlechschmidt",
+  soundcloud: "https://soundcloud.com/frable90",
+  www: "https://frank-blechschmidt.com",
 };

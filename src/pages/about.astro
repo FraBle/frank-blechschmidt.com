@@ -1,8 +1,9 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import { BaseLayout } from "astro-researcher-theme";
+import { themeConfig } from "../site.config";
 ---
 
-<BaseLayout title="About: Frank Blechschmidt">
+<BaseLayout title="About: Frank Blechschmidt" config={themeConfig}>
   <div class="container">
     <Fragment set:html={`
 <h2>About Me</h2>

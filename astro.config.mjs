@@ -8,4 +8,8 @@ export default defineConfig({
   output: 'server',
   adapter: cloudflare(),
   trailingSlash: 'never',
+  server: {
+    host: '0.0.0.0',
+    allowedHosts: ['claude'],
+  },
 });

@@ -1,8 +1,9 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import { BaseLayout } from "astro-researcher-theme";
+import { themeConfig } from "../site.config";
 ---
 
-<BaseLayout title="404 - Page Not Found">
+<BaseLayout title="404 - Page Not Found" config={themeConfig}>
   <div class="container">
     <h1>404 Error</h1>
     <p>Page does not exist.</p>
