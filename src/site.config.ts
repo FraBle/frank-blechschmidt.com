@@ -4,6 +4,7 @@ export const themeConfig: ResearcherConfig = {
   title: "Frank Blechschmidt",
   description: "Resume of Frank Blechschmidt.",
   author: "Frank Blechschmidt",
+  site: "https://frank-blechschmidt.com",
   favicon: "/favicon.ico",
   googleAnalyticsId: "G-CDE67XQDXJ",
   nav: [
@@ -15,6 +16,16 @@ export const themeConfig: ResearcherConfig = {
     text: "Privacy Policy",
     url: "https://www.iubenda.com/privacy-policy/35628899",
     blank: true,
+  },
+  openGraph: {
+    image: "/avatar.jpg",
+    type: "website",
+    locale: "en_US",
+    siteName: "Frank Blechschmidt",
+  },
+  twitter: {
+    card: "summary",
+    creator: "@FraBle90",
   },
   consent: {
     items: [
