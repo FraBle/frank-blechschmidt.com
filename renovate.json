@@ -1,0 +1,45 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:best-practices",
+    "config:js-app",
+    ":dependencyDashboard",
+    ":semanticCommits",
+    ":semanticCommitTypeAll(chore)",
+    ":semanticCommitScope(deps)",
+    ":automergeMinor",
+    "security:minimumReleaseAgeNpm",
+    "security:openssf-scorecard"
+  ],
+  "timezone": "America/Los_Angeles",
+  "labels": ["dependencies", "renovate"],
+  "assigneesFromCodeOwners": true,
+  "reviewersFromCodeOwners": true,
+  "platformAutomerge": true,
+  "schedule": ["before 6am every weekday"],
+  "prConcurrentLimit": 3,
+  "prHourlyLimit": 2,
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 4am on monday"]
+  },
+  "packageRules": [
+    {
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "groupName": "github actions",
+      "labels": ["dependencies", "renovate", "github-actions"]
+    },
+    {
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "excludeManagers": ["github-actions"],
+      "matchDatasources": ["npm"],
+      "groupName": "non-major dependencies",
+      "labels": ["dependencies", "renovate"]
+    },
+    {
+      "matchUpdateTypes": ["major"],
+      "dependencyDashboardApproval": true
+    }
+  ]
+}

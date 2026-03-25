@@ -1,0 +1,142 @@
+---
+export const prerender = true;
+
+import { BaseLayout } from "astro-researcher-theme";
+import { themeConfig } from "../site.config";
+import {
+  basics,
+  work,
+  education,
+  patents,
+  projects,
+  managerToolbox,
+  technicalSkills,
+  formatDateRange,
+} from "../resume";
+---
+
+<BaseLayout title={`About: ${basics.name}`} config={themeConfig} description={basics.summary}>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": basics.name,
+    "url": basics.url,
+    "image": basics.image,
+    "jobTitle": basics.label,
+    "worksFor": {
+      "@type": "Organization",
+      "name": work[0].company,
+      "url": work[0].url,
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": basics.location.city,
+      "addressRegion": basics.location.region,
+      "addressCountry": basics.location.countryCode,
+    },
+    "email": basics.email,
+    "telephone": basics.phone.replace(/[() ]/g, ""),
+    "sameAs": basics.profiles.map((p) => p.url),
+    "alumniOf": education.map((e) => ({
+      "@type": "CollegeOrUniversity",
+      "name": e.institution,
+      "url": e.url,
+    })),
+    "knowsAbout": technicalSkills.flatMap((s) => s.keywords).slice(0, 20),
+  })} />
+  <div class="container">
+    <h2>About Me</h2>
+
+    <figure class="avatar"><img src="/avatar.jpg" /></figure>
+
+    <p><em>{`${basics.location.city}, ${basics.location.region}`}</em></p>
+
+    <p><em><a href={`tel:${basics.phone.replace(/[() ]/g, "")}`}>{basics.phone}</a> | <a href={`mailto:${basics.email}`}>{basics.email}</a></em></p>
+
+    <hr />
+
+    <h2>Professional Experience</h2>
+
+    {work.map((job) => (
+      <>
+        <blockquote>
+          <strong>{job.position} (<a href={job.url}>{job.company}</a>)</strong><br />
+          <em>{formatDateRange(job.startDate, job.endDate)} ({job.location})</em>
+        </blockquote>
+
+        {job.summary && job.summary.split("\n\n").map((p) => (
+          <p>{p}</p>
+        ))}
+
+        {job.highlights.length > 0 && (
+          <ul>
+            {job.highlights.map((h) => <li>{h}</li>)}
+          </ul>
+        )}
+      </>
+    ))}
+
+    <hr />
+
+    <h2>Patents</h2>
+
+    {patents.map((patent) => (
+      <>
+        <blockquote>
+          <strong>{patent.name}</strong><br />
+          <em>{patent.numbers.map((n, i) => (
+            <>{i > 0 && ", "}<a href={n.url} target="_blank">{n.id}</a></>
+          ))}</em>
+        </blockquote>
+        <p><strong>Filed:</strong> {formatDateRange(patent.filedDate, "").split(" — ")[0]} | <strong>Issued:</strong> {formatDateRange(patent.issuedDate, "").split(" — ")[0]}</p>
+      </>
+    ))}
+
+    <hr />
+
+    <h2>Open Source</h2>
+
+    {projects.map((project) => (
+      <>
+        <blockquote>
+          <a href={project.url} target="_blank"><strong>{project.name}</strong></a>
+        </blockquote>
+        <p>{project.description}</p>
+      </>
+    ))}
+
+    <hr />
+
+    <h2>Education</h2>
+
+    {education.map((edu) => (
+      <>
+        <blockquote>
+          <strong>{edu.institution}</strong><br />
+          <em>{edu.location}</em>
+        </blockquote>
+        <p><strong>Degree:</strong> {edu.studyType} | <strong>Graduation:</strong> {formatDateRange(edu.endDate, "").split(" — ")[0]} | <strong>Major:</strong> {edu.area}</p>
+      </>
+    ))}
+
+    <hr />
+
+    <h2>Manager Toolbox</h2>
+
+    <ul>
+      {managerToolbox.map((cat) => (
+        <li><strong>{cat.name}</strong>: {cat.keywords.join(", ")}</li>
+      ))}
+    </ul>
+
+    <hr />
+
+    <h2>Technical Skills</h2>
+
+    <ul>
+      {technicalSkills.map((cat) => (
+        <li><strong>{cat.name}</strong>: {cat.keywords.join(", ")}</li>
+      ))}
+    </ul>
+  </div>
+</BaseLayout>

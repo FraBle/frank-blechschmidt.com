@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+if command -v qlty >/dev/null 2>&1; then
+  qlty check \
+    --trigger pre-push \
+    --upstream-from-pre-push \
+    --no-formatters \
+    --skip-errored-plugins
+fi

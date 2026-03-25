@@ -1,0 +1,18 @@
+/* TEAM */
+Name: Frank Blechschmidt
+Role: Owner, Developer
+Location: Sunnyvale, CA
+Contact: contact [at] frank-blechschmidt.com
+LinkedIn: linkedin.com/in/fblechschmidt
+GitHub: github.com/FraBle
+
+/* SITE */
+Built with: Astro, Cloudflare Workers
+Theme: astro-researcher-theme (ported from hugo-researcher)
+Styling: Bootstrap 4.6.2, Inconsolata font
+Language: English
+
+/* THANKS */
+Hugo Researcher theme: github.com/kishaningithub/hugo-researcher
+Astro: astro.build
+Cloudflare Workers: workers.cloudflare.com

@@ -1,0 +1,6 @@
+{
+  "ignoreDependencies": [
+    "sass",
+    "@sentry/cloudflare"
+  ]
+}

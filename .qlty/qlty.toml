@@ -1,0 +1,88 @@
+config_version = "0"
+
+exclude_patterns = [
+  "*_min.*",
+  "*-min.*",
+  "*.min.*",
+  "**/.yarn/**",
+  "**/*.d.ts",
+  "**/assets/**",
+  "**/build/**",
+  "**/cache/**",
+  "**/dist/**",
+  "**/node_modules/**",
+  "**/vendor/**",
+]
+
+test_patterns = [
+  "**/__tests__/**",
+  "**/*.test.*",
+  "**/*.spec.*",
+]
+
+[smells]
+mode = "comment"
+
+[[source]]
+name = "default"
+default = true
+
+# GitHub Actions linting
+[[plugin]]
+name = "actionlint"
+
+# Secret scanning
+[[plugin]]
+name = "trufflehog"
+
+[[plugin]]
+name = "gitleaks"
+
+# Vulnerability scanning
+[[plugin]]
+name = "trivy"
+
+[[plugin]]
+name = "osv-scanner"
+
+# GitHub Actions security
+[[plugin]]
+name = "zizmor"
+
+# JS/TS linting (same engine as oxlint)
+[[plugin]]
+name = "oxc"
+
+# Markdown linting
+[[plugin]]
+name = "markdownlint"
+mode = "comment"
+
+# Shell script linting (husky hooks)
+[[plugin]]
+name = "shellcheck"
+
+[[plugin]]
+name = "shfmt"
+
+# YAML linting (workflows)
+[[plugin]]
+name = "yamllint"
+
+# .env file linting
+[[plugin]]
+name = "dotenv-linter"
+mode = "comment"
+
+# Unused code detection
+[[plugin]]
+name = "knip"
+
+# Pattern matching checks
+[[plugin]]
+name = "ripgrep"
+mode = "comment"
+
+# JS code smell detection
+[[plugin]]
+name = "radarlint-js"

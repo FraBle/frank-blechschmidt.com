@@ -1,0 +1,60 @@
+{
+  "name": "frank-blechschmidt-com",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "bun": ">=1.3.10"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "generate-types": "wrangler types",
+    "commitlint": "commitlint",
+    "lint": "oxlint",
+    "lint:md": "markdownlint-cli2 \"**/*.md\" \"#node_modules\"",
+    "lint-staged": "lint-staged",
+    "prepare": "husky",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage"
+  },
+  "lint-staged": {
+    "**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}": "oxlint"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^13.1.3",
+    "@astrojs/sitemap": "^3.7.1",
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "@sentry/astro": "^10.45.0",
+    "@sentry/cloudflare": "^10.45.0",
+    "@yeskunall/astro-umami": "^0.0.7",
+    "astro": "^6.0.8",
+    "astro-favicons": "^3.1.6",
+    "astro-llms-generate": "^1.3.3",
+    "astro-researcher-theme": "github:FraBle/astro-researcher-theme#1c830216c57d419bde0b3e54c446e1aca35136b0",
+    "astro-seo": "^1.1.0",
+    "astro-skills": "^0.0.5",
+    "sass": "^1.98.0",
+    "wrangler": "^4.76.0",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "20.4.4",
+    "@commitlint/config-conventional": "20.4.4",
+    "@vitest/coverage-v8": "^4.1.1",
+    "husky": "9.1.7",
+    "knip": "5.60.0",
+    "lint-staged": "16.3.3",
+    "markdownlint-cli2": "0.21.0",
+    "oxlint": "1.55.0",
+    "vitest": "^4.1.1"
+  },
+  "trustedDependencies": [
+    "@parcel/watcher",
+    "@sentry/cli",
+    "esbuild",
+    "sharp",
+    "workerd"
+  ]
+}

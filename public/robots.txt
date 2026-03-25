@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://frank-blechschmidt.com/sitemap-index.xml
