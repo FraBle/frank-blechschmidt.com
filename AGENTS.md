@@ -21,7 +21,7 @@ When instructions conflict, apply this order:
 
 ## Project Overview
 
-Personal portfolio/CV website of Frank Blechschmidt. Astro project hosted on Cloudflare Workers: http://frank-blechschmidt.com
+Personal portfolio/CV website of Frank Blechschmidt. Astro project hosted on Cloudflare Workers: <http://frank-blechschmidt.com>
 
 ### Commands
 

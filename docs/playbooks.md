@@ -4,11 +4,12 @@ Reusable workflows discovered during development.
 
 ---
 
-### Upgrade npm/bun dependencies
+## Upgrade npm/bun dependencies
 
 **Trigger:** Periodic maintenance or security advisory.
 
 **Steps:**
+
 1. `bun update` — update within semver ranges.
 2. `bunx npm-check-updates -u` — bump to latest majors (review breaking changes first).
 3. `bun install` — regenerate lockfile.
@@ -23,11 +24,12 @@ Reusable workflows discovered during development.
 
 ---
 
-### Upgrade GitHub Actions and pin to SHAs
+## Upgrade GitHub Actions and pin to SHAs
 
 **Trigger:** Dependabot alert or periodic maintenance.
 
 **Steps:**
+
 1. Find latest release tag: `gh api repos/{owner}/{repo}/releases/latest --jq '.tag_name'`
 2. Get commit SHA: `gh api repos/{owner}/{repo}/git/ref/tags/{tag} --jq '.object.sha'`
 3. If `.object.type` is `"tag"` (annotated), dereference: `gh api repos/{owner}/{repo}/git/tags/{sha} --jq '.object.sha'`
@@ -42,11 +44,12 @@ Reusable workflows discovered during development.
 
 ---
 
-### Add a new page
+## Add a new page
 
 **Trigger:** New content page needed.
 
 **Steps:**
+
 1. Create `src/pages/{slug}.astro`.
 2. Use `BaseLayout` with appropriate `title` prop.
 3. Add HTML content inside `<div class="container">`.
@@ -61,11 +64,12 @@ Reusable workflows discovered during development.
 
 ---
 
-### Add a new subdomain redirect
+## Add a new subdomain redirect
 
 **Trigger:** New short URL like `{name}.frank-blechschmidt.com` needed.
 
 **Steps:**
+
 1. Add entry to `siteConfig.redirects` in `src/site.config.ts`.
 2. `bun run build` to verify.
 3. DNS: ensure `*.frank-blechschmidt.com` wildcard CNAME exists in Cloudflare.

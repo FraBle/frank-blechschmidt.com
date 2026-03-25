@@ -1,21 +1,20 @@
-name: Deploy to Cloudflare Workers
+name: CI
 
 on:
-  push:
+  pull_request:
     branches:
       - main
 
 concurrency:
-  group: deploy-${{ github.ref }}
+  group: ci-${{ github.ref }}
   cancel-in-progress: true
 
 permissions:
   contents: read
-  deployments: write
 
 jobs:
-  deploy:
-    name: Deploy
+  ci:
+    name: Lint, Test & Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -38,10 +37,3 @@ jobs:
 
       - name: Build
         run: bun run build
-
-      - name: Deploy to Cloudflare Workers
-        uses: cloudflare/wrangler-action@da0e0dfe58b7a431659754fdf3f186c529afbe65 # v3.14.1
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deploy

@@ -8,6 +8,9 @@ Personal resume website built with [Astro](https://astro.build/) and deployed to
 - **Hosting:** Cloudflare Workers
 - **Styling:** Bootstrap 4.6.2 + custom SCSS (ported from [hugo-researcher](https://github.com/FraBle/hugo-researcher) theme)
 - **CI/CD:** GitHub Actions with [wrangler-action](https://github.com/cloudflare/wrangler-action)
+- **Testing:** Vitest with 100% coverage
+- **Linting:** oxlint, markdownlint-cli2, knip
+- **Git hooks:** husky + lint-staged + commitlint (Conventional Commits)
 
 ## Features
 
@@ -43,16 +46,15 @@ Deploys automatically on push to `main` via GitHub Actions.
 
 ## Project Structure
 
-```
+```text
 ├── public/               # Static assets (avatar, favicon, resume PDF)
 ├── src/
-│   ├── components/       # Header, Footer, GoogleAnalytics, CookieConsent
-│   ├── layouts/          # BaseLayout (head, CDN links, slot)
 │   ├── pages/            # index, about, contact, 404
-│   ├── styles/           # researcher.scss (ported theme)
-│   ├── middleware.ts      # Subdomain redirect logic
-│   └── site.config.ts    # Site configuration and redirect map
+│   ├── middleware.ts     # Subdomain redirect logic
+│   ├── subdomain.ts     # Subdomain extraction helper
+│   └── site.config.ts   # Site configuration and redirect map
 ├── astro.config.mjs
+├── vitest.config.ts
 └── wrangler.jsonc
 ```
 

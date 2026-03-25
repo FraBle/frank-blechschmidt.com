@@ -4,7 +4,7 @@ Patterns to avoid, discovered during development.
 
 ---
 
-### Don't use `rm` without `-f` in automated/scripted contexts
+## Don't use `rm` without `-f` in automated/scripted contexts
 
 **Context:** During migration, `rm package-lock.json` prompted for confirmation interactively, blocking the pipeline.
 
@@ -16,7 +16,7 @@ Patterns to avoid, discovered during development.
 
 ---
 
-### Don't swap package managers or runtimes without approval
+## Don't swap package managers or runtimes without approval
 
 **Context:** Project uses Bun (chosen explicitly). An agent might default to npm/yarn/pnpm.
 
@@ -28,7 +28,7 @@ Patterns to avoid, discovered during development.
 
 ---
 
-### Don't reference GitHub Actions by tag alone
+## Don't reference GitHub Actions by tag alone
 
 **Context:** Tags are mutable — a compromised upstream could push malicious code to an existing tag.
 
@@ -40,7 +40,7 @@ Patterns to avoid, discovered during development.
 
 ---
 
-### Don't use Hugo shortcodes in Astro content
+## Don't use Hugo shortcodes in Astro content
 
 **Context:** Original content used Hugo shortcodes like `{{< figure class="avatar" src="/avatar.jpg" >}}`. These don't work in Astro.
 
