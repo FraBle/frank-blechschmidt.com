@@ -9,8 +9,8 @@ export default defineConfig({
         "src/env.d.ts",
         "src/middleware.ts",
         "src/mcp.ts",
+        "src/pages/mcp.ts",
         "src/content.config.ts",
-        "src/pages/**/*.ts",
       ],
       thresholds: {
         statements: 100,
