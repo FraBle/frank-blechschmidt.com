@@ -1,10 +1,11 @@
 import type { ResearcherConfig } from "astro-researcher-theme";
+import { basics } from "./resume";
 
 export const themeConfig: ResearcherConfig = {
-  title: "Frank Blechschmidt",
-  description: "Resume of Frank Blechschmidt.",
-  author: "Frank Blechschmidt",
-  site: "https://frank-blechschmidt.com",
+  title: basics.name,
+  description: `Resume of ${basics.name}.`,
+  author: basics.name,
+  site: basics.url,
   nav: [
     { name: "About", url: "/about" },
     { name: "Resume", url: "/resume_frank_blechschmidt.pdf" },
@@ -19,17 +20,13 @@ export const themeConfig: ResearcherConfig = {
     image: "/avatar.jpg",
     type: "website",
     locale: "en_US",
-    siteName: "Frank Blechschmidt",
+    siteName: basics.name,
   },
   twitter: {
     card: "summary",
-    creator: "@FraBle90",
+    creator: `@${basics.profiles.find((p) => p.network === "Twitter")?.username}`,
   },
-  socialProfiles: [
-    "https://www.linkedin.com/in/fblechschmidt",
-    "https://github.com/FraBle",
-    "https://twitter.com/FraBle90",
-  ],
+  socialProfiles: basics.profiles.map((p) => p.url),
 };
 
 export const redirects: Record<string, string> = {

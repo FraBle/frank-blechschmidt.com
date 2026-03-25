@@ -1,5 +1,15 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { WebStandardStreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/webStandardStreamableHttp.js";
+import {
+  basics,
+  work,
+  education,
+  patents,
+  projects,
+  managerToolbox,
+  technicalSkills,
+  formatDateRange,
+} from "./resume";
 
 function createServer(): McpServer {
   const server = new McpServer({
@@ -19,20 +29,23 @@ function createServer(): McpServer {
         {
           uri: "resume://about",
           text: [
-            "Frank Blechschmidt — Engineering Manager",
-            "Location: Sunnyvale, CA",
-            "Email: contact@frank-blechschmidt.com",
-            "Phone: +1 (650) 213-2619",
+            `${basics.name} — ${basics.label}`,
+            `Location: ${basics.location.city}, ${basics.location.region}`,
+            `Email: ${basics.email}`,
+            `Phone: ${basics.phone}`,
             "",
-            "Currently Engineering Manager at Lattice (Jan 2022–Present), leading Developer Experience (7 engineers) and Cloud Engineering (8 engineers) teams.",
-            "",
-            "Previously at Box as Engineering Manager and Tech Lead Manager for Kubernetes Engineering (2019–2022).",
-            "",
-            "Before that, Lead Software Engineer at SAP Conversational AI (2016–2019), spearheading SAP's Conversational AI initiative.",
-            "",
+            ...work.map((job) =>
+              [
+                `${job.position} at ${job.company} (${formatDateRange(job.startDate, job.endDate)}, ${job.location})`,
+                ...(job.summary ? [job.summary] : []),
+                ...job.highlights.map((h) => `- ${h}`),
+                "",
+              ].join("\n"),
+            ),
             "Education:",
-            "- MS Computer Science, University of Illinois Urbana-Champaign (2021)",
-            "- BS IT-Systems Engineering, Hasso Plattner Institute, University of Potsdam (2014)",
+            ...education.map(
+              (e) => `- ${e.studyType} ${e.area}, ${e.institution} (${e.endDate.split("-")[0]})`,
+            ),
           ].join("\n"),
         },
       ],
@@ -52,22 +65,10 @@ function createServer(): McpServer {
           uri: "resume://skills",
           text: [
             "Technical Skills:",
-            "- Languages: Python, TypeScript, JavaScript, Go, GraphQL",
-            "- Databases: PostgreSQL, Redis, MySQL, Timescale",
-            "- Frameworks: FastAPI, Node.js, Express, React, Tornado",
-            "- DevOps: Terraform, Ansible, Docker, Git",
-            "- CI/CD: GitHub Actions, ArgoCD, CircleCI",
-            "- Cloud: Kubernetes, GCP, AWS",
-            "- NLP: SpaCy, Rasa, CoreNLP, Duckling, SUTime",
-            "- ML/AI: TensorFlow, Keras, scikit-learn",
-            "- Observability: Datadog, Grafana, ELK, Prometheus, Sentry",
+            ...technicalSkills.map((cat) => `- ${cat.name}: ${cat.keywords.join(", ")}`),
             "",
             "Manager Toolbox:",
-            "- Goal Setting: OKRs, SMART Goals",
-            "- Agile: Kanban, Scrum, eXtreme Programming",
-            "- Prioritization: RICE, Eisenhower Matrix, MoSCoW",
-            "- Decision Making: SPADE, DACI, RACI",
-            "- Metrics: DORA, SLAs & SLOs",
+            ...managerToolbox.map((cat) => `- ${cat.name}: ${cat.keywords.join(", ")}`),
           ].join("\n"),
         },
       ],
@@ -86,18 +87,16 @@ function createServer(): McpServer {
         {
           uri: "resume://contact",
           text: [
-            "Email: contact@frank-blechschmidt.com",
-            "Phone: +1 (650) 213-2619",
+            `Email: ${basics.email}`,
+            `Phone: ${basics.phone}`,
             "",
             "Links:",
-            "- LinkedIn: https://www.linkedin.com/in/fblechschmidt",
-            "- GitHub: https://github.com/FraBle",
-            "- Twitter: https://twitter.com/FraBle90",
+            ...basics.profiles.map((p) => `- ${p.network}: ${p.url}`),
             "",
             "Subdomain shortcuts:",
-            "- linkedin.frank-blechschmidt.com",
-            "- github.frank-blechschmidt.com",
-            "- twitter.frank-blechschmidt.com",
+            ...basics.profiles.map(
+              (p) => `- ${p.network.toLowerCase()}.frank-blechschmidt.com`,
+            ),
           ].join("\n"),
         },
       ],
@@ -115,11 +114,12 @@ function createServer(): McpServer {
       contents: [
         {
           uri: "resume://patents",
-          text: [
-            "Cognitive Enterprise System",
-            "Filed: March 2017 | Issued: May 2018",
-            "US 20190332956, US 20180144053, US 20180144257",
-          ].join("\n"),
+          text: patents
+            .map(
+              (p) =>
+                `${p.name}\nFiled: ${formatDateRange(p.filedDate, "").split(" — ")[0]} | Issued: ${formatDateRange(p.issuedDate, "").split(" — ")[0]}\n${p.numbers.map((n) => n.id).join(", ")}`,
+            )
+            .join("\n\n"),
         },
       ],
     }),
@@ -136,13 +136,9 @@ function createServer(): McpServer {
       contents: [
         {
           uri: "resume://open-source",
-          text: [
-            "python-sutime (https://github.com/FraBle/python-sutime)",
-            "Python wrapper for Stanford's NLP library SUTime. Officially mentioned on Stanford NLP website. ~4,500 downloads/month.",
-            "",
-            "python-duckling (https://github.com/FraBle/python-duckling)",
-            "Python wrapper for wit.ai's NLP library Duckling. Used by Rasa NLU. ~1,000 downloads/month.",
-          ].join("\n"),
+          text: projects
+            .map((p) => `${p.name} (${p.url})\n${p.description}`)
+            .join("\n\n"),
         },
       ],
     }),
