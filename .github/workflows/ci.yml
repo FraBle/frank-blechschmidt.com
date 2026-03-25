@@ -118,8 +118,9 @@ jobs:
     if: github.event.pull_request.head.repo.fork == false
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    container:
-      image: semgrep/semgrep@sha256:9fb6f44dc162b1e0aada85f072a95141844c61e3bfcedf40b8a46fecf208e986
+    env:
+      CORGEA_URL: https://www.corgea.app
+      HAS_CORGEA_TOKEN: ${{ secrets.CORGEA_AUTH_TOKEN != '' }}
     permissions:
       contents: read
     steps:
@@ -128,44 +129,17 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Run Semgrep
-        run: semgrep ci --sarif -o semgrep.sarif
-
-      - name: Upload SARIF artifact
-        if: always() && hashFiles('semgrep.sarif') != ''
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
-        with:
-          name: semgrep-sarif
-          path: semgrep.sarif
-          retention-days: 1
-
-  corgea-upload:
-    name: Upload to Corgea
-    needs: semgrep
-    if: always() && (needs.semgrep.result == 'success' || needs.semgrep.result == 'failure')
-    runs-on: ubuntu-latest
-    env:
-      HAS_CORGEA_TOKEN: ${{ secrets.CORGEA_AUTH_TOKEN != '' }}
-    permissions:
-      contents: read
-    steps:
-      - name: Download SARIF artifact
-        id: download
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
-        with:
-          name: semgrep-sarif
-        continue-on-error: true
-
       - name: Setup uv
-        if: steps.download.outcome == 'success' && env.HAS_CORGEA_TOKEN == 'true'
         uses: astral-sh/setup-uv@e06108dd0aef18192324c70427afc47652e63a82 # v7.5.0
         with:
           version: 0.10.10
           enable-cache: false
 
+      - name: Run Semgrep
+        run: uvx semgrep ci --sarif -o semgrep.sarif
+
       - name: Upload Semgrep SARIF to Corgea
-        if: steps.download.outcome == 'success' && env.HAS_CORGEA_TOKEN == 'true'
+        if: always() && hashFiles('semgrep.sarif') != '' && env.HAS_CORGEA_TOKEN == 'true'
         env:
-          CORGEA_URL: https://www.corgea.app
           CORGEA_TOKEN: ${{ secrets.CORGEA_AUTH_TOKEN }}
         run: uvx corgea-cli==1.8.2 upload semgrep.sarif
