@@ -1,8 +1,0 @@
-{
-  "config": {
-    // Disable line length rule — not practical for prose-heavy docs
-    "MD013": false,
-    // Disable heading increment rule — not enforced in this project
-    "MD060": false
-  }
-}
