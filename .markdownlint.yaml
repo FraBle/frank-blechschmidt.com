@@ -1,0 +1,3 @@
+# Matches .markdownlint-cli2.jsonc — qlty reads this file instead
+MD013: false
+MD060: false
