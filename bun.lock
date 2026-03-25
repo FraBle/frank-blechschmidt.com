@@ -732,7 +732,7 @@
 
     "astro-llms-generate": ["astro-llms-generate@1.3.3", "", { "dependencies": { "@types/hast": "^3.0.4", "@types/jsdom": "^21.1.7", "@types/unist": "^3.0.3", "github-slugger": "^2.0.0", "hast-util-select": "^6.0.3", "jsdom": "^26.1.0", "rehype-parse": "^9.0.1", "rehype-remark": "^10.0.0", "remark-gfm": "^4.0.0", "remark-stringify": "^11.0.0", "unified": "^11.0.5", "unist-util-remove": "^4.0.0" }, "peerDependencies": { "astro": "^5.1.6" } }, "sha512-BBJyJ8zGfi3gDltHtnnR2X70CiwKNxmu3650KpZiEnFnvOaH+BVNJAf+xz7bEDHBniQGrRvhdrvZHEjC5KZR2A=="],
 
-    "astro-researcher-theme": ["astro-researcher-theme@github:FraBle/astro-researcher-theme#606a08f", { "peerDependencies": { "astro": "^6.0.0", "astro-seo": "^1.1.0" } }, "FraBle-astro-researcher-theme-606a08f", "sha512-9HYiqNLOeCykvZ4ZMJ7bF89Hacb25p7Ba4ZACTbC7uGh9+FZ2nLJaJWua3facfuToZ6wrfxONwRDUGwpuspmQA=="],
+    "astro-researcher-theme": ["astro-researcher-theme@github:FraBle/astro-researcher-theme#1c83021", { "peerDependencies": { "astro": "^6.0.0", "astro-seo": "^1.1.0" } }, "FraBle-astro-researcher-theme-1c83021", "sha512-VrC7YRbUuCuu4bxBjG+EfdgDK3UbReV1ByKW7nO9JMZhTWX/GWXWMZJ1CahpGQNpNgAFyyCtzaF3qZUp9ouD0Q=="],
 
     "astro-seo": ["astro-seo@1.1.0", "", { "dependencies": { "@astrojs/check": "^0.9.0" } }, "sha512-G6LDNDyga30o+52v58jU7C35n3cORUzk7RSuY+xf/ZRbW6JiNplyaOO1VoYVKO+xzYNaBcxqNln2RFRR/wgJNQ=="],
 

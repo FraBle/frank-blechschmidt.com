@@ -25,6 +25,11 @@ export const themeConfig: ResearcherConfig = {
     card: "summary",
     creator: "@FraBle90",
   },
+  socialProfiles: [
+    "https://www.linkedin.com/in/fblechschmidt",
+    "https://github.com/FraBle",
+    "https://twitter.com/FraBle90",
+  ],
 };
 
 export const redirects: Record<string, string> = {
