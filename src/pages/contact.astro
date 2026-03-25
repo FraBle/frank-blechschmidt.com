@@ -6,6 +6,23 @@ import { themeConfig } from "../site.config";
 ---
 
 <BaseLayout title="Contact: Frank Blechschmidt" config={themeConfig}>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Frank Blechschmidt",
+    "url": "https://frank-blechschmidt.com/contact",
+    "mainEntity": {
+      "@type": "Person",
+      "name": "Frank Blechschmidt",
+      "email": "contact@frank-blechschmidt.com",
+      "telephone": "+1-650-213-2619",
+      "sameAs": [
+        "https://www.linkedin.com/in/fblechschmidt",
+        "https://github.com/FraBle",
+        "https://twitter.com/FraBle90"
+      ]
+    }
+  })} />
   <div class="container">
     <Fragment set:html={`
 <h2>Contact</h2>

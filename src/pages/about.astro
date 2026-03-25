@@ -6,6 +6,51 @@ import { themeConfig } from "../site.config";
 ---
 
 <BaseLayout title="About: Frank Blechschmidt" config={themeConfig}>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Frank Blechschmidt",
+    "url": "https://frank-blechschmidt.com",
+    "image": "https://frank-blechschmidt.com/avatar.jpg",
+    "jobTitle": "Engineering Manager",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Lattice",
+      "url": "https://lattice.com/"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Sunnyvale",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    },
+    "email": "contact@frank-blechschmidt.com",
+    "telephone": "+1-650-213-2619",
+    "sameAs": [
+      "https://www.linkedin.com/in/fblechschmidt",
+      "https://github.com/FraBle",
+      "https://twitter.com/FraBle90"
+    ],
+    "alumniOf": [
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "University of Illinois Urbana-Champaign",
+        "url": "https://illinois.edu/"
+      },
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "Hasso Plattner Institute, University of Potsdam",
+        "url": "https://hpi.de/"
+      }
+    ],
+    "knowsAbout": [
+      "Kubernetes", "Developer Experience", "Cloud Engineering",
+      "TypeScript", "Python", "Go", "React", "GraphQL",
+      "AWS", "GCP", "Cloudflare", "Terraform",
+      "CI/CD", "GitHub Actions", "ArgoCD",
+      "NLP", "Machine Learning", "Conversational AI"
+    ]
+  })} />
   <div class="container">
     <Fragment set:html={`
 <h2>About Me</h2>
