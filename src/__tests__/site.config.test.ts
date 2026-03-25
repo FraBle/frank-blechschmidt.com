@@ -8,9 +8,14 @@ describe("themeConfig", () => {
     expect(themeConfig.author).toBe("Frank Blechschmidt");
   });
 
-  it("has favicon and Google Analytics ID", () => {
+  it("has favicon", () => {
     expect(themeConfig.favicon).toBe("/favicon.ico");
-    expect(themeConfig.googleAnalyticsId).toBe("G-CDE67XQDXJ");
+  });
+
+  it("has SEO config", () => {
+    expect(themeConfig.site).toBe("https://frank-blechschmidt.com");
+    expect(themeConfig.openGraph?.image).toBe("/avatar.jpg");
+    expect(themeConfig.twitter?.creator).toBe("@FraBle90");
   });
 
   it("has three nav items", () => {
@@ -31,12 +36,9 @@ describe("themeConfig", () => {
     });
   });
 
-  it("has consent config with one non-functional item", () => {
-    expect(themeConfig.consent?.items).toHaveLength(1);
-    const item = themeConfig.consent!.items[0];
-    expect(item.title).toBe("Google Analytics");
-    expect(item.isFunctional).toBe(false);
-    expect(item.script).toBe("https://www.googletagmanager.com/gtag/js");
+  it("does not have Google Analytics or consent config", () => {
+    expect(themeConfig).not.toHaveProperty("googleAnalyticsId");
+    expect(themeConfig).not.toHaveProperty("consent");
   });
 });
 

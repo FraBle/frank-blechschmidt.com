@@ -6,7 +6,6 @@ export const themeConfig: ResearcherConfig = {
   author: "Frank Blechschmidt",
   site: "https://frank-blechschmidt.com",
   favicon: "/favicon.ico",
-  googleAnalyticsId: "G-CDE67XQDXJ",
   nav: [
     { name: "About", url: "/about" },
     { name: "Resume", url: "/resume_frank_blechschmidt.pdf" },
@@ -26,17 +25,6 @@ export const themeConfig: ResearcherConfig = {
   twitter: {
     card: "summary",
     creator: "@FraBle90",
-  },
-  consent: {
-    items: [
-      {
-        title: "Google Analytics",
-        description:
-          "We'd like to set Google Analytics cookies to help us to improve the website by collecting and reporting information on how you use it. For more information on how these cookies work please see the 'Privacy' page. The cookies collect information in an anonymous form.",
-        isFunctional: false,
-        script: "https://www.googletagmanager.com/gtag/js",
-      },
-    ],
   },
 };
 
