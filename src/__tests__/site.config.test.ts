@@ -8,8 +8,8 @@ describe("themeConfig", () => {
     expect(themeConfig.author).toBe("Frank Blechschmidt");
   });
 
-  it("has favicon", () => {
-    expect(themeConfig.favicon).toBe("/favicon.ico");
+  it("delegates favicon to astro-favicons plugin", () => {
+    expect(themeConfig).not.toHaveProperty("favicon");
   });
 
   it("has SEO config", () => {

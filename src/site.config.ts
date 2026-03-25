@@ -5,7 +5,6 @@ export const themeConfig: ResearcherConfig = {
   description: "Resume of Frank Blechschmidt.",
   author: "Frank Blechschmidt",
   site: "https://frank-blechschmidt.com",
-  favicon: "/favicon.ico",
   nav: [
     { name: "About", url: "/about" },
     { name: "Resume", url: "/resume_frank_blechschmidt.pdf" },
