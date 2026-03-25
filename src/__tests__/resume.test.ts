@@ -127,4 +127,8 @@ describe("formatDateRange", () => {
     expect(formatDateRange("2020-12", "")).toContain("December");
     expect(formatDateRange("2020-01", "")).toContain("January");
   });
+
+  it("throws on malformed date", () => {
+    expect(() => formatDateRange("bad", "")).toThrow("Invalid date format");
+  });
 });

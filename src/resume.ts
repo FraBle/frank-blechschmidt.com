@@ -306,13 +306,15 @@ export const technicalSkills: SkillCategory[] = [
 
 // Helper: format date range for display
 export function formatDateRange(startDate: string, endDate: string): string {
+  const months = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December",
+  ];
   const fmt = (d: string) => {
     const [y, m] = d.split("-");
-    const months = [
-      "January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December",
-    ];
-    return `${months[parseInt(m, 10) - 1]} ${y}`;
+    const month = months[parseInt(m, 10) - 1];
+    if (!month) throw new Error(`Invalid date format (expected YYYY-MM): ${d}`);
+    return `${month} ${y}`;
   };
   return `${fmt(startDate)} — ${endDate ? fmt(endDate) : "Present"}`;
 }
