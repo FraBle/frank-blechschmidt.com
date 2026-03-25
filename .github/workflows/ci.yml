@@ -68,7 +68,7 @@ jobs:
         run: bun run build
 
   reviewdog:
-    name: Lint feedback
+    name: reviewdog
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     permissions:
