@@ -40,6 +40,7 @@ export default defineConfig({
     llms(),
   ],
   trailingSlash: 'never',
+  // Bind all interfaces for container/Codespace/Claude dev environments
   server: {
     host: '0.0.0.0',
     allowedHosts: ['claude'],

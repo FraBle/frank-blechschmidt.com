@@ -13,8 +13,6 @@ import {
   technicalSkills,
   formatDateRange,
 } from "../resume";
-
-const escHtml = (s: string) => s.replace(/&/g, "&amp;");
 ---
 
 <BaseLayout title={`About: ${basics.name}`} config={themeConfig} description={basics.summary}>
@@ -62,17 +60,17 @@ const escHtml = (s: string) => s.replace(/&/g, "&amp;");
     {work.map((job) => (
       <>
         <blockquote>
-          <strong>{escHtml(job.position)} (<a href={job.url}>{job.company}</a>)</strong><br />
+          <strong>{job.position} (<a href={job.url}>{job.company}</a>)</strong><br />
           <em>{formatDateRange(job.startDate, job.endDate)} ({job.location})</em>
         </blockquote>
 
         {job.summary && job.summary.split("\n\n").map((p) => (
-          <p>{escHtml(p)}</p>
+          <p>{p}</p>
         ))}
 
         {job.highlights.length > 0 && (
           <ul>
-            {job.highlights.map((h) => <li>{escHtml(h)}</li>)}
+            {job.highlights.map((h) => <li>{h}</li>)}
           </ul>
         )}
       </>

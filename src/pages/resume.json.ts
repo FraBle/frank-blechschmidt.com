@@ -66,7 +66,7 @@ export const GET: APIRoute = () => {
     meta: {
       canonical: `${basics.url}/resume.json`,
       version: "v1.0.0",
-      lastModified: new Date().toISOString().split("T")[0],
+      lastModified: "2026-03-25",
     },
   };
 

@@ -24,7 +24,7 @@ export const themeConfig: ResearcherConfig = {
   },
   twitter: {
     card: "summary",
-    creator: `@${basics.profiles.find((p) => p.network === "Twitter")?.username}`,
+    creator: /* v8 ignore next */ `@${basics.profiles.find((p) => p.network === "Twitter")?.username ?? ""}`,
   },
   socialProfiles: basics.profiles.map((p) => p.url),
 };

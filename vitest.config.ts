@@ -9,7 +9,7 @@ export default defineConfig({
       exclude: [
         "src/env.d.ts",
         "src/middleware.ts",
-        "src/mcp.ts",
+        "src/mcp.ts", // MCP SDK transport requires multi-step protocol (init → request); not unit-testable
         "src/pages/mcp.ts",
         "src/content.config.ts",
       ],

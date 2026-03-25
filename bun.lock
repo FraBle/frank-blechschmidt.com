@@ -14,7 +14,7 @@
         "astro": "^6.0.8",
         "astro-favicons": "^3.1.6",
         "astro-llms-generate": "^1.3.3",
-        "astro-researcher-theme": "github:FraBle/astro-researcher-theme",
+        "astro-researcher-theme": "github:FraBle/astro-researcher-theme#1c830216c57d419bde0b3e54c446e1aca35136b0",
         "astro-seo": "^1.1.0",
         "astro-skills": "^0.0.5",
         "sass": "^1.98.0",
