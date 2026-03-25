@@ -22,6 +22,7 @@
   "dependencies": {
     "@astrojs/cloudflare": "^13.1.3",
     "@astrojs/sitemap": "^3.7.1",
+    "@modelcontextprotocol/sdk": "^1.27.1",
     "@sentry/astro": "^10.45.0",
     "@sentry/cloudflare": "^10.45.0",
     "@yeskunall/astro-umami": "^0.0.7",
@@ -32,7 +33,8 @@
     "astro-seo": "^1.1.0",
     "astro-skills": "^0.0.5",
     "sass": "^1.98.0",
-    "wrangler": "^4.76.0"
+    "wrangler": "^4.76.0",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@commitlint/cli": "20.4.4",
