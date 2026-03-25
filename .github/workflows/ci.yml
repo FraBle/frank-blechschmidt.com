@@ -16,6 +16,7 @@ concurrency:
 
 permissions:
   contents: read
+  deployments: write
 
 jobs:
   ci:
@@ -23,7 +24,11 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      deployments: write
       id-token: write
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
     steps:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -66,6 +71,53 @@ jobs:
 
       - name: Build
         run: bun run build
+
+      - name: Create GitHub deployment (preview)
+        id: create-preview
+        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7.1.0
+        with:
+          script: |
+            const deployment = await github.rest.repos.createDeployment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: '${{ github.event.pull_request.head.sha }}',
+              environment: 'preview',
+              transient_environment: true,
+              auto_merge: false,
+              required_contexts: [],
+              description: `Preview for PR #${{ github.event.pull_request.number }}`,
+            });
+            core.setOutput('deployment_id', deployment.data.id);
+
+      - name: Upload preview version
+        id: wrangler-preview
+        uses: cloudflare/wrangler-action@da0e0dfe58b7a431659754fdf3f186c529afbe65 # v3.14.1
+        with:
+          apiToken: ${{ env.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ env.CLOUDFLARE_ACCOUNT_ID }}
+          command: versions upload
+
+      - name: Update preview deployment status
+        if: always() && steps.create-preview.outputs.deployment_id
+        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7.1.0
+        env:
+          DEPLOY_OUTCOME: ${{ steps.wrangler-preview.outcome }}
+          DEPLOYMENT_ID: ${{ steps.create-preview.outputs.deployment_id }}
+          PREVIEW_URL: ${{ steps.wrangler-preview.outputs.deployment-url }}
+        with:
+          script: |
+            const state = process.env.DEPLOY_OUTCOME === 'success' ? 'success' : 'failure';
+            const previewUrl = process.env.PREVIEW_URL;
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: Number(process.env.DEPLOYMENT_ID),
+              state,
+              environment_url: previewUrl || runUrl,
+              log_url: runUrl,
+              auto_inactive: true,
+            });
 
   reviewdog:
     name: reviewdog
