@@ -1,9 +1,14 @@
 name: CI
+run-name: "CI (${{ github.head_ref || github.ref_name }}) \u27A4 ${{ github.event.head_commit.message || github.event.pull_request.title }}"
 
-on:
+on: # yamllint disable-line rule:truthy
   pull_request:
     branches:
       - main
+    paths-ignore:
+      - "**/*.md"
+      - docs/**
+      - LICENSE
 
 concurrency:
   group: ci-${{ github.event.pull_request.number || github.ref }}
@@ -22,11 +27,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
         with:
           node-version: 24
+
+      - name: Cache Bun dependencies
+        uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5.0.3
+        with:
+          path: ~/.bun/install/cache
+          key: bun-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('bun.lock') }}
+          restore-keys: |
+            bun-${{ runner.os }}-${{ runner.arch }}-
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
@@ -59,19 +74,31 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
 
       - name: Setup reviewdog
         uses: reviewdog/action-setup@38a8d76742a75eeb6c6ffc616bde64179fd09ebf # v1.5.0
 
+      - name: Cache lint tools
+        id: cache-lint-tools
+        uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5.0.3
+        with:
+          path: ~/.local/bin
+          key: lint-tools-${{ runner.arch }}-actionlint-v1.7.11
+
       - name: Install actionlint
+        if: steps.cache-lint-tools.outputs.cache-hit != 'true'
         env:
           ACTIONLINT_VERSION: v1.7.11
         run: |
+          mkdir -p "$HOME/.local/bin"
           curl -fsSL "https://github.com/rhysd/actionlint/releases/download/${ACTIONLINT_VERSION}/actionlint_${ACTIONLINT_VERSION#v}_linux_amd64.tar.gz" \
             | tar -xz actionlint
-          mkdir -p "$HOME/.local/bin"
           mv actionlint "$HOME/.local/bin/actionlint"
-          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - name: Add tools to PATH
+        run: echo "$HOME/.local/bin" >> "$GITHUB_PATH"
 
       - name: Run reviewdog
         env:
@@ -82,3 +109,60 @@ jobs:
             -reporter=github-pr-check \
             -filter-mode=added \
             -fail-level=error
+
+  semgrep:
+    name: SAST
+    if: github.event.pull_request.head.repo.fork == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    container:
+      image: semgrep/semgrep@sha256:9fb6f44dc162b1e0aada85f072a95141844c61e3bfcedf40b8a46fecf208e986
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Run Semgrep
+        run: semgrep ci --sarif -o semgrep.sarif
+
+      - name: Upload SARIF artifact
+        if: always() && hashFiles('semgrep.sarif') != ''
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: semgrep-sarif
+          path: semgrep.sarif
+          retention-days: 1
+
+  corgea-upload:
+    name: Upload to Corgea
+    needs: semgrep
+    if: always() && (needs.semgrep.result == 'success' || needs.semgrep.result == 'failure')
+    runs-on: ubuntu-latest
+    env:
+      HAS_CORGEA_TOKEN: ${{ secrets.CORGEA_AUTH_TOKEN != '' }}
+    permissions:
+      contents: read
+    steps:
+      - name: Download SARIF artifact
+        id: download
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: semgrep-sarif
+        continue-on-error: true
+
+      - name: Setup uv
+        if: steps.download.outcome == 'success' && env.HAS_CORGEA_TOKEN == 'true'
+        uses: astral-sh/setup-uv@e06108dd0aef18192324c70427afc47652e63a82 # v7.5.0
+        with:
+          version: 0.10.10
+          enable-cache: false
+
+      - name: Upload Semgrep SARIF to Corgea
+        if: steps.download.outcome == 'success' && env.HAS_CORGEA_TOKEN == 'true'
+        env:
+          CORGEA_URL: https://www.corgea.app
+          CORGEA_TOKEN: ${{ secrets.CORGEA_AUTH_TOKEN }}
+        run: uvx corgea-cli==1.8.2 upload semgrep.sarif

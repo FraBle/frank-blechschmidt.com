@@ -6,6 +6,6 @@ runner:
     level: error
 
   shellcheck:
-    cmd: shellcheck -f checkstyle .husky/pre-commit .husky/commit-msg
+    cmd: shellcheck -f checkstyle .husky/pre-commit .husky/commit-msg .husky/pre-push
     format: checkstyle
     level: warning

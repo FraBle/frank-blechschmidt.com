@@ -1,0 +1,16 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": [
+    "import",
+    "unicorn",
+    "typescript",
+    "oxc",
+    "jsdoc",
+    "promise"
+  ],
+  "env": {
+    "worker": true
+  },
+  "rules": {},
+  "overrides": []
+}

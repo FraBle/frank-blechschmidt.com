@@ -9,5 +9,8 @@ if [ -n "$branch_name" ] && echo "$branch_name" | grep -q "/"; then
   exit 1
 fi
 
+if command -v qlty >/dev/null 2>&1; then
+  qlty fmt --trigger pre-commit --index-file="$GIT_INDEX_FILE"
+fi
 bun run test
 bun run lint-staged

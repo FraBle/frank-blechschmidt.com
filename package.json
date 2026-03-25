@@ -2,6 +2,9 @@
   "name": "frank-blechschmidt-com",
   "type": "module",
   "version": "0.0.1",
+  "engines": {
+    "bun": ">=1.3.10"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
