@@ -24,6 +24,9 @@ export default defineConfig({
           project: 'frank-blechschmidt-com',
           authToken: process.env.SENTRY_AUTH_TOKEN,
           telemetry: false,
+          sourceMapsUploadOptions: {
+            assets: ['dist/server/**/*', 'dist/client/**/*'],
+          },
         })]
       : []),
     favicons({
