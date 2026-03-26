@@ -10,6 +10,8 @@ on: # yamllint disable-line rule:truthy
       - docs/**
       - LICENSE
 
+permissions: {}
+
 jobs:
   ci:
     name: Lint, Test & Build
