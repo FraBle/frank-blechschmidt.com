@@ -20,7 +20,7 @@ export default defineConfig({
       : []),
     sentry({
       org: 'frank-blechschmidt',
-      project: 'javascript-astro',
+      project: 'frank-blechschmidt-com',
       authToken: process.env.SENTRY_AUTH_TOKEN,
       telemetry: false,
     }),
