@@ -9,5 +9,7 @@ Sentry.init({
     Sentry.replayIntegration(),
   ],
   enableLogs: true,
-  tracesSampleRate: 0.1,
+  tracesSampleRate: 1.0,
+  replaysSessionSampleRate: 0.1,
+  replaysOnErrorSampleRate: 1.0,
 });
