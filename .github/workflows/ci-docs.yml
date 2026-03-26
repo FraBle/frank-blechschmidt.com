@@ -1,0 +1,28 @@
+name: CI (docs)
+run-name: "CI (${{ github.head_ref || github.ref_name }}) \u27A4 ${{ github.event.pull_request.title }}"
+
+on: # yamllint disable-line rule:truthy
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "**/*.md"
+      - docs/**
+      - LICENSE
+
+permissions: {}
+
+jobs:
+  ci:
+    name: Lint, Test & Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Skip
+        run: echo "Docs-only change — no build required."
+
+  reviewdog:
+    name: reviewdog
+    runs-on: ubuntu-latest
+    steps:
+      - name: Skip
+        run: echo "Docs-only change — no lint required."
