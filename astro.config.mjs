@@ -25,7 +25,7 @@ export default defineConfig({
       telemetry: false,
     }),
     favicons({
-      input: { favicons: ['src/assets/favicon.svg'] },
+      input: { favicons: ['public/avatar.jpg'] },
       name: 'Frank Blechschmidt',
       short_name: 'FB',
       icons: {
