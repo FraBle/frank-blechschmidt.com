@@ -18,12 +18,14 @@ export default defineConfig({
     ...(process.env.PUBLIC_UMAMI_WEBSITE_ID
       ? [umami({ id: process.env.PUBLIC_UMAMI_WEBSITE_ID })]
       : []),
-    sentry({
-      org: 'frank-blechschmidt',
-      project: 'javascript-astro',
-      authToken: process.env.SENTRY_AUTH_TOKEN,
-      telemetry: false,
-    }),
+    ...(process.env.SENTRY_AUTH_TOKEN
+      ? [sentry({
+          org: 'frank-blechschmidt',
+          project: 'frank-blechschmidt-com',
+          authToken: process.env.SENTRY_AUTH_TOKEN,
+          telemetry: false,
+        })]
+      : []),
     favicons({
       input: { favicons: ['public/avatar.jpg'] },
       name: 'Frank Blechschmidt',
