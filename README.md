@@ -31,13 +31,6 @@ graph TB
         Plugin["OpenAI Plugin<br/>(ai-plugin.json)"]
     end
 
-    subgraph "CI/CD (GitHub Actions)"
-        direction LR
-        CI["CI<br/>(lint, test, preview)"]
-        Deploy["Deploy<br/>(wrangler deploy)"]
-        Cleanup["Cleanup<br/>(preview teardown)"]
-    end
-
     Browser -->|"request"| MW
     MW -->|"subdomain match"| Redirect["302 Redirect<br/>(LinkedIn, GitHub, etc.)"]
     MW -->|"no subdomain"| SSR
@@ -47,8 +40,6 @@ graph TB
     MCP_EP --> MCP
     SSR --> Sentry
     SSR --> Umami
-    CI -->|"push to main"| Deploy
-    CI -->|"PR closed"| Cleanup
 ```
 
 ## Tech Stack
