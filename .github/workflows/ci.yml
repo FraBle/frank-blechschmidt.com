@@ -2,6 +2,13 @@ name: CI
 run-name: "CI (${{ github.head_ref || github.ref_name }}) \u27A4 ${{ github.event.head_commit.message || github.event.pull_request.title }}"
 
 on: # yamllint disable-line rule:truthy
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "**/*.md"
+      - docs/**
+      - LICENSE
   pull_request:
     branches:
       - main
@@ -73,6 +80,7 @@ jobs:
         run: bun run build
 
       - name: Create GitHub deployment (preview)
+        if: github.event_name == 'pull_request'
         id: create-preview
         uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7.1.0
         with:
@@ -90,6 +98,7 @@ jobs:
             core.setOutput('deployment_id', deployment.data.id);
 
       - name: Upload preview version
+        if: github.event_name == 'pull_request'
         id: wrangler-preview
         uses: cloudflare/wrangler-action@da0e0dfe58b7a431659754fdf3f186c529afbe65 # v3.14.1
         with:
@@ -98,7 +107,7 @@ jobs:
           command: versions upload
 
       - name: Update preview deployment status
-        if: always() && steps.create-preview.outputs.deployment_id
+        if: always() && github.event_name == 'pull_request' && steps.create-preview.outputs.deployment_id
         uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7.1.0
         env:
           DEPLOY_OUTCOME: ${{ steps.wrangler-preview.outcome }}
