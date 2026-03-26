@@ -12,7 +12,7 @@ import llms from 'astro-llms-generate';
 export default defineConfig({
   site: 'https://frank-blechschmidt.com',
   output: 'server',
-  adapter: cloudflare(),
+  adapter: cloudflare({ prerenderEnvironment: 'node' }),
   integrations: [
     sitemap(),
     ...(process.env.PUBLIC_UMAMI_WEBSITE_ID

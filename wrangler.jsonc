@@ -8,6 +8,11 @@
 		"directory": "./dist",
 		"binding": "ASSETS"
 	},
+	"vars": {
+		// SENTRY_DSN must be set via `wrangler secret put SENTRY_DSN`
+		"SENTRY_TRACES_SAMPLE_RATE": "1.0",
+		"SENTRY_ENVIRONMENT": "production"
+	},
 	"observability": {
 		"enabled": true
 	},
