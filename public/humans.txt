@@ -8,8 +8,8 @@ GitHub: github.com/FraBle
 
 /* SITE */
 Built with: Astro, Cloudflare Workers
-Theme: astro-researcher-theme (ported from hugo-researcher)
-Styling: Bootstrap 4.6.2, Inconsolata font
+Theme: dev-portfolio-ai (forked from Smilesharks/dev-portfolio)
+Styling: Tailwind CSS 4, system fonts
 Language: English
 
 /* THANKS */

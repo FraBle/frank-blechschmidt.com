@@ -1,11 +1,12 @@
-import type { ResearcherConfig } from "astro-researcher-theme";
+import type { PortfolioConfig } from "dev-portfolio-ai";
 import { basics } from "./resume";
 
-export const themeConfig: ResearcherConfig = {
+export const themeConfig: PortfolioConfig = {
   title: basics.name,
   description: `Resume of ${basics.name}.`,
   author: basics.name,
   site: basics.url,
+  theme: "default",
   nav: [
     { name: "About", url: "/about" },
     { name: "Resume", url: "/resume_frank_blechschmidt.pdf" },
