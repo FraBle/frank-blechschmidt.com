@@ -25,7 +25,7 @@ export const themeConfig: PortfolioConfig = {
   },
   twitter: {
     card: "summary",
-    creator: /* v8 ignore next */ `@${basics.profiles.find((p) => p.network === "Twitter")?.username ?? ""}`,
+    creator: /* v8 ignore next */ `@${basics.profiles.find((p) => p.network === "X")?.username ?? ""}`,
   },
   socialProfiles: basics.profiles.map((p) => p.url),
 };
@@ -33,7 +33,7 @@ export const themeConfig: PortfolioConfig = {
 export const redirects: Record<string, string> = {
   linkedin: "https://www.linkedin.com/in/fblechschmidt",
   github: "https://github.com/FraBle",
-  twitter: "https://twitter.com/FraBle90",
+  twitter: "https://x.com/FraBle90",
   facebook: "https://www.facebook.com/FraBle90",
   youtube: "https://www.youtube.com/c/FrankBlechschmidt",
   soundcloud: "https://soundcloud.com/frable90",

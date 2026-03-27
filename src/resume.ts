@@ -84,9 +84,9 @@ export const basics: Basics = {
       url: "https://github.com/FraBle",
     },
     {
-      network: "Twitter",
+      network: "X",
       username: "FraBle90",
-      url: "https://twitter.com/FraBle90",
+      url: "https://x.com/FraBle90",
     },
   ],
 };

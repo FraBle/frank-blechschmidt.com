@@ -49,7 +49,7 @@ describe("redirects", () => {
       "https://www.linkedin.com/in/fblechschmidt",
     );
     expect(redirects.github).toBe("https://github.com/FraBle");
-    expect(redirects.twitter).toBe("https://twitter.com/FraBle90");
+    expect(redirects.twitter).toBe("https://x.com/FraBle90");
     expect(redirects.facebook).toBe("https://www.facebook.com/FraBle90");
     expect(redirects.youtube).toBe(
       "https://www.youtube.com/c/FrankBlechschmidt",

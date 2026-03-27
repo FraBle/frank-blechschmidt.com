@@ -31,7 +31,7 @@ describe("basics", () => {
     expect(basics.profiles.map((p) => p.network)).toEqual([
       "LinkedIn",
       "GitHub",
-      "Twitter",
+      "X",
     ]);
     expect(basics.profiles.every((p) => p.url && p.username)).toBe(true);
   });
