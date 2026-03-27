@@ -35,7 +35,7 @@
     "astro-skills": "^0.0.5",
     "@alpinejs/collapse": "^3.15.0",
     "alpinejs": "^3.15.0",
-    "dev-portfolio-ai": "github:FraBle/dev-portfolio-ai#4717f50",
+    "dev-portfolio-ai": "github:FraBle/dev-portfolio-ai#a72e47e",
     "hotkeypad": "^0.1.0",
     "tailwindcss": "^4.1.0",
     "@tailwindcss/vite": "^4.1.0",
