@@ -1,6 +1,6 @@
 # frank-blechschmidt.com
 
-Personal resume website built with [Astro](https://astro.build/) and deployed to [Cloudflare Workers](https://workers.cloudflare.com/).
+Personal portfolio website built with [Astro](https://astro.build/) and deployed to [Cloudflare Workers](https://workers.cloudflare.com/). Themed with [dev-portfolio-ai](https://github.com/FraBle/dev-portfolio-ai).
 
 ## Architecture
 
@@ -47,7 +47,8 @@ graph TB
 - **Framework:** Astro 6 (SSR mode)
 - **Hosting:** Cloudflare Workers
 - **Runtime:** Bun (via [mise](https://mise.jdx.dev/))
-- **Styling:** Bootstrap 4.6.2 + custom SCSS ([astro-researcher-theme](https://github.com/FraBle/astro-researcher-theme))
+- **Theme:** [dev-portfolio-ai](https://github.com/FraBle/dev-portfolio-ai) (Tailwind CSS 4, Alpine.js, dark/light mode)
+- **Icons:** [simple-icons-astro](https://github.com/dzeiocom/simple-icons-astro) (3,000+ brand SVGs)
 - **Observability:** Sentry (errors, tracing, session replay, logs)
 - **Analytics:** Umami (optional, via env var)
 - **CI/CD:** GitHub Actions + wrangler-action
@@ -57,14 +58,18 @@ graph TB
 
 ## Features
 
-- Pre-rendered resume/about and contact pages
+- Single-page portfolio with composable sections (Hero, Experience, Education, Projects, Patents, Skills)
+- Dark/light mode with 5 colour themes + Cmd/Ctrl+K command palette
+- Print-optimized layout for PDF export
+- Resume download (PDF) prominently linked
 - Subdomain redirects via middleware (e.g., `linkedin.frank-blechschmidt.com` -> LinkedIn)
+- Machine-readable section with links to AI endpoints
 - [MCP server](https://modelcontextprotocol.io/) exposing resume data to AI tools (`/mcp`)
 - Machine-readable resume ([JSON Resume](https://jsonresume.org/) at `/resume.json`)
 - AI-native discovery (`/llms.txt`, `/.well-known/ai-plugin.json`, agent skills)
 - WebFinger identity federation (`/.well-known/webfinger`)
 - Security policy (`/.well-known/security.txt`)
-- Favicon generation from single SVG source
+- Favicon generation from avatar image
 - Preview deployments on PRs with automatic cleanup
 
 ## Development
@@ -117,12 +122,9 @@ wrangler secret put SENTRY_DSN   # Server-side Sentry DSN
 ├── skills/                  # Agent skill definitions (astro-skills)
 ├── src/
 │   ├── __tests__/           # Vitest tests (100% coverage)
-│   ├── assets/              # favicon.svg
 │   ├── pages/
-│   │   ├── about.astro      # Resume page (pre-rendered)
-│   │   ├── contact.astro    # Contact page (pre-rendered)
+│   │   ├── index.astro      # Portfolio page (pre-rendered)
 │   │   ├── 404.astro        # Error page (pre-rendered)
-│   │   ├── index.astro      # Redirect to /about
 │   │   ├── mcp.ts           # MCP server endpoint
 │   │   ├── resume.json.ts   # JSON Resume API
 │   │   └── .well-known/     # ai-plugin.json, mcp.json, webfinger, security.txt
@@ -130,7 +132,7 @@ wrangler secret put SENTRY_DSN   # Server-side Sentry DSN
 │   ├── subdomain.ts         # Subdomain extraction logic
 │   ├── mcp.ts               # MCP server definition and resources
 │   ├── resume.ts            # Resume data (single source of truth)
-│   └── site.config.ts       # Site config, nav, redirects
+│   └── site.config.ts       # Site config, redirects
 ├── sentry.client.config.ts  # Sentry client (tracing, replay, logs)
 ├── sentry.server.config.ts  # Sentry server (tracing, logs)
 ├── astro.config.mjs         # Astro + Cloudflare adapter + integrations
