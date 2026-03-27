@@ -39,7 +39,7 @@ export const GET: APIRoute = () => {
       startDate: job.startDate,
       ...(job.endDate ? { endDate: job.endDate } : {}),
       summary: job.summary,
-      highlights: job.highlights,
+      highlights: [...job.responsibilities, ...job.achievements],
     })),
     education: education.map((edu) => ({
       institution: edu.institution,

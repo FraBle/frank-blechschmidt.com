@@ -54,7 +54,7 @@ describe("work", () => {
       expect(job.url).toBeTruthy();
       expect(job.startDate).toMatch(/^\d{4}-\d{2}$/);
       expect(job.location).toBeTruthy();
-      expect(job.highlights.length).toBeGreaterThan(0);
+      expect(job.responsibilities.length + job.achievements.length).toBeGreaterThan(0);
     }
   });
 });

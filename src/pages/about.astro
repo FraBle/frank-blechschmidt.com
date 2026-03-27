@@ -33,7 +33,8 @@ const experienceItems: ExperienceItem[] = work.map((job) => ({
   startDate: job.startDate,
   endDate: job.endDate || null,
   summary: job.summary || undefined,
-  highlights: job.highlights,
+  responsibilities: job.responsibilities.length > 0 ? job.responsibilities : undefined,
+  achievements: job.achievements.length > 0 ? job.achievements : undefined,
   location: job.location,
 }));
 
