@@ -140,22 +140,22 @@ const projectItems: ProjectItem[] = projects.map((p) => ({
       </Section>
 
       <Section title="Manager Toolbox" className="print:hidden">
-        <ul class="flex flex-wrap gap-x-6 gap-y-3 text-sm">
+        <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2 text-sm">
           {managerToolbox.map((cat) => (
             <li>
               <strong class="text-skin-base">{cat.name}:</strong>{" "}
-              <span class="text-skin-muted">{cat.keywords.join(", ")}</span>
+              {cat.keywords.join(", ")}
             </li>
           ))}
         </ul>
       </Section>
 
       <Section title="Technical Skills" className="print:hidden">
-        <ul class="flex flex-wrap gap-x-6 gap-y-3 text-sm">
+        <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2 text-sm">
           {technicalSkills.map((cat) => (
             <li>
               <strong class="text-skin-base">{cat.name}:</strong>{" "}
-              <span class="text-skin-muted">{cat.keywords.join(", ")}</span>
+              {cat.keywords.join(", ")}
             </li>
           ))}
         </ul>
