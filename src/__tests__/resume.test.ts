@@ -13,7 +13,7 @@ import {
 describe("basics", () => {
   it("has required personal info", () => {
     expect(basics.name).toBe("Frank Blechschmidt");
-    expect(basics.label).toBe("Engineering Manager");
+    expect(basics.label).toBe("Senior Engineering Manager");
     expect(basics.email).toBe("contact@frank-blechschmidt.com");
     expect(basics.phone).toBe("+1 (650) 213-2619");
     expect(basics.url).toBe("https://frank-blechschmidt.com");
@@ -38,12 +38,12 @@ describe("basics", () => {
 });
 
 describe("work", () => {
-  it("has seven positions", () => {
-    expect(work).toHaveLength(7);
+  it("has eight positions", () => {
+    expect(work).toHaveLength(8);
   });
 
   it("has most recent position first", () => {
-    expect(work[0].company).toBe("Lattice");
+    expect(work[0].company).toBe("dbt Labs");
     expect(work[0].endDate).toBe("");
   });
 

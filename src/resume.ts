@@ -62,13 +62,13 @@ interface SkillCategory {
 
 export const basics: Basics = {
   name: "Frank Blechschmidt",
-  label: "Engineering Manager",
+  label: "Senior Engineering Manager",
   email: "contact@frank-blechschmidt.com",
   phone: "+1 (650) 213-2619",
   url: "https://frank-blechschmidt.com",
   image: "https://frank-blechschmidt.com/avatar.jpg",
   summary:
-    "Engineering Manager with experience in Developer Experience, Cloud Engineering, and Kubernetes. Previously at Lattice, Box, and SAP.",
+    "Product-minded Senior Engineering Manager with 10+ years of experience building scalable cloud infrastructure and developer platforms. Expert in transforming internal tooling into reliable, product-grade systems that drive developer velocity and enterprise-grade reliability. Proven track record of scaling engineering cultures while maintaining a focus on simplicity and speed. Currently at dbt Labs, previously at Lattice, Box, and SAP.",
   location: {
     city: "Sunnyvale",
     region: "CA",
@@ -95,30 +95,37 @@ export const basics: Basics = {
 
 export const work: WorkPosition[] = [
   {
+    company: "dbt Labs",
+    position: "Senior Engineering Manager — Multi-Cell & Networking",
+    url: "https://www.getdbt.com/",
+    startDate: "2024-10",
+    endDate: "",
+    location: "United States (Remote)",
+    summary:
+      "Directing the strategy and execution of dbt Labs' Multi-Cell Cloud Architecture across AWS, Azure, and GCP, enabling infinite horizontal scalability and data residency compliance for global enterprise customers.",
+    responsibilities: [],
+    achievements: [
+      "Operationalized next-gen cell architecture, supporting a 3x increase in revenue share by expanding global footprint to 8 regions.",
+      "Orchestrated a strategic shift from manual scripting to service-based, end-to-end automation, reducing cell-to-cell account migration execution time by 80%.",
+    ],
+  },
+  {
     company: "Lattice",
     position: "Engineering Manager — Developer Experience & Cloud Engineering",
     url: "https://lattice.com/",
     startDate: "2022-01",
-    endDate: "",
+    endDate: "2024-10",
     location: "San Francisco, CA",
     summary:
-      "Leading two teams with a total of 15 engineers (a mix of SWEs and SREs on each team with experience levels ranging from Junior to Staff) serving an engineering organization of 150 developers and enabling easy, fast, and reliable product development at Lattice on a tech stack composed of TypeScript, GraphQL, React, Relay, and NestJS.\n\nThe teams' scope and responsibilities encompass the entire development, release, and operations lifecycle, including local dev environments, CI (Github Actions), CD (ArgoCD), cloud infrastructure (AWS, Cloudflare, Kubernetes, Terraform), build systems, database migrations, container builds, linters, feature flags (Statsig), preview environments and canary deployments, testing frameworks, code policies, observability integrations (Datadog & Sentry), build caching, developer telemetry, and incident management (Rootly, PagerDuty).",
+      "Led the Developer Experience and Cloud Engineering organization (15 engineers), delivering the platform foundation for 150+ developers. Treated the internal platform as a product, utilizing NPS-style surveys (90% participation) to drive roadmap prioritization and increase developer satisfaction by 50%.",
     responsibilities: [
-      "Took on the Cloud Engineering team (8 engineers) with a current primary focus of establishing Lattice's presence in EMEA.",
-      "Fostering a culture of high performance and collaboration through tailored individual development plans, continuous growth conversations, and performance management, reflected in engagement scores of 100% for Management and Team Climate.",
-      "Centralized the support model spanning three teams within Lattice's Developer Platform, simplifying how developers receive assistance by implementing a Jira-based triage process and consolidated office hours.",
-      "Supported Security Engineering while the team was still getting set up by rolling out and integrating FOSSA for SCA, GitHub Advanced Security for SAST, and StackHawk for DAST.",
+      "Bootstrapped the Developer Experience team from the ground up, establishing technical strategy, SLOs, and DORA metrics to drive data-driven resource allocation. Expanded scope to lead Cloud Engineering, supporting Lattice's expansion into EMEA.",
     ],
     achievements: [
-      "Launched and bootstrapped the Developer Experience team (7 engineers) from the ground up, collectively set the mission, charter, and technical strategy, established metrics, KPIs, and SLOs, and introduced a continuous planning process for data-driven prioritization and resource allocation to meet the organization's needs.",
-      "Rolled out the DX survey across all functions of EPD with a consistent participation rate of 90%+ every six weeks, serving as a roadmap input for my team, a feedback mechanism for engineering teams, and a compass for organizational health for leadership.",
-      "Spearheaded the adoption of order-independent deploys within Lattice's monorepo to create a 4h guaranteed instant rollback window by shifting contract compatibility validations from deploy time to build time.",
-      "Championed a 30% reduction in CI spending while fortifying security posture, orchestrating a seamless migration from CircleCI to GitHub Actions with self-hosted runners on AWS EC2. Executed the infrastructure setup in Terraform, allowing the team to focus on shifting CI pipelines and automation.",
-      "Subsequently, invested in CI stability and velocity, resulting in an 80% reduction in build time and a surge in build success rates from 70% to 99% through the adoption of GitHub's Merge Queue, smart build caching, and flaky test automation.",
-      "Collaborated with IT to migrate the entire Engineering org to M1-powered MacBooks, delivering an out-of-the-box local dev experience that doubled productivity.",
-      "Facilitated the migration of Lattice's local dev environment to a Homebrew-based setup and the rollout of GitHub Copilot, leading to a 50% increase in developer satisfaction.",
-      "Pioneered the rollout of a Backstage-based developer portal, serving as the central hub and source of truth for developer documentation and service ownership.",
-      "Guided and mentored an engineer on their journey to people management, resulting in a successful promotion to engineering manager within six months.",
+      "Architected a 'Safety First' deployment pipeline for the monolith, shifting validation left to build-time and creating a 4-hour guaranteed instant rollback window, significantly reducing mean-time-to-recovery (MTTR) for critical incidents.",
+      "Migrated from CircleCI to GitHub Actions with self-hosted runners, cutting CI spending by 30%. Achieved an 80% reduction in build time and increased success rates from 70% to 99% via merge queue and flaky test automation.",
+      "Modernized the local development ecosystem by facilitating the migration to M1-powered hardware and rolling out GitHub Copilot, driving a 50% increase in developer productivity.",
+      "Fostered a culture of high performance with 100% engagement scores for Management and Team Climate; successfully mentored a senior engineer through a promotion to Engineering Manager within six months.",
     ],
   },
   {

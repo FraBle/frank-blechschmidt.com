@@ -19,10 +19,10 @@ describe("resume.json", () => {
 
     expect(body.$schema).toContain("jsonresume");
     expect(body.basics.name).toBe("Frank Blechschmidt");
-    expect(body.basics.label).toBe("Engineering Manager");
+    expect(body.basics.label).toBe("Senior Engineering Manager");
     expect(body.basics.profiles).toHaveLength(3);
     expect(body.work.length).toBeGreaterThan(0);
-    expect(body.work[0].name).toBe("Lattice");
+    expect(body.work[0].name).toBe("dbt Labs");
     expect(body.work[0]).not.toHaveProperty("endDate");
     expect(body.work[1]).toHaveProperty("endDate");
     expect(body.education).toHaveLength(2);
