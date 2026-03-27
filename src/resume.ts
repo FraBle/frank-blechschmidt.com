@@ -37,6 +37,7 @@ interface Education {
   url: string;
   area: string;
   studyType: string;
+  startDate: string;
   endDate: string;
   location: string;
 }
@@ -235,6 +236,7 @@ export const education: Education[] = [
     url: "https://illinois.edu/",
     area: "Computer Science",
     studyType: "Master",
+    startDate: "2019-08",
     endDate: "2021-08",
     location: "Urbana, Illinois, USA",
   },
@@ -243,6 +245,7 @@ export const education: Education[] = [
     url: "https://hpi.de/",
     area: "IT-Systems Engineering",
     studyType: "Bachelor of Science",
+    startDate: "2011-10",
     endDate: "2014-08",
     location: "Potsdam, Germany",
   },
