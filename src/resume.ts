@@ -68,7 +68,7 @@ export const basics: Basics = {
   url: "https://frank-blechschmidt.com",
   image: "https://frank-blechschmidt.com/avatar.jpg",
   summary:
-    "Senior Engineering Manager with experience in Cloud Architecture, Developer Experience, and Kubernetes. Currently at dbt Labs, previously at Lattice, Box, and SAP.",
+    "Product-minded Senior Engineering Manager with 10+ years of experience building scalable cloud infrastructure and developer platforms. Expert in transforming internal tooling into reliable, product-grade systems that drive developer velocity and enterprise-grade reliability. Proven track record of scaling engineering cultures while maintaining a focus on simplicity and speed. Currently at dbt Labs, previously at Lattice, Box, and SAP.",
   location: {
     city: "Sunnyvale",
     region: "CA",
