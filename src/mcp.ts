@@ -34,11 +34,14 @@ function createServer(): McpServer {
             `Email: ${basics.email}`,
             `Phone: ${basics.phone}`,
             "",
+            basics.summary,
+            "",
             ...work.map((job) =>
               [
                 `${job.position} at ${job.company} (${formatDateRange(job.startDate, job.endDate)}, ${job.location})`,
                 ...(job.summary ? [job.summary] : []),
-                ...job.highlights.map((h) => `- ${h}`),
+                ...job.responsibilities.map((r) => `- ${r}`),
+                ...job.achievements.map((a) => `- ${a}`),
                 "",
               ].join("\n"),
             ),
@@ -147,7 +150,19 @@ function createServer(): McpServer {
   return server;
 }
 
+const CORS_HEADERS: Record<string, string> = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type, Accept, Mcp-Session-Id",
+  "Access-Control-Expose-Headers": "Mcp-Session-Id",
+};
+
 export async function handleMcpRequest(request: Request): Promise<Response> {
+  // Handle CORS preflight
+  if (request.method === "OPTIONS") {
+    return new Response(null, { status: 204, headers: CORS_HEADERS });
+  }
+
   const server = createServer();
   const transport = new WebStandardStreamableHTTPServerTransport({
     sessionIdGenerator: undefined,
@@ -155,10 +170,17 @@ export async function handleMcpRequest(request: Request): Promise<Response> {
 
   await server.connect(transport);
 
-  try {
-    return await transport.handleRequest(request);
-  } finally {
-    await transport.close();
-    await server.close();
+  const response = await transport.handleRequest(request);
+
+  // Add CORS headers to the response
+  const headers = new Headers(response.headers);
+  for (const [key, value] of Object.entries(CORS_HEADERS)) {
+    headers.set(key, value);
   }
+
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
 }

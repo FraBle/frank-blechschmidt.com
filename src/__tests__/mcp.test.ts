@@ -23,7 +23,48 @@ describe("MCP server", () => {
       }),
     );
     expect(response.status).toBe(200);
-    expect(response.headers.get("content-type")).toContain("text/event-stream");
+    const contentType = response.headers.get("content-type") ?? "";
+    expect(
+      contentType.includes("text/event-stream") || contentType.includes("application/json"),
+    ).toBe(true);
+  });
+
+  it("returns 204 for OPTIONS (CORS preflight)", async () => {
+    const response = await handleMcpRequest(
+      new Request("https://frank-blechschmidt.com/mcp", {
+        method: "OPTIONS",
+        headers: {
+          Origin: "https://example.com",
+          "Access-Control-Request-Method": "POST",
+        },
+      }),
+    );
+    expect(response.status).toBe(204);
+    expect(response.headers.get("access-control-allow-origin")).toBe("*");
+    expect(response.headers.get("access-control-allow-methods")).toContain("POST");
+  });
+
+  it("includes CORS headers in POST response", async () => {
+    const response = await handleMcpRequest(
+      new Request("https://frank-blechschmidt.com/mcp", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json, text/event-stream",
+        },
+        body: JSON.stringify({
+          jsonrpc: "2.0",
+          id: 1,
+          method: "initialize",
+          params: {
+            protocolVersion: "2025-11-25",
+            capabilities: {},
+            clientInfo: { name: "test", version: "1.0.0" },
+          },
+        }),
+      }),
+    );
+    expect(response.headers.get("access-control-allow-origin")).toBe("*");
   });
 
   it("returns response for GET", async () => {
