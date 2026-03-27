@@ -118,15 +118,15 @@ const extraCommands: KeyboardCommand[] = [
       <About summary={basics.summary} />
       <ThemeSwitch />
 
-      <div class="no-print flex flex-col gap-3">
+      <div class="ai-section no-print relative flex flex-col gap-3 rounded-lg p-4">
+        <div class="ai-border"></div>
         <h3 class="flex items-center gap-2 text-sm font-medium text-skin-base">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 8V4H8" />
-            <rect width="16" height="12" x="4" y="8" rx="2" />
-            <path d="M2 14h2" />
-            <path d="M20 14h2" />
-            <path d="M15 13v2" />
-            <path d="M9 13v2" />
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ai-sparkle">
+            <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" />
+            <path d="M20 3v4" />
+            <path d="M22 5h-4" />
+            <path d="M4 17v2" />
+            <path d="M5 18H3" />
           </svg>
           Machine-Readable
         </h3>
@@ -137,7 +137,7 @@ const extraCommands: KeyboardCommand[] = [
               target="_blank"
               rel="noopener noreferrer"
               title={item.description}
-              class="inline-flex items-center gap-1.5 rounded-md border border-skin-hue/20 bg-skin-button-accent/10 px-2.5 py-1 text-xs text-skin-hue transition-colors hover:bg-skin-button-accent hover:text-skin-inverted"
+              class="ai-pill inline-flex items-center gap-1.5 rounded-md border border-skin-hue/20 bg-skin-button-accent/10 px-2.5 py-1 text-xs text-skin-hue transition-colors hover:bg-skin-button-accent hover:text-skin-inverted"
             >
               {item.name}
             </a>
@@ -223,5 +223,72 @@ const extraCommands: KeyboardCommand[] = [
   }
   li::marker {
     color: var(--color-accent);
+  }
+
+  /* Animated gradient border */
+  .ai-section {
+    position: relative;
+    overflow: hidden;
+  }
+  .ai-border {
+    position: absolute;
+    inset: 0;
+    border-radius: 0.5rem;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      var(--color-accent) 0%,
+      transparent 40%,
+      transparent 60%,
+      var(--color-accent) 100%
+    );
+    background-size: 300% 300%;
+    animation: border-shift 6s ease-in-out infinite;
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  /* Sparkle icon pulse */
+  .ai-sparkle {
+    animation: sparkle-pulse 3s ease-in-out infinite;
+    color: var(--color-accent);
+  }
+
+  /* Shimmer sweep on pills */
+  .ai-pill {
+    position: relative;
+    overflow: hidden;
+  }
+  .ai-pill::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      120deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.15) 50%,
+      transparent 70%
+    );
+    transform: translateX(-100%);
+    animation: shimmer 4s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes border-shift {
+    0%, 100% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+  }
+  @keyframes sparkle-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.9); }
+  }
+  @keyframes shimmer {
+    0%, 70% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
   }
 </style>
