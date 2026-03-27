@@ -96,7 +96,7 @@ export const basics: Basics = {
 export const work: WorkPosition[] = [
   {
     company: "dbt Labs",
-    position: "Senior Engineering Manager — Multi-Cell Cloud Architecture",
+    position: "Senior Engineering Manager — Multi-Cell & Networking",
     url: "https://www.getdbt.com/",
     startDate: "2024-10",
     endDate: "",
