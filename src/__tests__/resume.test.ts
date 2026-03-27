@@ -31,7 +31,7 @@ describe("basics", () => {
     expect(basics.profiles.map((p) => p.network)).toEqual([
       "LinkedIn",
       "GitHub",
-      "Twitter",
+      "X",
     ]);
     expect(basics.profiles.every((p) => p.url && p.username)).toBe(true);
   });
@@ -54,7 +54,7 @@ describe("work", () => {
       expect(job.url).toBeTruthy();
       expect(job.startDate).toMatch(/^\d{4}-\d{2}$/);
       expect(job.location).toBeTruthy();
-      expect(job.highlights.length).toBeGreaterThan(0);
+      expect(job.responsibilities.length + job.achievements.length).toBeGreaterThan(0);
     }
   });
 });
@@ -71,10 +71,10 @@ describe("education", () => {
 });
 
 describe("patents", () => {
-  it("has one patent with three numbers", () => {
+  it("has one patent with four numbers", () => {
     expect(patents).toHaveLength(1);
     expect(patents[0].name).toBe("Cognitive Enterprise System");
-    expect(patents[0].numbers).toHaveLength(3);
+    expect(patents[0].numbers).toHaveLength(4);
   });
 });
 

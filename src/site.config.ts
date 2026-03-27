@@ -1,16 +1,13 @@
-import type { ResearcherConfig } from "astro-researcher-theme";
+import type { PortfolioConfig } from "dev-portfolio-ai";
 import { basics } from "./resume";
 
-export const themeConfig: ResearcherConfig = {
+export const themeConfig: PortfolioConfig = {
   title: basics.name,
   description: `Resume of ${basics.name}.`,
   author: basics.name,
   site: basics.url,
-  nav: [
-    { name: "About", url: "/about" },
-    { name: "Resume", url: "/resume_frank_blechschmidt.pdf" },
-    { name: "Contact", url: "/contact" },
-  ],
+  theme: "default",
+  nav: [],
   footer: {
     text: "Privacy Policy",
     url: "https://www.iubenda.com/privacy-policy/35628899",
@@ -24,7 +21,7 @@ export const themeConfig: ResearcherConfig = {
   },
   twitter: {
     card: "summary",
-    creator: /* v8 ignore next */ `@${basics.profiles.find((p) => p.network === "Twitter")?.username ?? ""}`,
+    creator: /* v8 ignore next */ `@${basics.profiles.find((p) => p.network === "X")?.username ?? ""}`,
   },
   socialProfiles: basics.profiles.map((p) => p.url),
 };
@@ -32,7 +29,7 @@ export const themeConfig: ResearcherConfig = {
 export const redirects: Record<string, string> = {
   linkedin: "https://www.linkedin.com/in/fblechschmidt",
   github: "https://github.com/FraBle",
-  twitter: "https://twitter.com/FraBle90",
+  twitter: "https://x.com/FraBle90",
   facebook: "https://www.facebook.com/FraBle90",
   youtube: "https://www.youtube.com/c/FrankBlechschmidt",
   soundcloud: "https://soundcloud.com/frable90",

@@ -7,6 +7,7 @@ import sentry from '@sentry/astro';
 import favicons from 'astro-favicons';
 import skills from 'astro-skills';
 import llms from 'astro-llms-generate';
+import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
@@ -44,6 +45,9 @@ export default defineConfig({
     skills(),
     llms(),
   ],
+  vite: {
+    plugins: [tailwindcss()],
+  },
   trailingSlash: 'never',
   // Bind all interfaces for container/Codespace/Claude dev environments
   server: {

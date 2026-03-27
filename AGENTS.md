@@ -3,7 +3,7 @@
 > Shared conventions for all AI agents working on this project,
 > regardless of platform.
 > Read by: Cursor, Claude Code, Gemini, and other agent platforms.
-> Last updated: 2026-03-24
+> Last updated: 2026-03-27
 
 ## Purpose
 
@@ -35,18 +35,18 @@ Personal portfolio/CV website of Frank Blechschmidt. Astro project hosted on Clo
 - **Runtime:** Bun (managed via [mise](https://mise.jdx.dev/), global config `latest`)
 - **Framework:** Astro 6 (SSR mode)
 - **Adapter:** `@astrojs/cloudflare` — deploys to Cloudflare Workers
-- **Styling:** SCSS (via `sass`), Bootstrap 4.6.2 + Font Awesome + Academicons (CDN)
+- **Theme:** [dev-portfolio-ai](https://github.com/FraBle/dev-portfolio-ai) (Tailwind CSS 4, Alpine.js)
+- **Icons:** [simple-icons-astro](https://github.com/dzeiocom/simple-icons-astro)
 - **CI/CD:** GitHub Actions → `wrangler deploy`
 
 ### Key Files
 
-- `src/site.config.ts` — all site configuration (nav, footer, redirects, consent, GA)
-- `src/middleware.ts` — subdomain redirect logic (replaces former Go server)
-- `src/layouts/BaseLayout.astro` — main HTML layout (head, CDN links, slot)
-- `src/pages/about.astro` — primary resume/CV content
-- `src/pages/contact.astro` — contact info and links
-- `src/styles/researcher.scss` — ported hugo-researcher theme styles
-- `astro.config.mjs` — Astro config (SSR, Cloudflare adapter)
+- `src/site.config.ts` — site configuration (theme, footer, redirects)
+- `src/middleware.ts` — subdomain redirect logic
+- `src/pages/index.astro` — single-page portfolio (pre-rendered)
+- `src/pages/mcp.ts` — MCP server endpoint
+- `src/resume.ts` — resume data (single source of truth)
+- `astro.config.mjs` — Astro config (SSR, Cloudflare adapter, Tailwind)
 - `wrangler.jsonc` — Cloudflare Workers config
 
 ## Shared Principles

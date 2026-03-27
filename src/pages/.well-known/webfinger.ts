@@ -21,7 +21,7 @@ export const GET: APIRoute = ({ url }) => {
         {
           rel: "http://webfinger.net/rel/profile-page",
           type: "text/html",
-          href: "https://frank-blechschmidt.com/about",
+          href: "https://frank-blechschmidt.com/",
         },
         {
           rel: "http://webfinger.net/rel/avatar",

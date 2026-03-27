@@ -1,4 +1,347 @@
 ---
-// Homepage redirects to /about (matching Hugo's _index.md -> about.md symlink behavior)
-return Astro.redirect("/about");
+export const prerender = true;
+
+import {
+  BaseLayout,
+  Hero,
+  About,
+  Experience,
+  Education,
+  Projects,
+  Section,
+  ThemeSwitch,
+  KeyboardManager,
+} from "dev-portfolio-ai";
+import type { ExperienceItem, EducationItem, ProjectItem, KeyboardCommand } from "dev-portfolio-ai";
+import { themeConfig } from "../site.config";
+import {
+  basics,
+  work,
+  education,
+  patents,
+  projects,
+  managerToolbox,
+  technicalSkills,
+  formatDateRange,
+} from "../resume";
+
+// Map resume.ts work data to ExperienceItem[]
+const experienceItems: ExperienceItem[] = work.map((job) => ({
+  name: job.company,
+  position: job.position,
+  url: job.url,
+  startDate: job.startDate,
+  endDate: job.endDate || null,
+  summary: job.summary || undefined,
+  responsibilities: job.responsibilities.length > 0 ? job.responsibilities : undefined,
+  achievements: job.achievements.length > 0 ? job.achievements : undefined,
+  location: job.location,
+}));
+
+// Map resume.ts education data to EducationItem[]
+const educationItems: EducationItem[] = education.map((edu) => ({
+  institution: edu.institution,
+  url: edu.url,
+  area: `${edu.studyType}, ${edu.area}`,
+  startDate: edu.startDate,
+  endDate: edu.endDate,
+}));
+
+// Map resume.ts projects data to ProjectItem[]
+const projectItems: ProjectItem[] = projects.map((p) => ({
+  name: p.name,
+  description: p.description,
+  url: p.url,
+  isActive: true,
+  github: p.url,
+}));
+
+// Machine-readable endpoints
+const machineReadable = [
+  { name: "JSON Resume", url: "/resume.json", description: "Structured resume data" },
+  { name: "LLMs.txt", url: "/llms.txt", description: "LLM-friendly resume" },
+  { name: "MCP Server", url: "/.well-known/mcp.json", description: "Model Context Protocol" },
+  { name: "Skills", url: "/.well-known/skills/index.json", description: "Agent Skills Discovery" },
+];
+
+const docIcon = `<svg style="margin-right: 8px" width="16" height="16" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" /></svg>`;
+
+const extraCommands: KeyboardCommand[] = [
+  { id: "json-resume", title: "View JSON Resume", icon: docIcon, hotkey: "ctrl+j", section: "Machine-Readable", url: "/resume.json" },
+  { id: "llms-txt", title: "View LLMs.txt", icon: docIcon, hotkey: "ctrl+e", section: "Machine-Readable", url: "/llms.txt" },
+  { id: "mcp-server", title: "View MCP Server", icon: docIcon, hotkey: "ctrl+m", section: "Machine-Readable", url: "/.well-known/mcp.json" },
+  { id: "skills", title: "View Skills", icon: docIcon, hotkey: "ctrl+i", section: "Machine-Readable", url: "/.well-known/skills/index.json" },
+];
 ---
+
+<BaseLayout title={basics.name} config={themeConfig} description={basics.summary}>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": basics.name,
+    "url": basics.url,
+    "image": basics.image,
+    "jobTitle": basics.label,
+    "worksFor": {
+      "@type": "Organization",
+      "name": work[0].company,
+      "url": work[0].url,
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": basics.location.city,
+      "addressRegion": basics.location.region,
+      "addressCountry": basics.location.countryCode,
+    },
+    "email": basics.email,
+    "telephone": basics.phone.replace(/[() ]/g, ""),
+    "sameAs": basics.profiles.map((p) => p.url),
+    "alumniOf": education.map((e) => ({
+      "@type": "CollegeOrUniversity",
+      "name": e.institution,
+      "url": e.url,
+    })),
+    "knowsAbout": technicalSkills.flatMap((s) => s.keywords).slice(0, 20),
+  })} />
+
+  <main class="relative grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-6 md:p-16 xl:gap-24 print:max-w-none print:grid-cols-1 print:gap-6">
+    <div class="min-w-0 space-y-6 md:col-span-2 print:col-span-1 print:grid print:grid-cols-2 print:gap-5 print:space-y-0">
+      <Hero
+        name={basics.name}
+        label={basics.label}
+        image="/avatar.jpg"
+        email={basics.email}
+        phone={basics.phone}
+        location={{ city: basics.location.city, region: basics.location.region }}
+        profiles={basics.profiles}
+      />
+      <About summary={basics.summary} />
+      <ThemeSwitch />
+
+      <div class="ai-section no-print relative flex flex-col gap-3 rounded-lg p-4">
+        <div class="ai-border"></div>
+        <h3 class="flex items-center gap-2 text-sm font-medium text-skin-base">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ai-sparkle">
+            <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" />
+            <path d="M20 3v4" />
+            <path d="M22 5h-4" />
+            <path d="M4 17v2" />
+            <path d="M5 18H3" />
+          </svg>
+          Machine-Readable
+        </h3>
+        <div class="flex flex-wrap gap-2">
+          {machineReadable.map((item) => (
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={item.description}
+              class="ai-pill inline-flex items-center gap-1.5 rounded-md border border-skin-hue/20 bg-skin-button-accent/10 px-2.5 py-1 text-xs text-skin-hue transition-colors hover:bg-skin-button-accent hover:text-skin-inverted"
+            >
+              {item.name}
+            </a>
+          ))}
+        </div>
+        <div
+          x-data={`{ copied: false, copy() { navigator.clipboard.writeText('npx @anthropic-ai/claude-code mcp add --transport http frank-blechschmidt https://frank-blechschmidt.com/mcp'); this.copied = true; setTimeout(() => this.copied = false, 3000); } }`}
+          class="relative mt-1"
+        >
+          <button
+            @click="copy()"
+            class="mcp-cmd group flex w-full cursor-pointer items-center gap-2 rounded-md border border-skin-hue/10 bg-skin-button-muted px-3 py-2 text-left font-mono text-[10px] leading-relaxed text-skin-muted transition-colors hover:border-skin-hue/30"
+            title="Click to copy"
+          >
+            <span class="shrink-0 text-skin-hue">$</span>
+            <span class="truncate">npx @anthropic-ai/claude-code mcp add frank-blechschmidt</span>
+            <span class="ml-auto shrink-0">
+              <svg x-show="!copied" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-40 group-hover:opacity-100 transition-opacity">
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+              </svg>
+              <svg x-show="copied" x-cloak xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500">
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </span>
+          </button>
+          <div
+            x-show="copied"
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 -translate-y-1"
+            x-transition:enter-end="opacity-100 translate-y-0"
+            x-transition:leave="transition ease-in duration-200"
+            x-transition:leave-start="opacity-100 translate-y-0"
+            x-transition:leave-end="opacity-0 -translate-y-1"
+            x-cloak
+            class="absolute -top-7 left-1/2 -translate-x-1/2 rounded bg-green-500 px-2 py-0.5 text-[10px] text-white"
+          >
+            Copied!
+          </div>
+        </div>
+      </div>
+
+      <a href="/resume_frank_blechschmidt.pdf" target="_blank" rel="noopener noreferrer" class="no-print flex items-center gap-3 rounded-lg border border-skin-muted/30 bg-skin-button-muted/50 p-3 transition-colors hover:border-skin-hue/30 hover:bg-skin-button-muted">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-red-500">
+          <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+          <polyline points="14 2 14 8 20 8" />
+          <path d="M10 12l-2 4h4l-2 4" />
+        </svg>
+        <div class="flex flex-col">
+          <span class="text-sm font-medium text-skin-base">Download Resume</span>
+          <span class="text-xs text-skin-muted">PDF, print-optimized</span>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto shrink-0 text-skin-muted">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <polyline points="7 10 12 15 17 10" />
+          <line x1="12" x2="12" y1="15" y2="3" />
+        </svg>
+      </a>
+    </div>
+    <div class="min-w-0 space-y-12 md:col-span-4 print:col-span-1 print:space-y-4">
+      <Experience items={experienceItems} />
+      <Projects items={projectItems} className="print:hidden" />
+
+      <Section title="Patents">
+        <div class="grid grid-cols-1 gap-3 md:grid-cols-2 print:block">
+          {patents.map((patent) => (
+            <div role="contentinfo" class="ring-skin-muted relative flex flex-col rounded-md bg-skin-button-muted/50 p-5 shadow-sm ring-1 print:rounded-none print:bg-transparent print:p-0 print:shadow-none print:ring-0">
+              <div class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 print:hidden">
+                  <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
+                  <path d="M9 18h6" />
+                  <path d="M10 22h4" />
+                </svg>
+                <span class="text-lg print:text-base font-medium">{patent.name}</span>
+              </div>
+              <p class="py-3 print:py-1 text-sm text-skin-base">
+                Systems and methods for processing natural language queries through dynamic knowledge graphs to enable intelligent, conversational interactions with enterprise resource planning data.
+              </p>
+              <div class="flex gap-3 text-xs text-skin-muted">
+                <span>Filed: {formatDateRange(patent.filedDate, "").split(" — ")[0]}</span>
+                <span>Issued: {formatDateRange(patent.issuedDate, "").split(" — ")[0]}</span>
+              </div>
+              <div class="mt-3 print:mt-1 flex flex-wrap gap-2">
+                {patent.numbers.map((n) => (
+                  <a href={n.url} target="_blank" rel="noopener noreferrer" class="group flex items-center gap-1 text-xs text-skin-hue decoration-dotted underline-offset-[5px] hover:underline">
+                    {n.id}
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="inline-block w-3 h-3 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 print:hidden" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"></path>
+                    </svg>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section title="Manager Toolbox">
+        <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2 print:gap-0 text-sm print:text-xs">
+          {managerToolbox.map((cat) => (
+            <li>
+              <strong class="text-skin-base">{cat.name}:</strong>{" "}
+              {cat.keywords.join(", ")}
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <Section title="Technical Skills">
+        <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2 print:gap-0 text-sm print:text-xs">
+          {technicalSkills.map((cat) => (
+            <li>
+              <strong class="text-skin-base">{cat.name}:</strong>{" "}
+              {cat.keywords.join(", ")}
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <Education items={educationItems} className="order-first" />
+    </div>
+  </main>
+
+  <KeyboardManager profiles={basics.profiles} extraCommands={extraCommands} />
+</BaseLayout>
+
+<style>
+  @page {
+    size: auto;
+    margin: 0mm;
+  }
+  main {
+    margin: auto;
+    width: 100%;
+    overflow-wrap: anywhere;
+  }
+  li::marker {
+    color: var(--color-accent);
+  }
+
+  /* Animated gradient border */
+  .ai-section {
+    position: relative;
+    overflow: hidden;
+  }
+  .ai-border {
+    position: absolute;
+    inset: 0;
+    border-radius: 0.5rem;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      var(--color-accent) 0%,
+      transparent 40%,
+      transparent 60%,
+      var(--color-accent) 100%
+    );
+    background-size: 300% 300%;
+    animation: border-shift 6s ease-in-out infinite;
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  /* Sparkle icon pulse */
+  .ai-sparkle {
+    animation: sparkle-pulse 3s ease-in-out infinite;
+    color: var(--color-accent);
+  }
+
+  /* Shimmer sweep on pills */
+  .ai-pill {
+    position: relative;
+    overflow: hidden;
+  }
+  .ai-pill::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      120deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.15) 50%,
+      transparent 70%
+    );
+    transform: translateX(-100%);
+    animation: shimmer 4s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes border-shift {
+    0%, 100% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+  }
+  @keyframes sparkle-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.9); }
+  }
+  @keyframes shimmer {
+    0%, 70% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+</style>

@@ -1,13 +1,20 @@
 ---
 export const prerender = true;
 
-import { BaseLayout } from "astro-researcher-theme";
+import { BaseLayout } from "dev-portfolio-ai";
 import { themeConfig } from "../site.config";
 ---
 
-<BaseLayout title="404 - Page Not Found" config={themeConfig}>
-  <div class="container">
-    <h1>404 Error</h1>
-    <p>Page does not exist.</p>
-  </div>
+<BaseLayout title="404 - Page Not Found" config={themeConfig} noindex>
+  <main class="relative max-w-7xl p-8 md:p-16">
+    <h1 class="text-3xl font-bold">404 Error</h1>
+    <p class="mt-4">Page does not exist.</p>
+  </main>
 </BaseLayout>
+
+<style>
+  main {
+    margin: auto;
+    width: 100%;
+  }
+</style>

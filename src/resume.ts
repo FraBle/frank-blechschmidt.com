@@ -28,7 +28,8 @@ interface WorkPosition {
   endDate: string;
   location: string;
   summary: string;
-  highlights: string[];
+  responsibilities: string[];
+  achievements: string[];
 }
 
 interface Education {
@@ -36,6 +37,7 @@ interface Education {
   url: string;
   area: string;
   studyType: string;
+  startDate: string;
   endDate: string;
   location: string;
 }
@@ -84,9 +86,9 @@ export const basics: Basics = {
       url: "https://github.com/FraBle",
     },
     {
-      network: "Twitter",
+      network: "X",
       username: "FraBle90",
-      url: "https://twitter.com/FraBle90",
+      url: "https://x.com/FraBle90",
     },
   ],
 };
@@ -101,20 +103,22 @@ export const work: WorkPosition[] = [
     location: "San Francisco, CA",
     summary:
       "Leading two teams with a total of 15 engineers (a mix of SWEs and SREs on each team with experience levels ranging from Junior to Staff) serving an engineering organization of 150 developers and enabling easy, fast, and reliable product development at Lattice on a tech stack composed of TypeScript, GraphQL, React, Relay, and NestJS.\n\nThe teams' scope and responsibilities encompass the entire development, release, and operations lifecycle, including local dev environments, CI (Github Actions), CD (ArgoCD), cloud infrastructure (AWS, Cloudflare, Kubernetes, Terraform), build systems, database migrations, container builds, linters, feature flags (Statsig), preview environments and canary deployments, testing frameworks, code policies, observability integrations (Datadog & Sentry), build caching, developer telemetry, and incident management (Rootly, PagerDuty).",
-    highlights: [
-      "Launched and bootstrapped the Developer Experience team (7 engineers) from the ground up, collectively set the mission, charter, and technical strategy, established metrics, KPIs, and SLOs, and introduced a continuous planning process for data-driven prioritization and resource allocation to meet the organization's needs.",
+    responsibilities: [
       "Took on the Cloud Engineering team (8 engineers) with a current primary focus of establishing Lattice's presence in EMEA.",
       "Fostering a culture of high performance and collaboration through tailored individual development plans, continuous growth conversations, and performance management, reflected in engagement scores of 100% for Management and Team Climate.",
+      "Centralized the support model spanning three teams within Lattice's Developer Platform, simplifying how developers receive assistance by implementing a Jira-based triage process and consolidated office hours.",
+      "Supported Security Engineering while the team was still getting set up by rolling out and integrating FOSSA for SCA, GitHub Advanced Security for SAST, and StackHawk for DAST.",
+    ],
+    achievements: [
+      "Launched and bootstrapped the Developer Experience team (7 engineers) from the ground up, collectively set the mission, charter, and technical strategy, established metrics, KPIs, and SLOs, and introduced a continuous planning process for data-driven prioritization and resource allocation to meet the organization's needs.",
       "Rolled out the DX survey across all functions of EPD with a consistent participation rate of 90%+ every six weeks, serving as a roadmap input for my team, a feedback mechanism for engineering teams, and a compass for organizational health for leadership.",
       "Spearheaded the adoption of order-independent deploys within Lattice's monorepo to create a 4h guaranteed instant rollback window by shifting contract compatibility validations from deploy time to build time.",
       "Championed a 30% reduction in CI spending while fortifying security posture, orchestrating a seamless migration from CircleCI to GitHub Actions with self-hosted runners on AWS EC2. Executed the infrastructure setup in Terraform, allowing the team to focus on shifting CI pipelines and automation.",
       "Subsequently, invested in CI stability and velocity, resulting in an 80% reduction in build time and a surge in build success rates from 70% to 99% through the adoption of GitHub's Merge Queue, smart build caching, and flaky test automation.",
       "Collaborated with IT to migrate the entire Engineering org to M1-powered MacBooks, delivering an out-of-the-box local dev experience that doubled productivity.",
       "Facilitated the migration of Lattice's local dev environment to a Homebrew-based setup and the rollout of GitHub Copilot, leading to a 50% increase in developer satisfaction.",
-      "Centralized the support model spanning three teams within Lattice's Developer Platform, simplifying how developers receive assistance by implementing a Jira-based triage process and consolidated office hours.",
       "Pioneered the rollout of a Backstage-based developer portal, serving as the central hub and source of truth for developer documentation and service ownership.",
       "Guided and mentored an engineer on their journey to people management, resulting in a successful promotion to engineering manager within six months.",
-      "Supported Security Engineering while the team was still getting set up by rolling out and integrating FOSSA for SCA, GitHub Advanced Security for SAST, and StackHawk for DAST.",
     ],
   },
   {
@@ -126,12 +130,14 @@ export const work: WorkPosition[] = [
     location: "Redwood City, CA",
     summary:
       "Led Box's cloud platform of 12 engineers, building and expanding its internal Kubernetes-based Platform-as-a-Service (PaaS) offering.",
-    highlights: [
+    responsibilities: [
       "Developed vision & strategy and drove the execution for Box's Kubernetes-based platform.",
       "Worked with product managers and architects on cross-team project initiatives, including data-driven prioritization, technical strategy, and OKR management.",
-      "Managed the migration of Box's Kubernetes platform from on-prem, multi-region data centers to Google Kubernetes Engine (GKE).",
       "Mentored and supervised engineers with individual growth plans, custom-tailored training, and continuous feedback.",
       "Sourced, recruited, and interviewed software engineers to grow the team on all levels, from junior to staff.",
+    ],
+    achievements: [
+      "Managed the migration of Box's Kubernetes platform from on-prem, multi-region data centers to Google Kubernetes Engine (GKE).",
     ],
   },
   {
@@ -143,11 +149,13 @@ export const work: WorkPosition[] = [
     location: "Redwood City, CA",
     summary:
       "Tech Lead Manager (TLM) is Box's 6-12 months program to support ICs in the transition to engineering management.",
-    highlights: [
+    responsibilities: [
+      "Worked as a member of a cross-functional recruiting team to hire and interview Box's interns for the summer of 2021.",
+    ],
+    achievements: [
       "Delivered key projects, such as the rollout of declarative observability tooling, Kubernetes cluster landscape rebalance and expansion, the onboarding of Box's monolithic core app to Kubernetes, and the modernization of Box's Kubernetes infrastructure.",
       "Increased team productivity by streamlining status updates processes and OKR management using Atlassian tooling and reducing redundancies.",
       "Completely redesigned the end-of-quarter team retrospective making it an objective and democratic ritual leading to increased contributions, enhanced accountability, and greater team satisfaction.",
-      "Worked as a member of a cross-functional recruiting team to hire and interview Box's interns for the summer of 2021.",
     ],
   },
   {
@@ -158,12 +166,14 @@ export const work: WorkPosition[] = [
     endDate: "2021-03",
     location: "Redwood City, CA",
     summary: "",
-    highlights: [
+    responsibilities: [
+      "Onboarded, supervised, and mentored 4 full-time team members and 2 interns to foster Box's engineering principles and values.",
+    ],
+    achievements: [
       "Architected and implemented new components for Box's Kubernetes-based cloud platform, including deployment configurations, application management, high-availability setups, migration tooling, and platform integrations.",
       "Planned and coordinated the introduction of new Kubernetes clusters and availability zones, including rebalancing existing services across multiple clusters and regions for improved availability guarantees.",
       "Implemented a promotion model for deployment pipelines to enable secure and safe rollouts of service changes across environments and increase the reliability of services deployed on Box's cloud platform.",
       "Migrated platform to role-based access control (RBAC) with LDAP integration for granular authorization and reduced toil.",
-      "Onboarded, supervised, and mentored 4 full-time team members and 2 interns to foster Box's engineering principles and values.",
       "Received nomination for 12-month Tech Lead Manager (TLM) program as Box's training for the transition to engineering management.",
     ],
   },
@@ -175,13 +185,15 @@ export const work: WorkPosition[] = [
     endDate: "2019-05",
     location: "Palo Alto, CA",
     summary: "",
-    highlights: [
+    responsibilities: [
       "Led a global engineering team and spearheaded SAP's Conversational AI initiative as part of SAP's strategy to become the industry leader in Intelligent Enterprise software.",
       "Managed post-acquisition activities for Recast.AI by migrating services to SAP infrastructure and running engineering efforts to bring Recast.AI's existing technology to SAP's high level of product standards and compliance.",
-      "Defined and executed the development of a microservice-based cloud-scale architecture on top of SAP's Cloud Foundry and Kubernetes offering through SAP Cloud Platform.",
       "Supervised recruiting new engineering talents and mentored a growing team of software developers and data scientists.",
       "Collaborated with internal stakeholders and customers for Proof-of-Concept (PoC) development and platform onboarding.",
       "Represented the team and product on an increasing list of developer conferences and architecture summits, such as O'Reilly AI Conference, SAP TechEd, and Google I/O.",
+    ],
+    achievements: [
+      "Defined and executed the development of a microservice-based cloud-scale architecture on top of SAP's Cloud Foundry and Kubernetes offering through SAP Cloud Platform.",
       "Won the Request-for-Proposal (RFP) of one of SAP's most strategic customers, Bayer, showcasing SAP's capabilities in the transformation of procurement through Conversational AI leading to the nomination for the Hasso Plattner Founders' Award.",
       "Led the development and launch of SAP's first end consumer-facing chatbot enabling all customers of SAP's co-working space, HanaHaus, to manage reservations through SMS.",
     ],
@@ -194,7 +206,8 @@ export const work: WorkPosition[] = [
     endDate: "2016-06",
     location: "Palo Alto, CA",
     summary: "",
-    highlights: [
+    responsibilities: [],
+    achievements: [
       "Created a Twitter bot to accompany attendees of SAP's most significant customer conference SAPPHIRE NOW through summarizing and recommending conference events based on the context and interest of the individual attendee.",
       "Developed a software component for converting resumes from PDF to machine-readable format for data-driven recruiting PoC showcasing the power of Machine Learning (ML) and Natural Language Processing (NLP) for the Human Resources (HR) domain.",
       "Implemented a web app to visualize the performance tests of database queries using Google Charts and leveraging dynamic information retrieval through descriptive programming.",
@@ -208,7 +221,8 @@ export const work: WorkPosition[] = [
     endDate: "2015-09",
     location: "Palo Alto, CA",
     summary: "",
-    highlights: [
+    responsibilities: [],
+    achievements: [
       "Implemented a demo web app for SAP's co-founder Hasso Plattner's SAPPHIRE NOW keynote displaying the simplification potential for decision-making in the consumer product industry through holistic, real-time views for short supply management.",
       "Extended the web video player for openHPI/openSAP Massive Open Online Course (MOOC) platform by providing information based on semantic analysis of video and user content with SAP HANA Text Analysis.",
       "Developed a prototype for advanced explorative learning on unsorted education material through summarization of video and text content and a recommendation engine.",
@@ -222,6 +236,7 @@ export const education: Education[] = [
     url: "https://illinois.edu/",
     area: "Computer Science",
     studyType: "Master",
+    startDate: "2019-01",
     endDate: "2021-08",
     location: "Urbana, Illinois, USA",
   },
@@ -230,6 +245,7 @@ export const education: Education[] = [
     url: "https://hpi.de/",
     area: "IT-Systems Engineering",
     studyType: "Bachelor of Science",
+    startDate: "2011-08",
     endDate: "2014-08",
     location: "Potsdam, Germany",
   },
@@ -239,19 +255,23 @@ export const patents: Patent[] = [
   {
     name: "Cognitive Enterprise System",
     filedDate: "2017-03",
-    issuedDate: "2018-05",
+    issuedDate: "2022-03",
     numbers: [
       {
-        id: "US 20190332956",
-        url: "https://assignment.uspto.gov/patent/index.html#/patent/search/resultAbstract?searchInput=20180144257&id=20190332956&type=publNum",
+        id: "US 11,275,894 B2",
+        url: "https://patents.google.com/patent/US11275894B2/en",
       },
       {
-        id: "US 20180144053",
-        url: "https://assignment.uspto.gov/patent/index.html#/patent/search/resultAbstract?searchInput=20180144053&id=20180144053&type=publNum",
+        id: "US 2019/0332956 A1",
+        url: "https://patents.google.com/patent/US20190332956A1/en",
       },
       {
-        id: "US 20180144257",
-        url: "https://assignment.uspto.gov/patent/index.html#/patent/search/resultAbstract?searchInput=20180144053&id=20180144257&type=publNum",
+        id: "US 2018/0144053 A1",
+        url: "https://patents.google.com/patent/US20180144053A1/en",
+      },
+      {
+        id: "US 2018/0144257 A1",
+        url: "https://patents.google.com/patent/US20180144257A1/en",
       },
     ],
   },

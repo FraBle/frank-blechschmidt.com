@@ -18,14 +18,8 @@ describe("themeConfig", () => {
     expect(themeConfig.twitter?.creator).toBe("@FraBle90");
   });
 
-  it("has three nav items", () => {
-    expect(themeConfig.nav).toHaveLength(3);
-    expect(themeConfig.nav[0]).toEqual({ name: "About", url: "/about" });
-    expect(themeConfig.nav[1]).toEqual({
-      name: "Resume",
-      url: "/resume_frank_blechschmidt.pdf",
-    });
-    expect(themeConfig.nav[2]).toEqual({ name: "Contact", url: "/contact" });
+  it("has no nav items (single-page layout)", () => {
+    expect(themeConfig.nav).toHaveLength(0);
   });
 
   it("has footer config", () => {
@@ -49,7 +43,7 @@ describe("redirects", () => {
       "https://www.linkedin.com/in/fblechschmidt",
     );
     expect(redirects.github).toBe("https://github.com/FraBle");
-    expect(redirects.twitter).toBe("https://twitter.com/FraBle90");
+    expect(redirects.twitter).toBe("https://x.com/FraBle90");
     expect(redirects.facebook).toBe("https://www.facebook.com/FraBle90");
     expect(redirects.youtube).toBe(
       "https://www.youtube.com/c/FrankBlechschmidt",
