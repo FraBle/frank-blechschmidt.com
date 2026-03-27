@@ -7,10 +7,7 @@ export const themeConfig: PortfolioConfig = {
   author: basics.name,
   site: basics.url,
   theme: "default",
-  nav: [
-    { name: "Home", url: "/" },
-    { name: "Resume", url: "/resume_frank_blechschmidt.pdf" },
-  ],
+  nav: [],
   footer: {
     text: "Privacy Policy",
     url: "https://www.iubenda.com/privacy-policy/35628899",
