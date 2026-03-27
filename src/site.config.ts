@@ -8,9 +8,8 @@ export const themeConfig: PortfolioConfig = {
   site: basics.url,
   theme: "default",
   nav: [
-    { name: "About", url: "/about" },
+    { name: "Home", url: "/" },
     { name: "Resume", url: "/resume_frank_blechschmidt.pdf" },
-    { name: "Contact", url: "/contact" },
   ],
   footer: {
     text: "Privacy Policy",

@@ -18,14 +18,13 @@ describe("themeConfig", () => {
     expect(themeConfig.twitter?.creator).toBe("@FraBle90");
   });
 
-  it("has three nav items", () => {
-    expect(themeConfig.nav).toHaveLength(3);
-    expect(themeConfig.nav[0]).toEqual({ name: "About", url: "/about" });
+  it("has two nav items", () => {
+    expect(themeConfig.nav).toHaveLength(2);
+    expect(themeConfig.nav[0]).toEqual({ name: "Home", url: "/" });
     expect(themeConfig.nav[1]).toEqual({
       name: "Resume",
       url: "/resume_frank_blechschmidt.pdf",
     });
-    expect(themeConfig.nav[2]).toEqual({ name: "Contact", url: "/contact" });
   });
 
   it("has footer config", () => {
