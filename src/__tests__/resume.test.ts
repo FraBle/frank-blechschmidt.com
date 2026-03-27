@@ -71,10 +71,10 @@ describe("education", () => {
 });
 
 describe("patents", () => {
-  it("has one patent with three numbers", () => {
+  it("has one patent with four numbers", () => {
     expect(patents).toHaveLength(1);
     expect(patents[0].name).toBe("Cognitive Enterprise System");
-    expect(patents[0].numbers).toHaveLength(3);
+    expect(patents[0].numbers).toHaveLength(4);
   });
 });
 

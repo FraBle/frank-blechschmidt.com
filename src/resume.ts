@@ -239,19 +239,23 @@ export const patents: Patent[] = [
   {
     name: "Cognitive Enterprise System",
     filedDate: "2017-03",
-    issuedDate: "2018-05",
+    issuedDate: "2022-03",
     numbers: [
       {
-        id: "US 20190332956",
-        url: "https://assignment.uspto.gov/patent/index.html#/patent/search/resultAbstract?searchInput=20180144257&id=20190332956&type=publNum",
+        id: "US 11,275,894 B2",
+        url: "https://patents.google.com/patent/US11275894B2/en",
       },
       {
-        id: "US 20180144053",
-        url: "https://assignment.uspto.gov/patent/index.html#/patent/search/resultAbstract?searchInput=20180144053&id=20180144053&type=publNum",
+        id: "US 2019/0332956 A1",
+        url: "https://patents.google.com/patent/US20190332956A1/en",
       },
       {
-        id: "US 20180144257",
-        url: "https://assignment.uspto.gov/patent/index.html#/patent/search/resultAbstract?searchInput=20180144053&id=20180144257&type=publNum",
+        id: "US 2018/0144053 A1",
+        url: "https://patents.google.com/patent/US20180144053A1/en",
+      },
+      {
+        id: "US 2018/0144257 A1",
+        url: "https://patents.google.com/patent/US20180144257A1/en",
       },
     ],
   },
