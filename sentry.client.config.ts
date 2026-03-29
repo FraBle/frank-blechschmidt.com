@@ -2,6 +2,7 @@ import * as Sentry from "@sentry/astro";
 
 Sentry.init({
   dsn: import.meta.env.PUBLIC_SENTRY_DSN,
+  tunnel: "/tunnel",
   environment: import.meta.env.PUBLIC_SENTRY_ENVIRONMENT || "production",
   sendDefaultPii: false,
   integrations: [
