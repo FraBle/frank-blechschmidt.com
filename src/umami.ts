@@ -21,29 +21,39 @@ export async function handleScriptProxy(): Promise<Response> {
   }
 }
 
-export async function handleEventProxy(
+export async function validateEventBody(
   request: Request,
   expectedWebsiteId: string,
-): Promise<Response> {
+): Promise<{ body: string } | Response> {
   const contentType = request.headers.get("content-type") ?? "";
   if (!contentType.includes("application/json")) {
     return new Response("Invalid content type", { status: 400 });
   }
 
-  try {
-    const body = await request.text();
-    if (body.length > MAX_BODY_SIZE) {
-      return new Response("Payload too large", { status: 413 });
-    }
+  const body = await request.text();
+  if (body.length > MAX_BODY_SIZE) {
+    return new Response("Payload too large", { status: 413 });
+  }
 
-    const parsed = JSON.parse(body);
-    if (parsed?.payload?.website !== expectedWebsiteId) {
-      return new Response("Forbidden", { status: 403 });
-    }
+  const parsed = JSON.parse(body);
+  if (parsed?.payload?.website !== expectedWebsiteId) {
+    return new Response("Forbidden", { status: 403 });
+  }
+
+  return { body };
+}
+
+export async function handleEventProxy(
+  request: Request,
+  expectedWebsiteId: string,
+): Promise<Response> {
+  try {
+    const result = await validateEventBody(request, expectedWebsiteId);
+    if (result instanceof Response) return result;
 
     const response = await fetch(EVENT_UPSTREAM, {
       method: "POST",
-      body,
+      body: result.body,
       headers: { "Content-Type": "application/json" },
     });
 
