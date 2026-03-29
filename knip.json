@@ -1,6 +1,8 @@
 {
+  "entry": [
+    "worker-entry.ts"
+  ],
   "ignoreDependencies": [
-    "sass",
-    "@sentry/cloudflare"
+    "sass"
   ]
 }
