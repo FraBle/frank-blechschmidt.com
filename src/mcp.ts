@@ -190,17 +190,24 @@ export async function handleMcpRequest(request: Request): Promise<Response> {
 
   await server.connect(transport);
 
-  const response = await transport.handleRequest(request);
+  try {
+    const response = await transport.handleRequest(request);
 
-  // Add CORS headers to the response
-  const headers = new Headers(response.headers);
-  for (const [key, value] of Object.entries(CORS_HEADERS)) {
-    headers.set(key, value);
+    console.log("MCP request:", request.method, response.status);
+
+    // Add CORS headers to the response
+    const headers = new Headers(response.headers);
+    for (const [key, value] of Object.entries(CORS_HEADERS)) {
+      headers.set(key, value);
+    }
+
+    return new Response(response.body, {
+      status: response.status,
+      statusText: response.statusText,
+      headers,
+    });
+  } catch (err) {
+    console.error("MCP request failed:", request.method, err);
+    throw err;
   }
-
-  return new Response(response.body, {
-    status: response.status,
-    statusText: response.statusText,
-    headers,
-  });
 }

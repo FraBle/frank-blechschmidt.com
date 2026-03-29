@@ -25,10 +25,12 @@ export async function handleSubdomain(
   const subdomain = extractSubdomain(url.hostname);
 
   if (subdomain && subdomain in redirects) {
+    console.log("Subdomain redirect:", subdomain, "->", redirects[subdomain]);
     return context.redirect(redirects[subdomain], 302);
   }
 
   if (subdomain && subdomain !== "www") {
+    console.warn("Unknown subdomain:", subdomain);
     return new Response("Not Found", { status: 404 });
   }
 
