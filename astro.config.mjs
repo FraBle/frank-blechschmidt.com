@@ -25,6 +25,11 @@ export default defineConfig({
           project: 'frank-blechschmidt-com',
           authToken: process.env.SENTRY_AUTH_TOKEN,
           telemetry: false,
+          // Server-side Sentry is handled by worker-entry.ts via @sentry/cloudflare's
+          // withSentry wrapper. Disabling here avoids double init and works around
+          // a regex mismatch in @sentry/astro's Vite plugin that fails to wrap the
+          // @astrojs/cloudflare v13 export pattern.
+          enabled: { server: false },
           sourceMapsUploadOptions: {
             assets: ['dist/server/**/*', 'dist/client/**/*'],
           },

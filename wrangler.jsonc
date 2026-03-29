@@ -7,7 +7,7 @@
 		{ "pattern": "frank-blechschmidt.com", "custom_domain": true },
 		{ "pattern": "*.frank-blechschmidt.com/*", "zone_name": "frank-blechschmidt.com" }
 	],
-	"main": "@astrojs/cloudflare/entrypoints/server",
+	"main": "./worker-entry.ts",
 	"assets": {
 		"directory": "./dist",
 		"binding": "ASSETS"
