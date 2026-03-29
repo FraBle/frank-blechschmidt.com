@@ -24,6 +24,9 @@ coverage/
 !.vscode/extensions.json
 *.code-workspace
 
+# Worktrees
+.worktrees/
+
 # Environment
 .env
 .env.*

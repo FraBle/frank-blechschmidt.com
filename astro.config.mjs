@@ -17,7 +17,12 @@ export default defineConfig({
   integrations: [
     sitemap(),
     ...(process.env.PUBLIC_UMAMI_WEBSITE_ID
-      ? [umami({ id: process.env.PUBLIC_UMAMI_WEBSITE_ID })]
+      ? [umami({
+          id: process.env.PUBLIC_UMAMI_WEBSITE_ID,
+          endpointUrl: 'https://frank-blechschmidt.com',
+          trackerScriptName: 'a/script.js',
+          hostUrl: '/a',
+        })]
       : []),
     ...(process.env.SENTRY_AUTH_TOKEN
       ? [sentry({

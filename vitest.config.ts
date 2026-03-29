@@ -12,6 +12,8 @@ export default defineConfig({
         "src/mcp.ts", // MCP SDK transport requires multi-step protocol (init → request); not unit-testable
         "src/pages/mcp.ts",
         "src/pages/tunnel.ts",
+        "src/pages/a/script.js.ts",
+        "src/pages/a/api/send.ts",
         "src/content.config.ts",
       ],
       thresholds: {
