@@ -97,8 +97,7 @@ describe("MCP server", () => {
       }),
     );
     expect(response.status).toBe(200);
-    const text = await response.text();
-    const data = JSON.parse(text.split("data: ")[1]);
+    const data = await response.json();
     expect(data.result.tools).toEqual([]);
   });
 
@@ -119,8 +118,7 @@ describe("MCP server", () => {
       }),
     );
     expect(response.status).toBe(200);
-    const text = await response.text();
-    const data = JSON.parse(text.split("data: ")[1]);
+    const data = await response.json();
     expect(data.result.prompts).toEqual([]);
   });
 

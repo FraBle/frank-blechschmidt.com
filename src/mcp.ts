@@ -185,6 +185,7 @@ export async function handleMcpRequest(request: Request): Promise<Response> {
   const server = createServer();
   const transport = new WebStandardStreamableHTTPServerTransport({
     sessionIdGenerator: undefined,
+    enableJsonResponse: true,
   });
 
   await server.connect(transport);
