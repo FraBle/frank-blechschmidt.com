@@ -1,4 +1,4 @@
-## Post-Merge Cleanup
+# Post-Merge Cleanup
 
 Run the standard post-merge cleanup sequence: switch to main, pull latest changes, and remove any local branches whose remote tracking branch has been deleted.
 
@@ -10,16 +10,19 @@ Execute these commands in order. Stop and report if any step fails.
    If `git status --porcelain` produces output, warn the user and ask before proceeding. Uncommitted work would be lost on branch switch.
 
 2. **Switch to main and pull**
+
    ```bash
    git checkout main && git pull
    ```
 
 3. **Fetch with prune to update remote tracking state**
+
    ```bash
    git fetch --prune
    ```
 
 4. **List branches to check for [gone] status**
+
    ```bash
    git branch -v
    ```
