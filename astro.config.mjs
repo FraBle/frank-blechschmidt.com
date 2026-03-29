@@ -33,6 +33,11 @@ export default defineConfig({
           sourceMapsUploadOptions: {
             assets: ['dist/server/**/*', 'dist/client/**/*'],
           },
+          unstable_sentryVitePluginOptions: {
+            release: {
+              setCommits: { auto: true },
+            },
+          },
         })]
       : []),
     favicons({
