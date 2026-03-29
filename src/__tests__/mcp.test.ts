@@ -42,6 +42,9 @@ describe("MCP server", () => {
     expect(response.status).toBe(204);
     expect(response.headers.get("access-control-allow-origin")).toBe("*");
     expect(response.headers.get("access-control-allow-methods")).toContain("POST");
+    expect(response.headers.get("access-control-allow-headers")).toContain("Mcp-Protocol-Version");
+    expect(response.headers.get("access-control-allow-headers")).toContain("Last-Event-ID");
+    expect(response.headers.get("access-control-expose-headers")).toContain("Mcp-Protocol-Version");
   });
 
   it("includes CORS headers in POST response", async () => {
@@ -75,6 +78,48 @@ describe("MCP server", () => {
       }),
     );
     expect([200, 405]).toContain(response.status);
+  });
+
+  it("returns empty tools list", async () => {
+    const response = await handleMcpRequest(
+      new Request("https://frank-blechschmidt.com/mcp", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json, text/event-stream",
+        },
+        body: JSON.stringify({
+          jsonrpc: "2.0",
+          id: 1,
+          method: "tools/list",
+          params: {},
+        }),
+      }),
+    );
+    expect(response.status).toBe(200);
+    const data = await response.json();
+    expect(data.result.tools).toEqual([]);
+  });
+
+  it("returns empty prompts list", async () => {
+    const response = await handleMcpRequest(
+      new Request("https://frank-blechschmidt.com/mcp", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json, text/event-stream",
+        },
+        body: JSON.stringify({
+          jsonrpc: "2.0",
+          id: 1,
+          method: "prompts/list",
+          params: {},
+        }),
+      }),
+    );
+    expect(response.status).toBe(200);
+    const data = await response.json();
+    expect(data.result.prompts).toEqual([]);
   });
 
   it("rejects invalid JSON-RPC", async () => {
