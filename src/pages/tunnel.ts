@@ -1,7 +1,8 @@
 import type { APIRoute } from "astro";
 
-const SENTRY_HOST = "o4511103759482880.ingest.us.sentry.io";
-const SENTRY_PROJECT_ID = "4511103777374208";
+const sentryDsn = new URL(import.meta.env.PUBLIC_SENTRY_DSN);
+const SENTRY_HOST = sentryDsn.hostname;
+const SENTRY_PROJECT_ID = sentryDsn.pathname.replace("/", "");
 
 export const POST: APIRoute = async ({ request }) => {
   try {
