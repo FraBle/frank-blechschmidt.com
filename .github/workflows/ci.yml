@@ -5,17 +5,9 @@ on: # yamllint disable-line rule:truthy
   push:
     branches:
       - main
-    paths-ignore:
-      - "**/*.md"
-      - docs/**
-      - LICENSE
   pull_request:
     branches:
       - main
-    paths-ignore:
-      - "**/*.md"
-      - docs/**
-      - LICENSE
 
 concurrency:
   group: ci-${{ github.event.pull_request.number || github.ref }}
