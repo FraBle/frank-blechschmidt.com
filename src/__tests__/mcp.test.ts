@@ -42,6 +42,9 @@ describe("MCP server", () => {
     expect(response.status).toBe(204);
     expect(response.headers.get("access-control-allow-origin")).toBe("*");
     expect(response.headers.get("access-control-allow-methods")).toContain("POST");
+    expect(response.headers.get("access-control-allow-headers")).toContain("Mcp-Protocol-Version");
+    expect(response.headers.get("access-control-allow-headers")).toContain("Last-Event-ID");
+    expect(response.headers.get("access-control-expose-headers")).toContain("Mcp-Protocol-Version");
   });
 
   it("includes CORS headers in POST response", async () => {
