@@ -1,6 +1,10 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { WebStandardStreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/webStandardStreamableHttp.js";
 import {
+  ListToolsRequestSchema,
+  ListPromptsRequestSchema,
+} from "@modelcontextprotocol/sdk/types.js";
+import {
   basics,
   work,
   education,
@@ -146,6 +150,12 @@ function createServer(): McpServer {
       ],
     }),
   );
+
+  // Register empty tool/prompt list handlers so clients that probe all
+  // capabilities (e.g. MCP Playground) get empty lists instead of errors.
+  server.server.registerCapabilities({ tools: {}, prompts: {} });
+  server.server.setRequestHandler(ListToolsRequestSchema, () => ({ tools: [] }));
+  server.server.setRequestHandler(ListPromptsRequestSchema, () => ({ prompts: [] }));
 
   return server;
 }
