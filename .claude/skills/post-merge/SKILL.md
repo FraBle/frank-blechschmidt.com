@@ -1,3 +1,10 @@
+---
+name: post-merge
+description: Post-merge branch cleanup — switches to main, pulls latest, and deletes local branches whose remote tracking branch is gone. Use when a PR has been merged and the user wants to clean up, go back to main, or says "post-merge", "clean up branches", "pull and clean", or "go back to main".
+disable-model-invocation: true
+allowed-tools: Bash(git *)
+---
+
 # Post-Merge Cleanup
 
 Run the standard post-merge cleanup sequence: switch to main, pull latest changes, and remove any local branches whose remote tracking branch has been deleted.
