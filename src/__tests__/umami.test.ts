@@ -79,21 +79,8 @@ describe("handleEventProxy", () => {
     expect(await response.text()).toBe("Invalid content type");
   });
 
-  it("returns 413 when content-length exceeds limit", async () => {
-    const request = new Request("https://example.com/a/api/send", {
-      method: "POST",
-      body: "{}",
-      headers: {
-        "Content-Type": "application/json",
-        "Content-Length": "100000",
-      },
-    });
-    const response = await handleEventProxy(request, TEST_WEBSITE_ID);
-    expect(response.status).toBe(413);
-  });
-
   it("returns 413 when body exceeds limit", async () => {
-    const largeBody = "a".repeat(65537);
+    const largeBody = `{"payload":{"website":"${TEST_WEBSITE_ID}","data":"${"x".repeat(65536)}"}}`;
     const request = makeRequest(largeBody);
     const response = await handleEventProxy(request, TEST_WEBSITE_ID);
     expect(response.status).toBe(413);

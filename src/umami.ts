@@ -23,16 +23,11 @@ export async function handleScriptProxy(): Promise<Response> {
 
 export async function handleEventProxy(
   request: Request,
-  expectedWebsiteId: string | undefined,
+  expectedWebsiteId: string,
 ): Promise<Response> {
   const contentType = request.headers.get("content-type") ?? "";
   if (!contentType.includes("application/json")) {
     return new Response("Invalid content type", { status: 400 });
-  }
-
-  const contentLength = request.headers.get("content-length");
-  if (contentLength && parseInt(contentLength, 10) > MAX_BODY_SIZE) {
-    return new Response("Payload too large", { status: 413 });
   }
 
   try {
