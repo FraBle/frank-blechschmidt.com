@@ -173,6 +173,15 @@ export async function handleMcpRequest(request: Request): Promise<Response> {
     return new Response(null, { status: 204, headers: CORS_HEADERS });
   }
 
+  // Ensure Accept header includes both required MIME types.
+  // Some clients (e.g. MCP Playground) omit one, causing the SDK to reject with 406.
+  const accept = request.headers.get("accept") ?? "";
+  if (!accept.includes("application/json") || !accept.includes("text/event-stream")) {
+    const headers = new Headers(request.headers);
+    headers.set("Accept", "application/json, text/event-stream");
+    request = new Request(request, { headers });
+  }
+
   const server = createServer();
   const transport = new WebStandardStreamableHTTPServerTransport({
     sessionIdGenerator: undefined,
