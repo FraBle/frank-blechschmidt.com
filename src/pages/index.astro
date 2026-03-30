@@ -185,14 +185,14 @@ const extraCommands: KeyboardCommand[] = [
           </svg>
           Machine-Readable
         </h3>
-        <div class="flex flex-wrap gap-2">
+        <div class="flex flex-wrap gap-1">
           {machineReadable.map((item) => (
             <a
               href={item.url}
               target="_blank"
               rel="noopener noreferrer"
               title={item.description}
-              class="ai-pill inline-flex items-center gap-1.5 rounded-md border border-skin-hue/20 bg-skin-button-accent/10 px-2.5 py-1 text-xs text-skin-hue transition-colors hover:bg-skin-button-accent hover:text-skin-inverted"
+              class="ai-pill inline-flex items-center gap-1.5 rounded-md border border-skin-hue/20 bg-skin-button-accent/10 px-2 py-1 text-xs text-skin-hue transition-colors hover:bg-skin-button-accent hover:text-skin-inverted"
             >
               {item.name}
             </a>
