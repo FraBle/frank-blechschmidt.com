@@ -15,6 +15,7 @@ export default defineConfig({
         "src/pages/a/script.js.ts",
         "src/pages/a/api/send.ts",
         "src/content.config.ts",
+        "src/scripts/tracking.ts", // Client-side DOM script, not unit-testable
       ],
       thresholds: {
         statements: 100,

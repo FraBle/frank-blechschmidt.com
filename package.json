@@ -12,7 +12,7 @@
     "astro": "astro",
     "generate-types": "wrangler types",
     "commitlint": "commitlint",
-    "lint": "oxlint",
+    "lint": "oxlint --ignore-pattern '*.astro'",
     "lint:md": "markdownlint-cli2 \"**/*.md\" \"#node_modules\"",
     "lint-staged": "lint-staged",
     "prepare": "husky",

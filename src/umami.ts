@@ -51,10 +51,18 @@ export async function handleEventProxy(
     const result = await validateEventBody(request, expectedWebsiteId);
     if (result instanceof Response) return result;
 
+    const headers: Record<string, string> = {
+      "Content-Type": "application/json",
+    };
+    const userAgent = request.headers.get("user-agent");
+    if (userAgent) {
+      headers["User-Agent"] = userAgent;
+    }
+
     const response = await fetch(EVENT_UPSTREAM, {
       method: "POST",
       body: result.body,
-      headers: { "Content-Type": "application/json" },
+      headers,
     });
 
     return new Response(response.body, { status: response.status });
