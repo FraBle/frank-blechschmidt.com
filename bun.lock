@@ -18,7 +18,7 @@
         "astro-favicons": "^3.1.6",
         "astro-llms-generate": "^1.3.3",
         "astro-skills": "^0.0.5",
-        "dev-portfolio-ai": "github:FraBle/dev-portfolio-ai#5ed93a8",
+        "dev-portfolio-ai": "github:FraBle/dev-portfolio-ai#d022609",
         "hotkeypad": "^0.1.0",
         "simple-icons-astro": "^16.0.0",
         "tailwindcss": "^4.1.0",
@@ -882,7 +882,7 @@
 
     "detect-libc": ["detect-libc@2.1.2", "", {}, "sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ=="],
 
-    "dev-portfolio-ai": ["dev-portfolio-ai@github:FraBle/dev-portfolio-ai#5ed93a8", { "peerDependencies": { "@alpinejs/collapse": "^3.15.0", "@tailwindcss/vite": "^4.0.0", "alpinejs": "^3.15.0", "astro": "^6.0.0", "hotkeypad": "^0.1.0", "simple-icons-astro": "^16.0.0", "tailwindcss": "^4.0.0" }, "optionalPeers": ["hotkeypad"] }, "FraBle-dev-portfolio-ai-5ed93a8", "sha512-EyC8R3psgYgYSV441QSwdEsA86dGnkLQ7Y8awGI75cTdQ38XmnbAuASV9TEtp7uhEXShyD5+v7GX8CtRiZglbg=="],
+    "dev-portfolio-ai": ["dev-portfolio-ai@github:FraBle/dev-portfolio-ai#d022609", { "peerDependencies": { "@alpinejs/collapse": "^3.15.0", "@tailwindcss/vite": "^4.0.0", "alpinejs": "^3.15.0", "astro": "^6.0.0", "hotkeypad": "^0.1.0", "simple-icons-astro": "^16.0.0", "tailwindcss": "^4.0.0" }, "optionalPeers": ["hotkeypad"] }, "FraBle-dev-portfolio-ai-d022609", "sha512-73+z+U+pAORUJgo7FghBHJIdxInswrq8KHe1yRAvpG47esdAaDhpgAel5gqMa0lNNYxxGs6N+Qe1+7/Zj3WFew=="],
 
     "devalue": ["devalue@5.6.4", "", {}, "sha512-Gp6rDldRsFh/7XuouDbxMH3Mx8GMCcgzIb1pDTvNyn8pZGQ22u+Wa+lGV9dQCltFQ7uVw0MhRyb8XDskNFOReA=="],
 
