@@ -307,6 +307,11 @@ const extraCommands: KeyboardCommand[] = [
   <KeyboardManager profiles={basics.profiles} extraCommands={extraCommands} />
 </BaseLayout>
 
+<style is:global>
+  #normal-footer {
+    display: none !important;
+  }
+</style>
 <style>
   @page {
     size: auto;
