@@ -77,7 +77,7 @@ const extraCommands: KeyboardCommand[] = [
 ];
 ---
 
-<BaseLayout title={`${basics.name} — ${basics.label}`} config={themeConfig} description={`${basics.label} with 10+ years in cloud infrastructure & developer platforms. Currently at ${work[0].company}. Previously ${work[1].company}, ${work[2].company}, ${work[5].company.split(" ")[0]}.`}>
+<BaseLayout title={`${basics.name} — ${basics.jobTitle}`} config={themeConfig} description={`${basics.name} is a ${basics.jobTitle} in the Bay Area with 10+ years building cloud infrastructure & developer platforms. Currently at ${work[0].company}, previously ${work[1].company}, ${work[2].company}, ${work[5].company.split(" ")[0]}.`}>
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@graph": [
@@ -104,7 +104,7 @@ const extraCommands: KeyboardCommand[] = [
         "url": basics.url,
         "image": basics.image,
         "description": basics.summary,
-        "jobTitle": basics.label,
+        "jobTitle": basics.jobTitle,
         "worksFor": {
           "@type": "Organization",
           "name": work[0].company,
