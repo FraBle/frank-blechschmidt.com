@@ -39,9 +39,10 @@ export const GET: APIRoute = () => {
     "",
     "## Patents",
     "",
-    ...patents.map(
-      (p) => `- ${p.name} (${p.numbers[0].id}) — ${p.numbers.map((n) => `[${n.id}](${n.url})`).join(", ")}`,
-    ),
+    ...patents.map((p) => {
+      const links = p.numbers.map((n) => `[${n.id}](${n.url})`).join(", ");
+      return `- ${p.name} (${p.numbers[0].id}) — ${links}`;
+    }),
     "",
     "## Technical Skills",
     "",

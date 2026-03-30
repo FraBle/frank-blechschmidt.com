@@ -69,7 +69,7 @@ export const GET: APIRoute = () => {
       "",
       "Systems and methods for processing natural language queries through dynamic knowledge graphs to enable intelligent, conversational interactions with enterprise resource planning data.",
       "",
-      `Patent numbers: ${p.numbers.map((n) => `[${n.id}](${n.url})`).join(", ")}`,
+      "Patent numbers: " + p.numbers.map((n) => `[${n.id}](${n.url})`).join(", "),
       "",
     ]),
     "---",
