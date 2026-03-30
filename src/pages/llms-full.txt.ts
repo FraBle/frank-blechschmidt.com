@@ -34,16 +34,10 @@ export const GET: APIRoute = () => {
         `${job.location} | ${period}`,
         "",
       ];
-      if (job.summary) {
-        block.push(job.summary, "");
-      }
-      if (job.responsibilities.length > 0) {
-        block.push("**Responsibilities:**", "");
-        block.push(...job.responsibilities.map((r) => `- ${r}`), "");
-      }
-      if (job.achievements.length > 0) {
-        block.push("**Achievements:**", "");
-        block.push(...job.achievements.map((a) => `- ${a}`), "");
+      if (job.summary) block.push(job.summary, "");
+      for (const [label, items] of [["Responsibilities", job.responsibilities], ["Achievements", job.achievements]] as const) {
+        if (items.length === 0) continue;
+        block.push(`**${label}:**`, "", ...items.map((item) => `- ${item}`), "");
       }
       return block;
     }),

@@ -1,5 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { GET as getResumeJson } from "../pages/resume.json";
+import { GET as getLlmsTxt } from "../pages/llms.txt";
+import { GET as getLlmsFullTxt } from "../pages/llms-full.txt";
 import { GET as getAiPlugin } from "../pages/.well-known/ai-plugin.json";
 import { GET as getMcpJson } from "../pages/.well-known/mcp.json";
 import { GET as getSecurityTxt } from "../pages/.well-known/security.txt";
@@ -35,6 +37,55 @@ describe("resume.json", () => {
   it("returns application/json content type", () => {
     const response = getResumeJson(mockContext("https://frank-blechschmidt.com/resume.json"));
     expect(response.headers.get("content-type")).toBe("application/json");
+  });
+});
+
+describe("llms.txt", () => {
+  it("returns structured markdown profile", async () => {
+    const response = getLlmsTxt(mockContext("https://frank-blechschmidt.com/llms.txt"));
+    const body = await response.text();
+
+    expect(body).toContain("# Frank Blechschmidt");
+    expect(body).toContain("## Experience");
+    expect(body).toContain("## Education");
+    expect(body).toContain("## Technical Skills");
+    expect(body).toContain("## Patents");
+    expect(body).toContain("## Open Source");
+    expect(body).toContain("dbt Labs");
+    expect(body).toContain("llms-full.txt");
+  });
+
+  it("returns text/plain content type", () => {
+    const response = getLlmsTxt(mockContext("https://frank-blechschmidt.com/llms.txt"));
+    expect(response.headers.get("content-type")).toBe("text/plain; charset=utf-8");
+  });
+});
+
+describe("llms-full.txt", () => {
+  it("returns comprehensive markdown profile", async () => {
+    const response = getLlmsFullTxt(mockContext("https://frank-blechschmidt.com/llms-full.txt"));
+    const body = await response.text();
+
+    expect(body).toContain("# Frank Blechschmidt");
+    expect(body).toContain("## Experience");
+    expect(body).toContain("**Achievements:**");
+    expect(body).toContain("## Manager Toolbox");
+    expect(body).toContain("## Machine-Readable Endpoints");
+    expect(body).toContain("resume.json");
+  });
+
+  it("contains no UI artifacts", async () => {
+    const response = getLlmsFullTxt(mockContext("https://frank-blechschmidt.com/llms-full.txt"));
+    const body = await response.text();
+
+    expect(body).not.toContain("Show more");
+    expect(body).not.toContain("Copied!");
+    expect(body).not.toContain("System  Light  Dark");
+  });
+
+  it("returns text/plain content type", () => {
+    const response = getLlmsFullTxt(mockContext("https://frank-blechschmidt.com/llms-full.txt"));
+    expect(response.headers.get("content-type")).toBe("text/plain; charset=utf-8");
   });
 });
 
