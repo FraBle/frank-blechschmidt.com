@@ -15,6 +15,7 @@ export default defineConfig({
         "src/pages/a/script.js.ts",
         "src/pages/a/api/send.ts",
         "src/content.config.ts",
+        "src/scripts/**", // Client-side browser scripts; not testable in Node
       ],
       thresholds: {
         statements: 100,
