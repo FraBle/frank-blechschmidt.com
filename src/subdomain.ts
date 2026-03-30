@@ -26,7 +26,7 @@ export async function handleSubdomain(
 
   if (subdomain && subdomain in redirects) {
     console.log("Subdomain redirect:", subdomain, "->", redirects[subdomain]);
-    return context.redirect(redirects[subdomain], 302);
+    return context.redirect(redirects[subdomain], 301);
   }
 
   if (subdomain && subdomain !== "www") {

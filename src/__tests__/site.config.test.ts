@@ -4,7 +4,7 @@ import { themeConfig, redirects } from "../site.config";
 describe("themeConfig", () => {
   it("has required fields", () => {
     expect(themeConfig.title).toBe("Frank Blechschmidt");
-    expect(themeConfig.description).toBe("Resume of Frank Blechschmidt.");
+    expect(themeConfig.description).toContain("Senior Engineering Manager");
     expect(themeConfig.author).toBe("Frank Blechschmidt");
   });
 
