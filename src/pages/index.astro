@@ -80,36 +80,68 @@ const extraCommands: KeyboardCommand[] = [
 <BaseLayout title={`${basics.name} — ${basics.label}`} config={themeConfig} description={`${basics.label} with 10+ years in cloud infrastructure & developer platforms. Currently at ${work[0].company}. Previously ${work[1].company}, ${work[2].company}, ${work[5].company.split(" ")[0]}.`}>
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
-    "@type": "ProfilePage",
-    "url": basics.url,
-    "dateModified": new Date().toISOString().split("T")[0],
-    "mainEntity": {
-      "@type": "Person",
-      "name": basics.name,
-      "url": basics.url,
-      "image": basics.image,
-      "jobTitle": basics.label,
-      "worksFor": {
-        "@type": "Organization",
-        "name": work[0].company,
-        "url": work[0].url,
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": `${basics.url}/#website`,
+        "url": basics.url,
+        "name": basics.name,
+        "description": basics.summary,
+        "publisher": { "@id": `${basics.url}/#person` },
       },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": basics.location.city,
-        "addressRegion": basics.location.region,
-        "addressCountry": basics.location.countryCode,
+      {
+        "@type": "ProfilePage",
+        "@id": `${basics.url}/#profilepage`,
+        "url": basics.url,
+        "dateModified": new Date().toISOString().split("T")[0],
+        "isPartOf": { "@id": `${basics.url}/#website` },
+        "mainEntity": { "@id": `${basics.url}/#person` },
       },
-      "email": basics.email,
-      "telephone": basics.phone.replace(/[() ]/g, ""),
-      "sameAs": basics.profiles.map((p) => p.url),
-      "alumniOf": education.map((e) => ({
-        "@type": "CollegeOrUniversity",
-        "name": e.institution,
-        "url": e.url,
-      })),
-      "knowsAbout": technicalSkills.flatMap((s) => s.keywords).slice(0, 20),
-    },
+      {
+        "@type": "Person",
+        "@id": `${basics.url}/#person`,
+        "name": basics.name,
+        "url": basics.url,
+        "image": basics.image,
+        "description": basics.summary,
+        "jobTitle": basics.label,
+        "worksFor": {
+          "@type": "Organization",
+          "name": work[0].company,
+          "url": work[0].url,
+        },
+        "hasOccupation": work.slice(0, 4).map((job) => ({
+          "@type": "Occupation",
+          "name": job.position,
+          "occupationLocation": {
+            "@type": "AdministrativeArea",
+            "name": job.location,
+          },
+          ...(job.summary ? { "description": job.summary } : {}),
+        })),
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": basics.location.city,
+          "addressRegion": basics.location.region,
+          "addressCountry": basics.location.countryCode,
+        },
+        "email": basics.email,
+        "telephone": basics.phone.replace(/[() ]/g, ""),
+        "sameAs": basics.profiles.map((p) => p.url),
+        "alumniOf": education.map((e) => ({
+          "@type": "CollegeOrUniversity",
+          "name": e.institution,
+          "url": e.url,
+        })),
+        "knowsAbout": technicalSkills.flatMap((s) => s.keywords).slice(0, 20),
+        "hasCredential": patents.flatMap((p) => p.numbers.map((n) => ({
+          "@type": "EducationalOccupationalCredential",
+          "name": `Patent: ${p.name}`,
+          "credentialCategory": "patent",
+          "url": n.url,
+        }))),
+      },
+    ],
   })} />
 
   <main class="relative grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-6 md:p-16 xl:gap-24 print:max-w-none print:grid-cols-1 print:gap-6">
