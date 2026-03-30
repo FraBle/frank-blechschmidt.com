@@ -13,9 +13,18 @@
 /safari-pinned-tab*
   Cache-Control: public, max-age=604800
 
+# Homepage — canonical URL via HTTP Link header (Google-recognized alternative)
+/
+  Link: <https://frank-blechschmidt.com>; rel="canonical"
+
 # HTML and everything else — 1h browser, 1d CDN
 /*
   Cache-Control: public, max-age=3600, s-maxage=86400
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:
+  Cross-Origin-Opener-Policy: same-origin
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
 
 # Preview deployments — noindex
 https://:project.:subdomain.workers.dev/*

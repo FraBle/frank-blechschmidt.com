@@ -49,9 +49,9 @@ describe("handleSubdomain", () => {
 
     expect(ctx.redirect).toHaveBeenCalledWith(
       "https://www.linkedin.com/in/fblechschmidt",
-      302,
+      301,
     );
-    expect(response.status).toBe(302);
+    expect(response.status).toBe(301);
   });
 
   it("redirects known subdomains on localhost", async () => {
@@ -60,9 +60,9 @@ describe("handleSubdomain", () => {
 
     expect(ctx.redirect).toHaveBeenCalledWith(
       "https://github.com/FraBle",
-      302,
+      301,
     );
-    expect(response.status).toBe(302);
+    expect(response.status).toBe(301);
   });
 
   it("returns 404 for unknown subdomains", async () => {
@@ -80,9 +80,9 @@ describe("handleSubdomain", () => {
 
     expect(ctx.redirect).toHaveBeenCalledWith(
       "https://frank-blechschmidt.com",
-      302,
+      301,
     );
-    expect(response.status).toBe(302);
+    expect(response.status).toBe(301);
   });
 
   it("passes through for bare domain (no subdomain)", async () => {
@@ -115,7 +115,7 @@ describe("handleSubdomain", () => {
     for (const sub of subdomains) {
       const ctx = makeContext(`https://${sub}.frank-blechschmidt.com/`);
       const response = await handleSubdomain(ctx, next);
-      expect(response.status).toBe(302);
+      expect(response.status).toBe(301);
       expect(ctx.redirect).toHaveBeenCalled();
     }
   });

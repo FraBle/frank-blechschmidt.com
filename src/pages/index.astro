@@ -75,7 +75,7 @@ const extraCommands: KeyboardCommand[] = [
 ];
 ---
 
-<BaseLayout title={basics.name} config={themeConfig} description={basics.summary}>
+<BaseLayout title={`${basics.name} — ${basics.label}`} config={themeConfig} description={`${basics.label} with 10+ years in cloud infrastructure & developer platforms. Currently at ${work[0].company}. Previously ${work[1].company}, ${work[2].company}, ${work[5].company.split(" ")[0]}.`}>
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Person",

@@ -3,7 +3,7 @@ import { basics } from "./resume";
 
 export const themeConfig: PortfolioConfig = {
   title: basics.name,
-  description: `Resume of ${basics.name}.`,
+  description: `${basics.label} with 10+ years building cloud infrastructure & developer platforms. Currently at dbt Labs, previously Lattice, Box, and SAP.`,
   author: basics.name,
   site: basics.url,
   theme: "default",
