@@ -14,6 +14,7 @@ import {
 } from "dev-portfolio-ai";
 import type { ExperienceItem, EducationItem, ProjectItem, KeyboardCommand } from "dev-portfolio-ai";
 import { themeConfig } from "../site.config";
+import avatarImage from "../assets/avatar.jpg";
 import {
   basics,
   work,
@@ -109,7 +110,7 @@ const extraCommands: KeyboardCommand[] = [
       <Hero
         name={basics.name}
         label={basics.label}
-        image="/avatar.jpg"
+        image={avatarImage}
         email={basics.email}
         phone={basics.phone}
         location={{ city: basics.location.city, region: basics.location.region }}
