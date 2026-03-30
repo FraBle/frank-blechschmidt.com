@@ -1,6 +1,7 @@
 interface Basics {
   name: string;
   label: string;
+  jobTitle: string;
   email: string;
   phone: string;
   url: string;
@@ -63,12 +64,13 @@ interface SkillCategory {
 export const basics: Basics = {
   name: "Frank Blechschmidt",
   label: "Scaling platform teams and cloud infrastructure",
+  jobTitle: "Senior Engineering Manager",
   email: "contact@frank-blechschmidt.com",
   phone: "+1 (650) 213-2619",
   url: "https://frank-blechschmidt.com",
   image: "https://frank-blechschmidt.com/avatar.jpg",
   summary:
-    "Product-minded Senior Engineering Manager with 10+ years of experience building scalable cloud infrastructure and developer platforms. Expert in transforming internal tooling into reliable, product-grade systems that drive developer velocity and enterprise-grade reliability. Proven track record of scaling engineering cultures while maintaining a focus on simplicity and speed. Currently at dbt Labs, previously at Lattice, Box, and SAP.",
+    "Bay Area-based Senior Engineering Manager with 10+ years of experience building scalable cloud infrastructure and developer platforms. Expert in transforming internal tooling into reliable, product-grade systems that drive developer velocity and enterprise-grade reliability. Proven track record of scaling engineering cultures while maintaining a focus on simplicity and speed. Currently at dbt Labs, previously at Lattice, Box, and SAP.",
   location: {
     city: "Sunnyvale",
     region: "CA",

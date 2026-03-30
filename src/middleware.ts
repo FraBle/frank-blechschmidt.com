@@ -38,5 +38,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
   patched.headers.set("Content-Security-Policy", CSP_VALUE);
   patched.headers.set("Cross-Origin-Opener-Policy", "same-origin");
   patched.headers.set("X-Frame-Options", "DENY");
+  patched.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
+  patched.headers.set("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
   return patched;
 });

@@ -14,6 +14,7 @@ describe("basics", () => {
   it("has required personal info", () => {
     expect(basics.name).toBe("Frank Blechschmidt");
     expect(basics.label).toBe("Scaling platform teams and cloud infrastructure");
+    expect(basics.jobTitle).toBe("Senior Engineering Manager");
     expect(basics.email).toBe("contact@frank-blechschmidt.com");
     expect(basics.phone).toBe("+1 (650) 213-2619");
     expect(basics.url).toBe("https://frank-blechschmidt.com");

@@ -15,7 +15,9 @@ export default defineConfig({
   output: 'server',
   adapter: cloudflare({ prerenderEnvironment: 'node' }),
   integrations: [
-    sitemap(),
+    sitemap({
+      serialize: (item) => ({ ...item, lastmod: new Date() }),
+    }),
     ...(process.env.PUBLIC_UMAMI_WEBSITE_ID
       ? [umami({
           id: process.env.PUBLIC_UMAMI_WEBSITE_ID,

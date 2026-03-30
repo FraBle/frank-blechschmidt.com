@@ -3,7 +3,7 @@ import { basics } from "./resume";
 
 export const themeConfig: PortfolioConfig = {
   title: basics.name,
-  description: `${basics.label} with 10+ years building cloud infrastructure & developer platforms. Currently at dbt Labs, previously Lattice, Box, and SAP.`,
+  description: `${basics.name} is a ${basics.jobTitle} in the Bay Area with 10+ years building cloud infrastructure & developer platforms. Currently at dbt Labs, previously Lattice, Box, and SAP.`,
   author: basics.name,
   site: basics.url,
   theme: "default",
@@ -20,7 +20,7 @@ export const themeConfig: PortfolioConfig = {
     siteName: basics.name,
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     creator: /* v8 ignore next */ `@${basics.profiles.find((p) => p.network === "X")?.username ?? ""}`,
   },
   socialProfiles: basics.profiles.map((p) => p.url),
