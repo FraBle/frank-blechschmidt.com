@@ -307,6 +307,12 @@ const extraCommands: KeyboardCommand[] = [
   <KeyboardManager profiles={basics.profiles} extraCommands={extraCommands} />
 </BaseLayout>
 
+<style is:global>
+  /* Block-justify the About section text */
+  section:has(> h3:first-child) > p:last-child {
+    text-align: justify;
+  }
+</style>
 <style>
   @page {
     size: auto;
