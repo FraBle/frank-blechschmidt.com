@@ -236,7 +236,23 @@ const extraCommands: KeyboardCommand[] = [
       </div>
 
       <p class="no-print text-center text-xs text-skin-muted">Last updated {lastUpdated}</p>
-      <ThemeSwitch />
+      <div class="no-print relative flex flex-col gap-3 rounded-lg border border-skin-hue/20 p-4">
+        <h3 class="flex items-center gap-2 text-sm font-medium text-skin-base">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5" />
+            <path d="M12 1v2" />
+            <path d="M12 21v2" />
+            <path d="m4.22 4.22 1.42 1.42" />
+            <path d="m18.36 18.36 1.42 1.42" />
+            <path d="M1 12h2" />
+            <path d="M21 12h2" />
+            <path d="m4.22 19.78 1.42-1.42" />
+            <path d="m18.36 5.64 1.42-1.42" />
+          </svg>
+          Appearance
+        </h3>
+        <ThemeSwitch />
+      </div>
     </div>
     <div class="min-w-0 space-y-12 md:col-span-4 print:col-span-1 print:space-y-4">
       <Experience items={experienceItems} />
