@@ -283,17 +283,18 @@ const extraCommands: KeyboardCommand[] = [
   .ai-section {
     position: relative;
     overflow: hidden;
-    isolation: isolate;
-  }
-  .ai-section > :not(.ai-border) {
-    position: relative;
-    z-index: 1;
   }
   .ai-border {
     position: absolute;
     inset: 0;
     border-radius: 0.5rem;
+    padding: 1px;
     overflow: hidden;
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
     pointer-events: none;
   }
   .ai-border::before {
@@ -310,13 +311,6 @@ const extraCommands: KeyboardCommand[] = [
     opacity: 0.5;
     animation: border-shift 6s ease-in-out infinite;
     will-change: transform;
-  }
-  .ai-border::after {
-    content: "";
-    position: absolute;
-    inset: 1px;
-    border-radius: calc(0.5rem - 1px);
-    background: var(--color-fill);
   }
 
   /* Sparkle icon pulse */
