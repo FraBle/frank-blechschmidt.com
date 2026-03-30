@@ -155,7 +155,7 @@ const extraCommands: KeyboardCommand[] = [
         location={{ city: basics.location.city, region: basics.location.region }}
         profiles={basics.profiles}
       />
-      <a href="/resume_frank_blechschmidt.pdf" target="_blank" rel="noopener noreferrer" class="no-print flex items-center gap-3 rounded-lg border border-skin-muted/30 bg-skin-button-muted/50 p-3 transition-colors hover:border-skin-hue/30 hover:bg-skin-button-muted">
+      <a href="/resume_frank_blechschmidt.pdf" target="_blank" rel="noopener noreferrer" data-umami-event="resume_downloaded" class="no-print flex items-center gap-3 rounded-lg border border-skin-muted/30 bg-skin-button-muted/50 p-3 transition-colors hover:border-skin-hue/30 hover:bg-skin-button-muted">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-red-500">
           <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
           <polyline points="14 2 14 8 20 8" />
@@ -192,6 +192,8 @@ const extraCommands: KeyboardCommand[] = [
               target="_blank"
               rel="noopener noreferrer"
               title={item.description}
+              data-umami-event="machine_readable_clicked"
+              data-umami-event-format={item.name}
               class="ai-pill inline-flex items-center gap-1.5 rounded-md border border-skin-hue/20 bg-skin-button-accent/10 px-2 py-1 text-xs text-skin-hue transition-colors hover:bg-skin-button-accent hover:text-skin-inverted"
             >
               {item.name}
@@ -199,7 +201,7 @@ const extraCommands: KeyboardCommand[] = [
           ))}
         </div>
         <div
-          x-data={`{ copied: false, copy() { navigator.clipboard.writeText('npx @anthropic-ai/claude-code mcp add --transport http frank-blechschmidt https://frank-blechschmidt.com/mcp'); this.copied = true; setTimeout(() => this.copied = false, 3000); } }`}
+          x-data={`{ copied: false, copy() { navigator.clipboard.writeText('npx @anthropic-ai/claude-code mcp add --transport http frank-blechschmidt https://frank-blechschmidt.com/mcp'); this.copied = true; setTimeout(() => this.copied = false, 3000); if (typeof umami !== 'undefined') umami.track('mcp_command_copied'); } }`}
           class="relative mt-1"
         >
           <button
@@ -393,3 +395,32 @@ const extraCommands: KeyboardCommand[] = [
     100% { transform: translateX(100%); }
   }
 </style>
+
+<script>
+  function trackEvent(name: string, data?: Record<string, string>) {
+    if (typeof umami !== "undefined") umami.track(name, data);
+  }
+
+  // Track theme switches
+  document.querySelectorAll<HTMLButtonElement>('[role="radiogroup"] button[role="radio"]').forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const theme = btn.getAttribute("title")?.replace(" theme", "").toLowerCase();
+      if (theme) trackEvent("theme_switched", { theme });
+    });
+  });
+
+  // Track email copy
+  document.querySelector<HTMLButtonElement>('[x-data*="copyToClipboard"] button')?.addEventListener("click", () => {
+    trackEvent("email_copied");
+  });
+
+  // Track command palette opens
+  document.querySelectorAll(".footer-button").forEach((btn) => {
+    btn.addEventListener("click", () => trackEvent("command_palette_opened"));
+  });
+  document.addEventListener("keydown", (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+      trackEvent("command_palette_opened");
+    }
+  });
+</script>

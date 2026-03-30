@@ -13,11 +13,12 @@ function makeEventBody(websiteId: string): string {
 function makeRequest(
   body: string,
   contentType = "application/json",
+  extraHeaders: Record<string, string> = {},
 ): Request {
   return new Request("https://example.com/a/api/send", {
     method: "POST",
     body,
-    headers: { "Content-Type": contentType },
+    headers: { "Content-Type": contentType, ...extraHeaders },
   });
 }
 
@@ -125,6 +126,28 @@ describe("handleEventProxy", () => {
     expect(mockFetch).toHaveBeenCalledWith(
       "https://api-gateway.umami.dev/api/send",
       expect.objectContaining({ method: "POST" }),
+    );
+
+    vi.unstubAllGlobals();
+  });
+
+  it("forwards User-Agent header to upstream", async () => {
+    const body = makeEventBody(TEST_WEBSITE_ID);
+    const request = makeRequest(body, "application/json", {
+      "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)",
+    });
+
+    const mockFetch = vi.fn().mockResolvedValue(new Response("ok", { status: 200 }));
+    vi.stubGlobal("fetch", mockFetch);
+
+    await handleEventProxy(request, TEST_WEBSITE_ID);
+    expect(mockFetch).toHaveBeenCalledWith(
+      "https://api-gateway.umami.dev/api/send",
+      expect.objectContaining({
+        headers: expect.objectContaining({
+          "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)",
+        }),
+      }),
     );
 
     vi.unstubAllGlobals();
