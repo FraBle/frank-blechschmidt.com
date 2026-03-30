@@ -1,7 +1,7 @@
 declare const umami: { track: (name: string, data?: Record<string, string>) => void } | undefined;
 
 function trackEvent(name: string, data?: Record<string, string>) {
-  if (typeof umami !== "undefined") umami.track(name, data);
+  if (typeof umami !== "undefined" && umami && typeof umami.track === "function") umami.track(name, data);
 }
 
 // Track theme switches

@@ -201,7 +201,7 @@ const extraCommands: KeyboardCommand[] = [
           ))}
         </div>
         <div
-          x-data={`{ copied: false, copy() { navigator.clipboard.writeText('npx @anthropic-ai/claude-code mcp add --transport http frank-blechschmidt https://frank-blechschmidt.com/mcp'); this.copied = true; setTimeout(() => this.copied = false, 3000); if (typeof umami !== 'undefined') umami.track('mcp_command_copied'); } }`}
+          x-data={`{ copied: false, copy() { navigator.clipboard.writeText('npx @anthropic-ai/claude-code mcp add --transport http frank-blechschmidt https://frank-blechschmidt.com/mcp'); this.copied = true; setTimeout(() => this.copied = false, 3000); if (typeof umami !== 'undefined' && umami && typeof umami.track === 'function') umami.track('mcp_command_copied'); } }`}
           class="relative mt-1"
         >
           <button
