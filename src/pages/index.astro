@@ -279,7 +279,7 @@ const extraCommands: KeyboardCommand[] = [
     color: var(--color-accent);
   }
 
-  /* Animated gradient border — GPU composited */
+  /* Animated gradient border */
   .ai-section {
     position: relative;
     overflow: hidden;
@@ -289,28 +289,22 @@ const extraCommands: KeyboardCommand[] = [
     inset: 0;
     border-radius: 0.5rem;
     padding: 1px;
-    overflow: hidden;
+    background: linear-gradient(
+      135deg,
+      var(--color-accent) 0%,
+      transparent 40%,
+      transparent 60%,
+      var(--color-accent) 100%
+    );
+    background-size: 300% 300%;
+    animation: border-shift 6s ease-in-out infinite;
     -webkit-mask:
       linear-gradient(#fff 0 0) content-box,
       linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
-    pointer-events: none;
-  }
-  .ai-border::before {
-    content: "";
-    position: absolute;
-    inset: -100% -100%;
-    background: linear-gradient(
-      135deg,
-      var(--color-accent) 0%,
-      transparent 20%,
-      transparent 80%,
-      var(--color-accent) 100%
-    );
     opacity: 0.5;
-    animation: border-shift 6s ease-in-out infinite;
-    will-change: transform;
+    pointer-events: none;
   }
 
   /* Sparkle icon pulse */
@@ -340,8 +334,8 @@ const extraCommands: KeyboardCommand[] = [
   }
 
   @keyframes border-shift {
-    0%, 100% { transform: translate(0, 0); }
-    50% { transform: translate(25%, 25%); }
+    0%, 100% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
   }
   @keyframes sparkle-pulse {
     0%, 100% { opacity: 1; transform: scale(1); }
