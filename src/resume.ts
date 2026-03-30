@@ -62,7 +62,7 @@ interface SkillCategory {
 
 export const basics: Basics = {
   name: "Frank Blechschmidt",
-  label: "Senior Engineering Manager",
+  label: "Scaling platform teams and cloud infrastructure",
   email: "contact@frank-blechschmidt.com",
   phone: "+1 (650) 213-2619",
   url: "https://frank-blechschmidt.com",

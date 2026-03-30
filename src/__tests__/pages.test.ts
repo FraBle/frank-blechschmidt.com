@@ -21,7 +21,7 @@ describe("resume.json", () => {
 
     expect(body.$schema).toContain("jsonresume");
     expect(body.basics.name).toBe("Frank Blechschmidt");
-    expect(body.basics.label).toBe("Senior Engineering Manager");
+    expect(body.basics.label).toBe("Scaling platform teams and cloud infrastructure");
     expect(body.basics.profiles).toHaveLength(3);
     expect(body.work.length).toBeGreaterThan(0);
     expect(body.work[0].name).toBe("dbt Labs");
