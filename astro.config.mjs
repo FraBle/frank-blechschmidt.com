@@ -6,7 +6,7 @@ import umami from '@yeskunall/astro-umami';
 import sentry from '@sentry/astro';
 import favicons from 'astro-favicons';
 import skills from 'astro-skills';
-import llms from 'astro-llms-generate';
+
 import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
@@ -58,7 +58,6 @@ export default defineConfig({
       },
     }),
     skills(),
-    llms(),
   ],
   vite: {
     plugins: [tailwindcss()],
