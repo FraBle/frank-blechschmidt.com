@@ -61,7 +61,7 @@ const projectItems: ProjectItem[] = projects.map((p) => ({
 const machineReadable = [
   { name: "JSON Resume", url: "/resume.json", description: "Structured resume data" },
   { name: "LLMs.txt", url: "/llms.txt", description: "LLM-friendly resume" },
-  { name: "MCP Server", url: "/.well-known/mcp.json", description: "Model Context Protocol" },
+  { name: "MCP", url: "/.well-known/mcp.json", description: "Model Context Protocol" },
   { name: "Skills", url: "/.well-known/skills/index.json", description: "Agent Skills Discovery" },
 ];
 
@@ -155,8 +155,23 @@ const extraCommands: KeyboardCommand[] = [
         location={{ city: basics.location.city, region: basics.location.region }}
         profiles={basics.profiles}
       />
+      <a href="/resume_frank_blechschmidt.pdf" target="_blank" rel="noopener noreferrer" class="no-print flex items-center gap-3 rounded-lg border border-skin-muted/30 bg-skin-button-muted/50 p-3 transition-colors hover:border-skin-hue/30 hover:bg-skin-button-muted">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-red-500">
+          <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+          <polyline points="14 2 14 8 20 8" />
+          <path d="M10 12l-2 4h4l-2 4" />
+        </svg>
+        <div class="flex flex-col">
+          <span class="text-sm font-medium text-skin-base">Download Resume</span>
+          <span class="text-xs text-skin-muted">PDF, print-optimized</span>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto shrink-0 text-skin-muted">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <polyline points="7 10 12 15 17 10" />
+          <line x1="12" x2="12" y1="15" y2="3" />
+        </svg>
+      </a>
       <About summary={basics.summary} />
-      <ThemeSwitch />
 
       <div class="ai-section no-print relative flex flex-col gap-3 rounded-lg p-4">
         <div class="ai-border"></div>
@@ -220,22 +235,7 @@ const extraCommands: KeyboardCommand[] = [
         </div>
       </div>
 
-      <a href="/resume_frank_blechschmidt.pdf" target="_blank" rel="noopener noreferrer" class="no-print flex items-center gap-3 rounded-lg border border-skin-muted/30 bg-skin-button-muted/50 p-3 transition-colors hover:border-skin-hue/30 hover:bg-skin-button-muted">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-red-500">
-          <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
-          <polyline points="14 2 14 8 20 8" />
-          <path d="M10 12l-2 4h4l-2 4" />
-        </svg>
-        <div class="flex flex-col">
-          <span class="text-sm font-medium text-skin-base">Download Resume</span>
-          <span class="text-xs text-skin-muted">PDF, print-optimized</span>
-        </div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto shrink-0 text-skin-muted">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-          <polyline points="7 10 12 15 17 10" />
-          <line x1="12" x2="12" y1="15" y2="3" />
-        </svg>
-      </a>
+      <ThemeSwitch />
       <p class="no-print text-center text-xs text-skin-muted">Last updated {lastUpdated}</p>
     </div>
     <div class="min-w-0 space-y-12 md:col-span-4 print:col-span-1 print:space-y-4">
