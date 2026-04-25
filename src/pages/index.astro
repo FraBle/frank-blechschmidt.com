@@ -93,7 +93,7 @@ const extraCommands: KeyboardCommand[] = [
         "@type": "ProfilePage",
         "@id": `${basics.url}/#profilepage`,
         "url": basics.url,
-        "dateModified": new Date().toISOString().split("T")[0],
+        "dateModified": new Date().toISOString(),
         "isPartOf": { "@id": `${basics.url}/#website` },
         "mainEntity": { "@id": `${basics.url}/#person` },
       },
