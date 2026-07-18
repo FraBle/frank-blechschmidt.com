@@ -24,7 +24,7 @@ describe("resume.json", () => {
     expect(body.basics.label).toBe("Scaling platform teams and cloud infrastructure");
     expect(body.basics.profiles).toHaveLength(3);
     expect(body.work.length).toBeGreaterThan(0);
-    expect(body.work[0].name).toBe("dbt Labs");
+    expect(body.work[0].name).toBe("Anthropic");
     expect(body.work[0]).not.toHaveProperty("endDate");
     expect(body.work[1]).toHaveProperty("endDate");
     expect(body.education).toHaveLength(2);
