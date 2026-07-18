@@ -1,0 +1,31 @@
+---
+export const prerender = true;
+
+import { BaseLayout } from "dev-portfolio-ai";
+import { themeConfig } from "../site.config";
+---
+
+<BaseLayout title="No Sign-In Required" config={themeConfig} noindex>
+  <main class="relative max-w-7xl p-8 md:p-16">
+    <h1 class="text-3xl font-bold">No sign-in required</h1>
+    <p class="mt-4">
+      You probably landed here because an MCP client (such as Claude Code) tried
+      to authenticate against this site. The MCP server at
+      <code>https://frank-blechschmidt.com/mcp</code> is open — it requires no
+      authentication, so there is nothing to authorize.
+    </p>
+    <p class="mt-4">Close this tab and connect directly:</p>
+    <pre
+      class="mt-4 overflow-x-auto rounded p-4"><code>claude mcp add --transport http frank-blechschmidt https://frank-blechschmidt.com/mcp</code></pre>
+  </main>
+</BaseLayout>
+
+<style>
+  main {
+    margin: auto;
+    width: 100%;
+  }
+  pre {
+    background: color-mix(in srgb, currentColor 8%, transparent);
+  }
+</style>
