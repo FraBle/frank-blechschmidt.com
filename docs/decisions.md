@@ -90,3 +90,19 @@ Append-only log of architectural and project decisions.
 **Rationale:** Frank already uses mise globally for bun, go, and node. No need for project-level overrides for a single-developer project.
 
 **Impact:** No `.tool-versions` or `.mise.toml` in repo. Agents should expect tools on PATH via mise.
+
+---
+
+## 2026-07-18 — Purge Cloudflare edge cache on deploy
+
+**Context:** Prerendered content (`resume.json`, `llms.txt`, HTML) is served with `s-maxage=86400` (see `public/_headers`), so after a deploy the edge can serve stale content for up to 24h. Observed after the Anthropic resume update: `resume.json` kept returning the old work history from cache.
+
+**Decision:** Add a "Purge Cloudflare cache" step to `deploy.yml` that calls the zone `purge_cache` API with `purge_everything: true` after a successful `wrangler deploy`.
+
+**Rationale:**
+
+- `purge_everything` is maintenance-free (no URL list to keep in sync as pages are added) and safe: fingerprinted `/_astro/*` assets get new hashed names each deploy.
+- Keeps the long `s-maxage` CDN benefit between deploys while making deploys take effect immediately.
+- The step fails loudly (workflow red) if the secret or token permission is missing, rather than silently skipping.
+
+**Impact:** Requires `CLOUDFLARE_ZONE_ID` repo secret and the Cache Purge permission (Zone → Cache Purge → Purge) on `CLOUDFLARE_API_TOKEN`.

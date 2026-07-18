@@ -82,6 +82,29 @@ jobs:
           accountId: ${{ env.CLOUDFLARE_ACCOUNT_ID }}
           command: deploy --var SENTRY_RELEASE:${{ github.sha }}
 
+      # Purge the zone's edge cache so prerendered content (resume.json,
+      # llms.txt, HTML) is fresh immediately after deploy instead of stale for
+      # up to s-maxage=86400 (see public/_headers). Fingerprinted /_astro/*
+      # assets get new hashed names each deploy, so purge_everything is safe.
+      # Requires: CLOUDFLARE_ZONE_ID secret and the Cache Purge permission
+      # (Zone → Cache Purge → Purge) on CLOUDFLARE_API_TOKEN.
+      - name: Purge Cloudflare cache
+        if: steps.wrangler-deploy.outcome == 'success'
+        env:
+          CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+        run: |
+          if [ -z "$CLOUDFLARE_ZONE_ID" ]; then
+            echo "::error::CLOUDFLARE_ZONE_ID secret is not set - cannot purge cache"
+            exit 1
+          fi
+          response=$(curl -sS -X POST \
+            "https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE_ID}/purge_cache" \
+            -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
+            -H "Content-Type: application/json" \
+            --data '{"purge_everything":true}')
+          echo "$response"
+          echo "$response" | jq -e '.success == true' > /dev/null
+
       - name: Update deployment status
         if: always() && steps.create-deployment.outputs.deployment_id
         uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7.1.0
