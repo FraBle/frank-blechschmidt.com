@@ -64,13 +64,13 @@ interface SkillCategory {
 export const basics: Basics = {
   name: "Frank Blechschmidt",
   label: "Scaling platform teams and cloud infrastructure",
-  jobTitle: "Senior Engineering Manager",
+  jobTitle: "Member of Technical Staff (Manager)",
   email: "contact@frank-blechschmidt.com",
   phone: "+1 (650) 213-2619",
   url: "https://frank-blechschmidt.com",
   image: "https://frank-blechschmidt.com/avatar.jpg",
   summary:
-    "Bay Area-based Senior Engineering Manager with 10+ years of experience building scalable cloud infrastructure and developer platforms. Expert in transforming internal tooling into reliable, product-grade systems that drive developer velocity and enterprise-grade reliability. Proven track record of scaling engineering cultures while maintaining a focus on simplicity and speed. Currently at dbt Labs, previously at Lattice, Box, and SAP.",
+    "Bay Area-based engineering leader with 10+ years of experience building scalable cloud infrastructure and developer platforms. Expert in transforming internal tooling into reliable, product-grade systems that drive developer velocity and enterprise-grade reliability. Proven track record of scaling engineering cultures while maintaining a focus on simplicity and speed. Currently at Anthropic, previously at dbt Labs, Lattice, Box, and SAP.",
   location: {
     city: "Sunnyvale",
     region: "CA",
@@ -97,14 +97,26 @@ export const basics: Basics = {
 
 export const work: WorkPosition[] = [
   {
+    company: "Anthropic",
+    position: "Member of Technical Staff (Manager)",
+    url: "https://www.anthropic.com/",
+    startDate: "2026-03",
+    endDate: "",
+    location: "San Francisco, CA",
+    summary:
+      "Leading the Platform Portability team. We build and maintain the infrastructure that enables Anthropic to operate across multiple cloud providers.",
+    responsibilities: [],
+    achievements: [],
+  },
+  {
     company: "dbt Labs",
     position: "Senior Engineering Manager — Multi-Cell & Networking",
     url: "https://www.getdbt.com/",
     startDate: "2024-10",
-    endDate: "",
+    endDate: "2026-03",
     location: "United States (Remote)",
     summary:
-      "Directing the strategy and execution of dbt Labs' Multi-Cell Cloud Architecture across AWS, Azure, and GCP, enabling infinite horizontal scalability and data residency compliance for global enterprise customers.",
+      "Directed the strategy and execution of dbt Labs' Multi-Cell Cloud Architecture across AWS, Azure, and GCP, enabling infinite horizontal scalability and data residency compliance for global enterprise customers.",
     responsibilities: [],
     achievements: [
       "Operationalized next-gen cell architecture, supporting a 3x increase in revenue share by expanding global footprint to 8 regions.",

@@ -14,7 +14,7 @@ describe("basics", () => {
   it("has required personal info", () => {
     expect(basics.name).toBe("Frank Blechschmidt");
     expect(basics.label).toBe("Scaling platform teams and cloud infrastructure");
-    expect(basics.jobTitle).toBe("Senior Engineering Manager");
+    expect(basics.jobTitle).toBe("Member of Technical Staff (Manager)");
     expect(basics.email).toBe("contact@frank-blechschmidt.com");
     expect(basics.phone).toBe("+1 (650) 213-2619");
     expect(basics.url).toBe("https://frank-blechschmidt.com");
@@ -39,13 +39,15 @@ describe("basics", () => {
 });
 
 describe("work", () => {
-  it("has eight positions", () => {
-    expect(work).toHaveLength(8);
+  it("has nine positions", () => {
+    expect(work).toHaveLength(9);
   });
 
   it("has most recent position first", () => {
-    expect(work[0].company).toBe("dbt Labs");
+    expect(work[0].company).toBe("Anthropic");
     expect(work[0].endDate).toBe("");
+    expect(work[1].company).toBe("dbt Labs");
+    expect(work[1].endDate).toBe("2026-03");
   });
 
   it("all positions have required fields", () => {
@@ -55,7 +57,9 @@ describe("work", () => {
       expect(job.url).toBeTruthy();
       expect(job.startDate).toMatch(/^\d{4}-\d{2}$/);
       expect(job.location).toBeTruthy();
-      expect(job.responsibilities.length + job.achievements.length).toBeGreaterThan(0);
+      const hasDetails =
+        job.summary.length > 0 || job.responsibilities.length + job.achievements.length > 0;
+      expect(hasDetails).toBe(true);
     }
   });
 });
